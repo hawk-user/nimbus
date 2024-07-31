@@ -1,0 +1,14 @@
+{
+  "name": "gherkineye",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hawk-user/gherkineye.git"
+  },
+  "scripts": {
+    "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0"
+  },
+  "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
+  "license": "MIT",
+  "description": "A BDD testing framework using Gherkin for various UI frameworks and librairies."
+}
