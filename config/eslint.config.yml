@@ -94,6 +94,11 @@ extends:
 
   - eslint:recommended
 
+  # Uses the recommended rules from the TypeScript ESLint plugin
+  # for TypeScript projects.
+  
+  - plugin:@typescript-eslint/recommended
+
 # Specifies the parser to use for parsing TypeScript code,
 # rather than the default ESLint parser.
 
