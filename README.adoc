@@ -4,9 +4,8 @@ Salem Djekoun <07narguiles.visieres@icloud.com>
 :url-repo: https://github.com/hawk-user/gherkineye
 :toc: preamble
 
-image::assets/images/gherkineye.symbol.64x64.png[gherkineye® symbol,align="center"]
+image::assets/images/gherkineye.symbol.64x64.png[gherkineye® symbol]
 
-[.text-center]
 {description}
 
 == Purpose
