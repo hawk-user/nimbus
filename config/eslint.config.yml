@@ -1,68 +1,87 @@
 
 # Indicates that this is the root configuration file for ESLint, 
 # and that ESLint should not look for further configuration files in parent directories.
+
 root: true
 
 # Specifies the environments in which the code will run,
 # enabling global variables specific to those environments.
+
 env:
 
   # Enables global variables for the browser environment, 
   # such as `window` and `document`.
+
   browser: true
 
   # Enables global variables for the Node.js environment, 
   # such as `process` and `require`.
+
   node: true
 
 # Defines specific ESLint rules for the project.
+
 rules:
 
   # Enforces the use of camelCase naming convention for variables and functions.
+
   camelcase: error
 
   # Disallows the use of `console.log()` and other `console` methods to 
   # prevent debugging code in production.
+
   no-console: error
 
   # Disallows throwing literals like `throw 1` or `throw "error"`,
   # and prefers throwing instances of Error.
+
   no-throw-literal: error
 
   # Avoids the use of "magic numbers" (numeric literals without explanation)
   # in the code.
+
   no-magic-numbers: error
 
   # Disallows variable declarations that shadow variables in outer scopes.
+
   no-shadow: error
 
   # Avoids unnecessary ternary operations, such as `x ? x : y`,
   # which can be simplified.
+
   no-unneeded-ternary: error
 
   # Disallows the use of computed property names in objects when not needed.
+
   no-useless-computed-key: error
 
   # Disallows unnecessary constructors in classes that do not have specific logic.
+
   no-useless-constructor: error
 
   # Disallows unnecessary renaming in destructuring and imports.
+
   no-useless-rename: error
 
   # Avoids unnecessary `return` statements in functions, such as `return;`
   # in a function that doesn’t need to return anything.
+
   no-useless-return: error
 
   # Disallows the use of the `void` operator, which is often unclear and unnecessary.
+
   no-void: error
 
   # Encourages using `Object.prototype.hasOwnProperty.call` instead of directly
   # accessing the `hasOwnProperty` method.
+
   prefer-object-has-own: error
 
   # Encourages using template strings (`${}`) instead of string concatenation.
+
   prefer-template: error
 
   # Requires specifying the radix (base) when using `parseInt()`,
   # to avoid ambiguities.
+  
   radix: error
