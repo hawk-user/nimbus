@@ -12,6 +12,7 @@
   "license": "MIT",
   "description": "A BDD testing framework using Gherkin for various UI frameworks and librairies.",
   "devDependencies": {
+    "@typescript-eslint/parser": "^8.0.0",
     "eslint": "^8.57.0",
     "tslib": "^2.6.3",
     "tsx": "^4.16.3",
