@@ -85,3 +85,10 @@ rules:
   # to avoid ambiguities.
   
   radix: error
+
+# Specifies the base configurations to extend.
+
+extends:
+
+  # Uses ESLint’s recommended rules.
+  - eslint:recommended
