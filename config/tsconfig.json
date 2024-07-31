@@ -159,7 +159,18 @@
 
     /* Excludes the `node_modules` directory from the compilation process. */
 
-    "**/node_modules" 
+    "../**/node_modules" 
 
-  ] 
+  ],
+
+  // -> Included in the compilation
+
+  "include": [ 
+
+    /* Includes all files in the "source" directory for compilation. */
+
+    "../src" 
+
+  ],
+
 }
