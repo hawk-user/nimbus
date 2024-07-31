@@ -91,4 +91,23 @@ rules:
 extends:
 
   # Uses ESLint’s recommended rules.
+
   - eslint:recommended
+
+# Specifies the parser to use for parsing TypeScript code,
+# rather than the default ESLint parser.
+
+parser: '@typescript-eslint/parser'
+
+# Defines options specific to the parser.
+
+parserOptions:
+
+  # Uses the latest ECMAScript version, enabling the most
+  # recent language features. 
+
+  ecmaVersion: latest
+
+  # Sets the source type to `module`, allowing the use of ES modules.
+
+  sourceType: module
