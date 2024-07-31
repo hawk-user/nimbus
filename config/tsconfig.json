@@ -1,176 +1,176 @@
 {
-  "compilerOptions": { 
+   "compilerOptions": { 
 
-    // -> Language and Environment
+      // -> Language and Environment
 
-    /* Enables support for experimental decorators,
-       a feature for applying metadata to classes and properties.
-    */
+      /* Enables support for experimental decorators,
+         a feature for applying metadata to classes and properties.
+      */
 
-    "experimentalDecorators": true,
+      "experimentalDecorators": true,
 
-    /* Enables the generation of metadata for decorators,
-       useful for reflection and dependency injection.
-    */
+      /* Enables the generation of metadata for decorators,
+         useful for reflection and dependency injection.
+      */
 
-    "emitDecoratorMetadata": true,
+      "emitDecoratorMetadata": true,
 
-    // -> Module(s)
+      // -> Module(s)
 
-    /* Specifies the base directory for resolving non-relative 
-       module names. 
-    */
+      /* Specifies the base directory for resolving non-relative 
+         module names. 
+      */
 
-    "baseUrl": "../",
+      "baseUrl": "../",
 
-    /* Disables the ability to import JSON files as modules. */
+      /* Disables the ability to import JSON files as modules. */
 
-    "resolveJsonModule": false,
+      "resolveJsonModule": false,
 
-    // -> JavaScript Support
+      // -> JavaScript Support
 
-    /* Disables the ability to compile JavaScript files,
-       only TypeScript files will be compiled. 
-    */
+      /* Disables the ability to compile JavaScript files,
+         only TypeScript files will be compiled. 
+      */
 
-    "allowJs": false,
+      "allowJs": false,
 
-    // -> Emit
+      // -> Emit
 
-    /* Keeps comments in the output files, rather than removing them. */
+      /* Keeps comments in the output files, rather than removing them. */
 
-    "removeComments": false,
+      "removeComments": false,
 
-    /* Uses TypeScript's helper functions to reduce the output size 
-       and improve performance. 
-    */
+      /* Uses TypeScript's helper functions to reduce the output size 
+         and improve performance. 
+      */
 
-    "importHelpers": true,
+      "importHelpers": true,
 
-    /* Generates corresponding `.d.ts` declaration files for the 
-       TypeScript code, useful for library authors. 
-    */
+      /* Generates corresponding `.d.ts` declaration files for the 
+         TypeScript code, useful for library authors. 
+      */
 
-    "declaration": true,
+      "declaration": true,
 
-    // -> Interoperability Constraints
+      // -> Interoperability Constraints
 
-    /* Ensures that each file can be safely transpiled in 
-       isolation (useful for tools like Babel).
-    */
+      /* Ensures that each file can be safely transpiled in 
+         isolation (useful for tools like Babel).
+      */
 
-    "isolatedModules": true,
+      "isolatedModules": true,
 
-     /* Enables compatibility with CommonJS modules, allowing 
-        for easier interoperability with Node.js and other modules.
-     */
+      /* Enables compatibility with CommonJS modules, allowing 
+         for easier interoperability with Node.js and other modules.
+      */
 
-    "esModuleInterop": true,
-    
-    /* Ensures that file names are consistent in casing across the project,
-       preventing casing issues on case-sensitive file systems. 
-    */
+      "esModuleInterop": true,
+      
+      /* Ensures that file names are consistent in casing across the project,
+         preventing casing issues on case-sensitive file systems. 
+      */
 
-    "forceConsistentCasingInFileNames": true,
+      "forceConsistentCasingInFileNames": true,
 
-    // -> Type Checking
+      // -> Type Checking
 
-    /* Enables all strict type-checking options, improving code quality
-       and catching potential issues early.
-    */
+      /* Enables all strict type-checking options, improving code quality
+         and catching potential issues early.
+      */
 
-    "strict": true,
+      "strict": true,
 
-    /* Disallows variables with an implicit `any` type, 
-       requiring explicit type annotations. 
-    */
+      /* Disallows variables with an implicit `any` type, 
+         requiring explicit type annotations. 
+      */
 
-    "noImplicitAny": true,
+      "noImplicitAny": true,
 
-    /* Disallows the use of `this` in functions where its 
-       type cannot be determined. 
-    */
+      /* Disallows the use of `this` in functions where its 
+         type cannot be determined. 
+      */
 
-    "noImplicitThis": true,
+      "noImplicitThis": true,
 
-    /* Disallows unused local variables, helping to keep 
-       the code clean. 
-    */
+      /* Disallows unused local variables, helping to keep 
+         the code clean. 
+      */
 
-    "noUnusedLocals": true,
+      "noUnusedLocals": true,
 
-    /* Disallows unused function parameters, which helps
-       avoid unnecessary code. 
-    */
+      /* Disallows unused function parameters, which helps
+         avoid unnecessary code. 
+      */
 
-    "noUnusedParameters": true,
+      "noUnusedParameters": true,
 
-    /* Enforces exact checking of optional properties 
-       to prevent errors. 
-    */
+      /* Enforces exact checking of optional properties 
+         to prevent errors. 
+      */
 
-    "exactOptionalPropertyTypes": true,
+      "exactOptionalPropertyTypes": true,
 
-    /* Disallows functions that do not have a consistent return type,
-       ensuring all code paths return a value.
-    */
+      /* Disallows functions that do not have a consistent return type,
+         ensuring all code paths return a value.
+      */
 
-    "noImplicitReturns": true,
+      "noImplicitReturns": true,
 
-    /* Disallows fall-through between cases in switch statements,
-       which helps avoid bugs.
-    */
+      /* Disallows fall-through between cases in switch statements,
+         which helps avoid bugs.
+      */
 
-    "noFallthroughCasesInSwitch": true,
+      "noFallthroughCasesInSwitch": true,
 
-    /* Ensures that accessing array elements or properties with
-       an index is checked for safety.
-    */
+      /* Ensures that accessing array elements or properties with
+         an index is checked for safety.
+      */
 
-    "noUncheckedIndexedAccess": true, 
+      "noUncheckedIndexedAccess": true, 
 
-    /* Disallows methods that override base class methods without
-       using the `override` keyword.
-    */
+      /* Disallows methods that override base class methods without
+         using the `override` keyword.
+      */
 
-    "noImplicitOverride": true,
+      "noImplicitOverride": true,
 
-    /* Disallows property access using index signatures to ensure
-       more type safety.
-    */
+      /* Disallows property access using index signatures to ensure
+         more type safety.
+      */
 
-    "noPropertyAccessFromIndexSignature": true,
+      "noPropertyAccessFromIndexSignature": true,
 
-    /* Disallows unused labels, which helps avoid unnecessary code. */
+      /* Disallows unused labels, which helps avoid unnecessary code. */
 
-    "allowUnusedLabels": false,
+      "allowUnusedLabels": false,
 
-    /* Disallows code that is unreachable, helping to clean
-       up redundant code.
-    */
+      /* Disallows code that is unreachable, helping to clean
+         up redundant code.
+      */
 
-    "allowUnreachableCode": false
+      "allowUnreachableCode": false
 
-  },
+   },
 
-  // -> Excluded from compilation
-  
-  "exclude": [ 
+   // -> Excluded from compilation
 
-    /* Excludes the `node_modules` directory from the compilation process. */
+   "exclude": [ 
 
-    "../**/node_modules" 
+      /* Excludes the `node_modules` directory from the compilation process. */
 
-  ],
+      "../**/node_modules" 
 
-  // -> Included in the compilation
+   ],
 
-  "include": [ 
+   // -> Included in the compilation
 
-    /* Includes all files in the "source" directory for compilation. */
+   "include": [ 
 
-    "../src" 
+      /* Includes all files in the "source" directory for compilation. */
 
-  ],
+      "../src" 
+
+   ],
 
 }
