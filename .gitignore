@@ -1,0 +1,27 @@
+
+# Ignore the 'out-tsc' directory, used for TypeScript compilation output
+/out-tsc
+
+# Ignore the 'node_modules' directory, which contains installed Node.js packages
+**/node_modules
+
+# Ignore 'npm-debug.log', a log file created on npm errors
+npm-debug.log
+
+# Ignore 'yarn-error.log', a log file created on yarn errors
+yarn-error.log
+
+# Ignore all '.sublime-workspace' files, used by Sublime Text for workspace settings
+*.sublime-workspace
+
+# Ignore everything in the '.vscode' directory
+.vscode/*
+
+# Ignore the 'coverage' directory, often used for test coverage reports
+/coverage
+
+# Ignore the 'typings' directory, used by TypeScript for type definitions
+/typings
+
+# Ignore '.DS_Store', a file created by macOS Finder
+.DS_Store
