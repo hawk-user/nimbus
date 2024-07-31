@@ -1,0 +1,165 @@
+{
+  "compilerOptions": { 
+
+    // -> Language and Environment
+
+    /* Enables support for experimental decorators,
+       a feature for applying metadata to classes and properties.
+    */
+
+    "experimentalDecorators": true,
+
+    /* Enables the generation of metadata for decorators,
+       useful for reflection and dependency injection.
+    */
+
+    "emitDecoratorMetadata": true,
+
+    // -> Module(s)
+
+    /* Specifies the base directory for resolving non-relative 
+       module names. 
+    */
+
+    "baseUrl": "../",
+
+    /* Disables the ability to import JSON files as modules. */
+
+    "resolveJsonModule": false,
+
+    // -> JavaScript Support
+
+    /* Disables the ability to compile JavaScript files,
+       only TypeScript files will be compiled. 
+    */
+
+    "allowJs": false,
+
+    // -> Emit
+
+    /* Keeps comments in the output files, rather than removing them. */
+
+    "removeComments": false,
+
+    /* Uses TypeScript's helper functions to reduce the output size 
+       and improve performance. 
+    */
+
+    "importHelpers": true,
+
+    /* Generates corresponding `.d.ts` declaration files for the 
+       TypeScript code, useful for library authors. 
+    */
+
+    "declaration": true,
+
+    // -> Interoperability Constraints
+
+    /* Ensures that each file can be safely transpiled in 
+       isolation (useful for tools like Babel).
+    */
+
+    "isolatedModules": true,
+
+     /* Enables compatibility with CommonJS modules, allowing 
+        for easier interoperability with Node.js and other modules.
+     */
+
+    "esModuleInterop": true,
+    
+    /* Ensures that file names are consistent in casing across the project,
+       preventing casing issues on case-sensitive file systems. 
+    */
+
+    "forceConsistentCasingInFileNames": true,
+
+    // -> Type Checking
+
+    /* Enables all strict type-checking options, improving code quality
+       and catching potential issues early.
+    */
+
+    "strict": true,
+
+    /* Disallows variables with an implicit `any` type, 
+       requiring explicit type annotations. 
+    */
+
+    "noImplicitAny": true,
+
+    /* Disallows the use of `this` in functions where its 
+       type cannot be determined. 
+    */
+
+    "noImplicitThis": true,
+
+    /* Disallows unused local variables, helping to keep 
+       the code clean. 
+    */
+
+    "noUnusedLocals": true,
+
+    /* Disallows unused function parameters, which helps
+       avoid unnecessary code. 
+    */
+
+    "noUnusedParameters": true,
+
+    /* Enforces exact checking of optional properties 
+       to prevent errors. 
+    */
+
+    "exactOptionalPropertyTypes": true,
+
+    /* Disallows functions that do not have a consistent return type,
+       ensuring all code paths return a value.
+    */
+
+    "noImplicitReturns": true,
+
+    /* Disallows fall-through between cases in switch statements,
+       which helps avoid bugs.
+    */
+
+    "noFallthroughCasesInSwitch": true,
+
+    /* Ensures that accessing array elements or properties with
+       an index is checked for safety.
+    */
+
+    "noUncheckedIndexedAccess": true, 
+
+    /* Disallows methods that override base class methods without
+       using the `override` keyword.
+    */
+
+    "noImplicitOverride": true,
+
+    /* Disallows property access using index signatures to ensure
+       more type safety.
+    */
+
+    "noPropertyAccessFromIndexSignature": true,
+
+    /* Disallows unused labels, which helps avoid unnecessary code. */
+
+    "allowUnusedLabels": false,
+
+    /* Disallows code that is unreachable, helping to clean
+       up redundant code.
+    */
+
+    "allowUnreachableCode": false
+
+  },
+
+  // -> Excluded from compilation
+  
+  "exclude": [ 
+
+    /* Excludes the `node_modules` directory from the compilation process. */
+
+    "**/node_modules" 
+
+  ] 
+}
