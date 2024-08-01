@@ -27,6 +27,18 @@
 
       "resolveJsonModule": false,
 
+      /* Allows to create module aliases. */
+
+      "paths": {
+
+         /* This maps the alias '@gherkineye/core' to the file
+            path 'src/libs/core/index'.
+         */
+
+         "@gherkineye/core": [ "src/libs/core/index" ]
+
+      },
+
       // -> JavaScript Support
 
       /* Disables the ability to compile JavaScript files,
