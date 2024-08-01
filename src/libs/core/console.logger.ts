@@ -9,15 +9,25 @@ import { Logger } from './interfaces';
 
 export class ConsoleLogger implements Logger {
 
-    debug<T>(_data: T): void {}
+    debug<T>(data: T) {
+        return data
+    }
 
-    info(_message: string): void {}
+    info(message: string) {
+        return message
+    }
 
-    warn(_message: string): void {}
+    warn(message: string) {
+        return message;
+    }
 
-    error<T>(_message: string, _error: T): void {}
+    error<T>(message: string, error: T) {
+        return Object.create({ message, error });
+    }
 
-    fatal<T>(_message: string, _error: T): void {}
+    fatal<T>(message: string, error: T) {
+        return Object.create({ message, error });
+    }
 
     /**
         * Creates an instance of `ConsoleLogger`.
