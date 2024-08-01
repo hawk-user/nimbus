@@ -181,7 +181,11 @@
 
       /* Includes all files in the "source" directory for compilation. */
 
-      "src" 
+      "src",
+      
+      /* Includes all files in the "tests" directory for compilation. */
+
+      "tests" 
 
    ],
 
