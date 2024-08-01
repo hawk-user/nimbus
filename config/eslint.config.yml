@@ -116,3 +116,27 @@ parserOptions:
   # Sets the source type to `module`, allowing the use of ES modules.
 
   sourceType: module
+
+# Specifies overrides for specific files or file patterns in the project,
+# allowing custom rules to be applied to these files.
+
+overrides:
+
+  # Each item in this list defines a set of files and associated rules.
+
+  - files:
+
+      # Specifies the exact file or file patterns to which these override rules apply.
+      # In this case, the rules will be applied only to the 'source/logger/console.logger.ts' file.
+
+      - 'src/libs/core/console.logger.ts'
+
+    rules:
+
+      # Defines specific linting rules for the files listed above.
+      # In this case, the rule `no-console` is being modified.
+      # 
+      # Disables the rule that disallows `console` statements (e.g., `console.log`) in the specified file.
+      # This is useful for files where console output is necessary, such as logging utilities.
+
+      no-console: off
