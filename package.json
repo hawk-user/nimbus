@@ -7,7 +7,8 @@
   },
   "scripts": {
     "linter": "eslint --config=config/eslint.config.yml src",
-    "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0"
+    "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
+    "test:core": "jest --runInBand --config=tests/setup/core.config.ts"
   },
   "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
   "license": "MIT",
