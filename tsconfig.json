@@ -21,7 +21,7 @@
          module names. 
       */
 
-      "baseUrl": "../",
+      "baseUrl": ".",
 
       /* Disables the ability to import JSON files as modules. */
 
@@ -171,7 +171,7 @@
 
       /* Excludes the `node_modules` directory from the compilation process. */
 
-      "../**/node_modules" 
+      "**/node_modules" 
 
    ],
 
@@ -181,7 +181,7 @@
 
       /* Includes all files in the "source" directory for compilation. */
 
-      "../src" 
+      "src" 
 
    ],
 
