@@ -1,0 +1,49 @@
+
+# This workflow is named to uniquely identify it
+# within the GitHub Actions UI.
+
+name: Triggering workflows
+
+# The 'on' field indicates the events that will
+# activate this workflow. In this instance, the
+# workflow is initiated each time a push event
+# occurs in the repository.
+
+on: [ push ]
+
+# GitHub Actions are defined by jobs, which specify
+# the tasks to be performed. Every job is executed
+# in its own runner environment.
+
+jobs:
+
+  # The name "workflow-initializer" is used to identify
+  # this job. It serves as a workflow initializer. 
+
+  workflow-initializer:
+
+    # The 'runs-on' parameter designates the virtual machine (VM)
+    # type for the job execution. On the other hand, 'ubuntu-latest'
+    # indicates that the job will be executed on the most recent
+    # version of an Ubuntu VM.
+
+    runs-on: ubuntu-latest
+    
+    # 'steps' refer to a series of actions or commands that need to
+    # be carried out in this task. Each step has the ability to execute
+    # a command, utilize an action, or complete various other tasks.
+
+    steps:
+
+      # Every step should include a 'name' and a 'run' key. The 'name'
+      # serves as a clear, human-readable explanation of the step's function.
+      # The 'run' key holds the command that will be executed during this step,
+      # which in this case involves printing a message to the console.
+
+      - name: Perform an action to end the workflow cleanly.
+
+        # The 'run' command is used to execute a shell command. In this case,
+        # the command is 'echo "... 🚀 initialize workflows", which will display
+        # the message in the workflow log.
+
+        run: echo "... 🚀 initialize workflows"
