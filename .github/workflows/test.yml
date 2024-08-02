@@ -1,0 +1,122 @@
+
+# This workflow is named to uniquely identify it
+# within the GitHub Actions UI.
+
+name: Test
+
+# The 'on' field specifies the events that will trigger this workflow.
+# In this case, the workflow is triggered by two types of events:
+# - Push events to any branch.
+# - Completion of another workflow named 'Triggering workflows'.
+
+on:
+
+  # The workflow is triggered by push events to any branch in
+  # the repository.
+
+  push:
+
+    # The '*' wildcard means this workflow will be triggered on
+    # pushes to all branches.
+
+    branches: [ "*" ]
+
+  # The workflow is also triggered by the completion of another
+  # specified workflow.
+
+  workflow_run:
+
+    # Specifies the workflows that this workflow depends
+    # on for triggering.
+
+    workflows:
+
+      # This workflow will be triggered when the 'Triggering
+      # workflows' workflow completes.
+
+      - Triggering workflows
+
+    # Defines the type of workflow run events that will
+    # trigger this workflow.
+
+    types:
+
+      # The workflow will be triggered when the specified
+      # workflow has completed.
+
+      - completed
+
+# GitHub Actions are defined by jobs, which specify
+# the tasks to be performed. Every job is executed
+# in its own runner environment.
+
+jobs:
+
+  # Define a job named 'run-test'.
+
+  run-test:
+
+    # The job will only run if the conclusion of the workflow
+    # that triggered this workflow was 'success'.
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    # Define the strategy for running this job, including
+    # matrix configurations.
+
+    strategy:
+
+      # 'fail-fast' specifies whether to stop running
+      # other matrix jobs if one fails. Setting 'fail-fast'
+      # to false means other jobs will continue even if one fails.
+
+      fail-fast: false
+
+      # Matrix configuration allows running this job with different
+      # versions of Node.js.
+
+      matrix:
+
+        # Define a matrix with different Node.js versions.
+
+        node-version: [ 22.x ]
+
+    # Name the job with the Node.js version being used in the matrix.
+
+    name: Node v${{ matrix.node-version }}
+
+    # The 'runs-on' parameter designates the virtual machine (VM)
+    # type for the job execution. On the other hand, 'ubuntu-latest'
+    # indicates that the job will be executed on the most recent
+    # version of an Ubuntu VM.
+
+    runs-on: ubuntu-latest
+
+    # 'steps' refer to a series of actions or commands that need to
+    # be carried out in this task. Each step has the ability to execute
+    # a command, utilize an action, or complete various other tasks.
+
+    steps:
+
+      # Checkout the repository to the GitHub runner to make the code
+      # available for the job.
+
+      - uses: actions/checkout@v4
+
+      # Set up the Node.js environment for the job based on the
+      # specified version in the matrix.
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Clean installation of dependencies based on the exact
+      # versions specified in package-lock.json.
+
+      - name: Clean installation.
+        run: npm ci
+
+      # Run tests defined in the 'test:core' script in your package.json.
+      
+      - name: Performs tests on the Core layer.
+        run: npm run test:core
