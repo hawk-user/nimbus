@@ -10,6 +10,7 @@ describe('ConsoleLogger specifications', () => {
         console.info = jest.fn();
         console.debug = jest.fn();
         console.warn = jest.fn();
+        console.error = jest.fn();
     });
 
     afterEach(() => {
@@ -41,6 +42,16 @@ describe('ConsoleLogger specifications', () => {
         logger.warn(message);
 
         expect(console.warn).toHaveBeenCalledWith(sticker, message);
+    });
+
+    test('should log an error messages with a orange background sticker', () => {
+        const message = 'This is an error message';
+        const sticker = '\u001B[48;5;214m error \u001B[0m ';
+        const error = new Error();
+
+        logger.error(message, error);
+
+        expect(console.error).toHaveBeenCalledWith(sticker, message, error);
     });
     
 });
