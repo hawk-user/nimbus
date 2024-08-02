@@ -127,7 +127,7 @@ overrides:
   - files:
 
       # Specifies the exact file or file patterns to which these override rules apply.
-      # In this case, the rules will be applied only to the 'source/logger/console.logger.ts' file.
+      # In this case, the rules will be applied only to the 'src/libs/core/console.logger.ts' file.
 
       - 'src/libs/core/console.logger.ts'
 
