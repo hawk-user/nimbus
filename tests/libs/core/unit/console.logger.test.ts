@@ -23,7 +23,7 @@ describe('ConsoleLogger specifications', () => {
         expect(console.info).toHaveBeenCalledWith(sticker, message);
     });
 
-    test('should log debug messages with a cyan background sticker', () => {
+    test('should log an debug messages with a cyan background sticker', () => {
         const message = 'This is an debug message';
         const sticker = '\u001B[46m debug \u001B[0m ';
 
