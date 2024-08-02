@@ -1,5 +1,6 @@
 
 import { Logger } from './interfaces';
+import { ANSI_ESCAPE_CODE } from './constants';
 
 /**
     * A class that implements the `Logger` interface,
@@ -13,8 +14,9 @@ export class ConsoleLogger implements Logger {
         return data
     }
 
-    info(message: string) {
-        return message
+    info(message: string): void {
+        const sticker =  `${ ANSI_ESCAPE_CODE.BG_BLUE } info ${ ANSI_ESCAPE_CODE.RESET } `;
+        console.info(sticker, message);
     }
 
     warn(message: string) {
