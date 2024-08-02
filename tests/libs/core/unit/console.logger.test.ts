@@ -9,6 +9,7 @@ describe('ConsoleLogger specifications', () => {
         logger = ConsoleLogger.create();
         console.info = jest.fn();
         console.debug = jest.fn();
+        console.warn = jest.fn();
     });
 
     afterEach(() => {
@@ -39,7 +40,7 @@ describe('ConsoleLogger specifications', () => {
 
         logger.warn(message);
 
-        expect(console.info).toHaveBeenCalledWith(sticker, message);
+        expect(console.warn).toHaveBeenCalledWith(sticker, message);
     });
     
 });
