@@ -11,7 +11,8 @@ import { ANSI_ESCAPE_CODE } from './constants';
 export class ConsoleLogger implements Logger {
 
     debug<T>(data: T) {
-        return data
+        const sticker =  `${ ANSI_ESCAPE_CODE.BG_CYAN } debug ${ ANSI_ESCAPE_CODE.RESET } `;
+        console.info(sticker, data);
     }
 
     info(message: string): void {
