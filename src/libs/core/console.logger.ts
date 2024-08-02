@@ -21,7 +21,8 @@ export class ConsoleLogger implements Logger {
     }
 
     warn(message: string) {
-        return message;
+        const sticker =  `${ ANSI_ESCAPE_CODE.BG_YELLOW } warn ${ ANSI_ESCAPE_CODE.RESET } `;
+        console.info(sticker, message);
     }
 
     error<T>(message: string, error: T) {
