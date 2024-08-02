@@ -17,6 +17,12 @@ export enum ANSI_ESCAPE_CODE {
         * Sets the background color to blue.
     */
 
-    BG_BLUE = '\u001B[44m'
+    BG_BLUE = '\u001B[44m',
+
+    /**
+        * Sets the background color to cyan.
+    */
+
+    BG_CYAN = '\u001B[46m'
 
 }
