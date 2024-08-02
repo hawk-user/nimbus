@@ -13,6 +13,9 @@
   "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
   "license": "MIT",
   "description": "A BDD testing framework using Gherkin for various UI frameworks and librairies.",
+  "engines": {
+    "node": ">=22.3.0"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
