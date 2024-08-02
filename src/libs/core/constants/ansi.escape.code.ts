@@ -23,6 +23,12 @@ export enum ANSI_ESCAPE_CODE {
         * Sets the background color to cyan.
     */
 
-    BG_CYAN = '\u001B[46m'
+    BG_CYAN = '\u001B[46m',
+
+    /**
+        * Sets the background color to yellow.
+    */
+
+    BG_YELLOW = '\u001B[43m'
 
 }
