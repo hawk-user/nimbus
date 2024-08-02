@@ -27,7 +27,7 @@ describe('ConsoleLogger specifications', () => {
         const message = 'This is an debug message';
         const sticker = '\u001B[46m debug \u001B[0m ';
 
-        logger.info(message);
+        logger.debug(message);
 
         expect(console.info).toHaveBeenCalledWith(sticker, message);
     });
