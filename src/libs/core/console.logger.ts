@@ -26,7 +26,8 @@ export class ConsoleLogger implements Logger {
     }
 
     error<T>(message: string, error: T) {
-        return Object.create({ message, error });
+        const sticker =  `${ ANSI_ESCAPE_CODE.BG_ORANGE } error ${ ANSI_ESCAPE_CODE.RESET } `;
+        console.error(sticker, message, error);
     }
 
     fatal<T>(message: string, error: T) {
