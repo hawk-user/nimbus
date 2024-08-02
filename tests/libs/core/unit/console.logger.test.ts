@@ -32,5 +32,14 @@ describe('ConsoleLogger specifications', () => {
 
         expect(console.info).toHaveBeenCalledWith(sticker, message);
     });
+
+    test('should log an warning messages with a yellow background sticker', () => {
+        const message = 'This is an warning message';
+        const sticker = '\u001B[43m warn \u001B[0m ';
+
+        logger.warn(message);
+
+        expect(console.info).toHaveBeenCalledWith(sticker, message);
+    });
     
 });
