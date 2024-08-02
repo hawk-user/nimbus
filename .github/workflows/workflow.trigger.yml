@@ -35,10 +35,7 @@ jobs:
 
     steps:
 
-      # Every step should include a 'name' and a 'run' key. The 'name'
-      # serves as a clear, human-readable explanation of the step's function.
-      # The 'run' key holds the command that will be executed during this step,
-      # which in this case involves printing a message to the console.
+      # The 'name' serves as a clear, human-readable explanation of the step's function.
 
       - name: Perform an action to end the workflow cleanly.
 
