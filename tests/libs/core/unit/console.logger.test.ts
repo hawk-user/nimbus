@@ -8,6 +8,7 @@ describe('ConsoleLogger specifications', () => {
     beforeEach(() => {
         logger = ConsoleLogger.create();
         console.info = jest.fn();
+        console.debug = jest.fn();
     });
 
     afterEach(() => {
