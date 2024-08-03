@@ -53,5 +53,15 @@ describe('ConsoleLogger specifications', () => {
 
         expect(console.error).toHaveBeenCalledWith(sticker, message, error);
     });
+
+    test('should log an fatal messages with a magenta background sticker', () => {
+        const message = 'This is an fatal message';
+        const sticker = '\u001B[45m fatal \u001B[0m ';
+        const error = new Error();
+
+        logger.fatal(message, error);
+
+        expect(console.error).toHaveBeenCalledWith(sticker, message, error);
+    });
     
 });
