@@ -35,6 +35,13 @@ export enum ANSI_ESCAPE_CODE {
         * Sets the background color to orange.
     */
 
-    BG_ORANGE = '\u001B[48;5;214m'
+    BG_ORANGE = '\u001B[48;5;214m',
+
+    /**
+        * Sets the background color to magenta.
+    */
+
+    BG_MAGENTA = '\u001B[45m'
+
 
 }
