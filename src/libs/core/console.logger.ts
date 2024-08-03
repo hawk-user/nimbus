@@ -31,7 +31,8 @@ export class ConsoleLogger implements Logger {
     }
 
     fatal<T>(message: string, error: T) {
-        return Object.create({ message, error });
+        const sticker =  `${ ANSI_ESCAPE_CODE.BG_MAGENTA } fatal ${ ANSI_ESCAPE_CODE.RESET } `;
+        console.error(sticker, message, error);
     }
 
     /**
