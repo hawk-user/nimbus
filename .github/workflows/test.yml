@@ -116,7 +116,7 @@ jobs:
       - name: Clean installation.
         run: npm ci
 
-      # Run tests defined in the 'test:core' script in your package.json.
-      
+      # Run tests defined in the 'test:core' script in package.json.
+
       - name: Performs tests on the Core layer.
         run: npm run test:core
