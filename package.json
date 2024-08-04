@@ -6,6 +6,7 @@
     "url": "https://github.com/hawk-user/gherkineye.git"
   },
   "scripts": {
+    "clean:report": "rimraf report",
     "linter": "eslint --config=config/eslint.config.yml src",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
     "test:core": "jest --runInBand --config=tests/setup/core.config.ts",
