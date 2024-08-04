@@ -44,4 +44,4 @@ const coreConfig: Config = {
 
 };
 
-export default async (): Promise<Config> => coreConfig;;
+export default async (): Promise<Config> => coreConfig;
