@@ -27,6 +27,7 @@ const coverageConfig: Config = {
 
     reporters: [ 'default' ],
 
+
     /* Enable collection of coverage information. */
     
     collectCoverage: true,
@@ -36,7 +37,7 @@ const coverageConfig: Config = {
         * 'coverage' is the directory where the coverage files will be saved.
     */
 
-    coverageDirectory: '../../coverage'
+    coverageDirectory: '../coverage'
 
 }
 
