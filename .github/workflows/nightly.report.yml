@@ -1,0 +1,146 @@
+
+# This workflow is named to uniquely identify it
+# within the GitHub Actions UI.
+
+name: Nightly report
+
+on:
+
+  # This trigger allows the workflow to be manually
+  # triggered from the GitHub UI
+
+  workflow_dispatch:
+
+  # This schedule triggers the workflow automatically
+  # based on the cron schedule
+
+  schedule:
+
+    # This cron expression schedules the workflow to run
+    # daily at midnight (UTC)
+
+    - cron: '0 0 * * *'
+
+# GitHub Actions are defined by jobs, which specify
+# the tasks to be performed. Every job is executed
+# in its own runner environment.
+
+jobs:
+
+  # Define a job named 'produces-a-report'.
+
+  produces-a-report:
+
+    # Define the strategy for running this job, including
+    # matrix configurations.
+
+    strategy:
+
+      # 'fail-fast' specifies whether to stop running
+      # other matrix jobs if one fails. Setting 'fail-fast'
+      # to false means other jobs will continue even if one fails.
+
+      fail-fast: false
+
+      # Matrix configuration allows running this job with different
+      # versions of Node.js.
+
+      matrix:
+
+        # Define a matrix with different Node.js versions.
+
+        node-version: [ 22.x ]
+    
+    # Name the job with the Node.js version being used in the matrix.
+
+    name: Node v${{ matrix.node-version }}
+
+    # The 'runs-on' parameter designates the virtual machine (VM)
+    # type for the job execution. On the other hand, 'ubuntu-latest'
+    # indicates that the job will be executed on the most recent
+    # version of an Ubuntu VM.
+
+    runs-on: ubuntu-latest
+
+    # 'steps' refer to a series of actions or commands that need to
+    # be carried out in this task. Each step has the ability to execute
+    # a command, utilize an action, or complete various other tasks.
+
+    steps:
+    
+      # Checkout the repository to the GitHub runner to make the code
+      # available for the job.
+
+      - uses: actions/checkout@v4
+
+      # Set up the Node.js environment for the job based on the
+      # specified version in the matrix.
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Clean installation of dependencies based on the exact
+      # versions specified in package-lock.json.
+
+      - name: Clean installation. 
+        run: npm ci
+
+      # Generate test report using the defined npm script
+
+      - name: Generate test report.
+        run: npm run test:report
+
+      # Generate coverage report using the defined npm script
+
+      - name: Generate coverage report.
+        run: npm run test:coverage
+
+      # Upload the generated test report as artifacts
+
+      - uses: actions/upload-artifact@v4
+
+        # Always run this step regardless of previous success or failure
+
+        if: success() || failure()
+
+        with:
+
+          # Name for the artifact
+
+          name: test-report
+
+          # Path to the reports directory
+
+          path: report
+
+          # Number of days to keep the artifact
+
+          retention-days: 60
+
+          # Fail the action if no files are found
+
+          if-no-files-found: error
+
+      # Upload coverage reports to Codecov for detailed coverage insights
+
+      - name: Upload coverage report to Codecov.
+        uses: codecov/codecov-action@v4.5.0
+
+        with:
+
+          # Token for authentication with Codecov
+
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+          # Path to the coverage report file
+
+          file: coverage/coverage-final.json
+
+          # Disable search for the coverage report file
+
+          disable_search: true
+
+          # Fail the CI job if there’s an error uploading to Codecov
+          
+          fail_ci_if_error: true
