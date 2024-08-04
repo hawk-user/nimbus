@@ -19,7 +19,7 @@ const coreConfig: Config = {
         * This path is relative and points to the core library's directory.
     */
 
-    roots: [ '../libs/core/unit' ],
+    roots: [ '../tests/libs/core/unit' ],
 
     /* 
         * Configuration for the display name used in the test environment.
