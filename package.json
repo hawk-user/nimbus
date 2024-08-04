@@ -10,6 +10,7 @@
     "linter": "eslint --config=config/eslint.config.yml src",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
     "test:core": "jest --runInBand --config=tests/setup/core.config.ts",
+    "test:coverage": "jest --runInBand --config=tests/setup/coverage.config.ts",
     "test:report": "jest --runInBand --ci --config=tests/setup/report.config.ts"
   },
   "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
