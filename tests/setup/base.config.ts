@@ -15,6 +15,14 @@ export const baseConfig: Config = {
     moduleFileExtensions: [ 'ts', 'js' ],
 
     /* 
+        * Directory containing the source files for the project.
+        * Jest will use this directory as the root when resolving modules and 
+        * transforming files. It is relative to the configuration file.
+    */
+
+    rootDir: '../../src',
+
+    /* 
         * Maps module names to specific paths or module files,
         * allowing to use custom aliases for modules in tests.
     */
@@ -26,7 +34,7 @@ export const baseConfig: Config = {
             * This allows to import '@gherkineye/core' in tests.
         */
 
-        '@gherkineye/core': '<rootDir>../../src/libs/core/index'
+        '@gherkineye/core': '<rootDir>/libs/core/index'
 
     },
 
