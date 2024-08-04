@@ -20,6 +20,9 @@ yarn-error.log
 # Ignore the 'coverage' directory, often used for test coverage reports
 /coverage
 
+# Ignore the 'report' directory, often used for test reports
+/report
+
 # Ignore the 'typings' directory, used by TypeScript for type definitions
 /typings
 
