@@ -11,6 +11,7 @@
     "linter": "eslint --config=config/eslint.config.yml src",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
     "tdd:core": "jest --runInBand --watchAll --config=tests/setup/core.config.ts",
+    "tdd:infra": "jest --runInBand --watchAll --config=tests/setup/infra.config.ts",
     "test:core": "jest --runInBand --config=tests/setup/core.config.ts",
     "test:coverage": "jest --runInBand --config=tests/setup/coverage.config.ts",
     "test:infra": "jest --runInBand --config=tests/setup/infra.config.ts",
