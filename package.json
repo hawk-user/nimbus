@@ -16,7 +16,7 @@
   },
   "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
   "license": "MIT",
-  "description": "A BDD testing framework using Gherkin for various UI frameworks and librairies.",
+  "description": "...",
   "engines": {
     "node": ">=22.3.0"
   },
