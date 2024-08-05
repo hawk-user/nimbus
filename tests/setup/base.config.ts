@@ -34,7 +34,14 @@ export const baseConfig: Config = {
             * This allows to import '@gherkineye/core' in tests.
         */
 
-        '@gherkineye/core': '<rootDir>/libs/core/index'
+        '@gherkineye/core': '<rootDir>/libs/core/index',
+
+         /* 
+            * Maps the module name '@gherkineye/infra' to a specific file path.
+            * This allows to import '@gherkineye/infra' in tests.
+        */
+
+         '@gherkineye/infra': '<rootDir>/libs/infra/index'
 
     },
 
