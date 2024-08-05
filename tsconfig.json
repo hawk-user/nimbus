@@ -35,7 +35,13 @@
             path 'src/libs/core/index'.
          */
 
-         "@gherkineye/core": [ "src/libs/core/index" ]
+         "@gherkineye/core": [ "src/libs/core/index" ],
+
+         /* This maps the alias '@gherkineye/infra' to the file
+            path 'src/libs/infra/index'.
+         */
+
+         "@gherkineye/infra": [ "src/libs/infra/index" ]
 
       },
 
