@@ -41,7 +41,7 @@ export const baseConfig: Config = {
             * This allows to import '@ueye/infra' in tests.
         */
 
-         '@ueyeinfra': '<rootDir>/libs/infra/index'
+         '@ueye/infra': '<rootDir>/libs/infra/index'
 
     },
 
