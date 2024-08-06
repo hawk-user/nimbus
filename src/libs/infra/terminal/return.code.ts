@@ -38,3 +38,9 @@ export enum ReturnCode {
     INTERNAL = 5,
 
 }
+
+/**
+    * Represents the possible values of the various codes returned by the program.
+*/
+
+export type StandardCodes = typeof ReturnCode[keyof typeof ReturnCode];
