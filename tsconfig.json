@@ -31,17 +31,17 @@
 
       "paths": {
 
-         /* This maps the alias '@gherkineye/core' to the file
+         /* This maps the alias '@ueye/core' to the file
             path 'src/libs/core/index'.
          */
 
-         "@gherkineye/core": [ "src/libs/core/index" ],
+         "@ueye/core": [ "src/libs/core/index" ],
 
-         /* This maps the alias '@gherkineye/infra' to the file
+         /* This maps the alias '@ueye/infra' to the file
             path 'src/libs/infra/index'.
          */
 
-         "@gherkineye/infra": [ "src/libs/infra/index" ]
+         "@ueye/infra": [ "src/libs/infra/index" ]
 
       },
 
