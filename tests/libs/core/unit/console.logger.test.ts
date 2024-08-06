@@ -1,5 +1,5 @@
 
-import { ConsoleLogger } from '@gherkineye/core';
+import { ConsoleLogger } from '@ueye/core';
 
 describe('ConsoleLogger specifications', () => {
 

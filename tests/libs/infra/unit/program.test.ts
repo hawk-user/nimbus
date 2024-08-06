@@ -1,5 +1,5 @@
 
-import { Program } from '@gherkineye/infra';
+import { Program } from '@ueye/infra';
 
 describe('Program specifications', () => {
 
@@ -7,5 +7,6 @@ describe('Program specifications', () => {
         const program = Program.create();
         expect(program).toBeInstanceOf(Program);
     });
+
 
 })
