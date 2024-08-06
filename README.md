@@ -1,10 +1,10 @@
 
 <div align="center">
     <img 
-        src="./assets/images/gherkineye.symbol.64x64.png"
+        src="./assets/images/ueye.symbol.64x64.png"
         alt="Gherkineye symbol"
     />
-    <h1>Gherkineye™</h1>
+    <h1>Ueye™</h1>
 </div>
 
 ## Table of Contents
@@ -28,4 +28,4 @@ If you have any questions, suggestions, or issues, feel free to contact us:
 
 ## License
 
-Gherkineye is [MIT licensed](./LICENSE).
+Ueye is [MIT licensed](./LICENSE).
