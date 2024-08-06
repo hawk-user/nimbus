@@ -30,18 +30,18 @@ export const baseConfig: Config = {
     moduleNameMapper: {
 
         /* 
-            * Maps the module name '@gherkineye/core' to a specific file path.
-            * This allows to import '@gherkineye/core' in tests.
+            * Maps the module name '@ueye/core' to a specific file path.
+            * This allows to import '@ueye/core' in tests.
         */
 
-        '@gherkineye/core': '<rootDir>/libs/core/index',
+        '@ueye/core': '<rootDir>/libs/core/index',
 
          /* 
-            * Maps the module name '@gherkineye/infra' to a specific file path.
-            * This allows to import '@gherkineye/infra' in tests.
+            * Maps the module name '@ueye/infra' to a specific file path.
+            * This allows to import '@ueye/infra' in tests.
         */
 
-         '@gherkineye/infra': '<rootDir>/libs/infra/index'
+         '@ueyeinfra': '<rootDir>/libs/infra/index'
 
     },
 
