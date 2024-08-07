@@ -35,8 +35,25 @@ describe('Program specifications', () => {
         expect(stdout.getData()).toBe('Test executed successfully.');
     });
 
+    test('execute should handle default error from executeImpl', async () => {
+        class ErrorProgram extends Program {
+            protected async executeImpl(
+                _stdin: StandardInput, 
+                _stdout: StandardOutput
+            ): Promise<void> {
+                throw undefined;
+            }
+        }
+
+        const errorProgram = new ErrorProgram();
+        await errorProgram.execute({}, stdout);
+
+        expect(stdout.getCode()).toBe(ReturnCode.INTERNAL);
+        expect(stdout.getData()).toBe('The program encountered an unexpected condition.');
+    });
+
     test('execute should handle errors from executeImpl', async () => {
-        const msg = 'The program encountered an unexpected condition.'
+        const msg = 'Customizable error'
         class ErrorProgram extends Program {
             protected async executeImpl(
                 _stdin: StandardInput, 
