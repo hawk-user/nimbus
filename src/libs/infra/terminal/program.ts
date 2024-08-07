@@ -42,8 +42,13 @@ export abstract class Program {
     ): Promise<void> {
         try {
             await this.executeImpl(stdin, stdout);
-        } catch (error: any) {
-            this.internal(stdout, error.message);
+        } catch (error: unknown) {
+            if(error instanceof Error) {
+                this.internal(stdout, error.message)
+            } else {
+                this.internal<undefined>(stdout);
+            }
+            
         }
     }
 
