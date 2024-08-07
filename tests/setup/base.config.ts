@@ -20,7 +20,7 @@ export const baseConfig: Config = {
         * transforming files. It is relative to the configuration file.
     */
 
-    rootDir: '../../src',
+    rootDir: '../../libs',
 
     /* 
         * Maps module names to specific paths or module files,
@@ -34,14 +34,14 @@ export const baseConfig: Config = {
             * This allows to import '@ueye/core' in tests.
         */
 
-        '@ueye/core': '<rootDir>/libs/core/index',
+        '@ueye/core': '<rootDir>/core/index',
 
          /* 
             * Maps the module name '@ueye/infra' to a specific file path.
             * This allows to import '@ueye/infra' in tests.
         */
 
-         '@ueye/infra': '<rootDir>/libs/infra/index'
+         '@ueye/infra': '<rootDir>/infra/index'
 
     },
 

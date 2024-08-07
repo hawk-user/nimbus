@@ -32,16 +32,16 @@
       "paths": {
 
          /* This maps the alias '@ueye/core' to the file
-            path 'src/libs/core/index'.
+            path 'libs/core/index'.
          */
 
-         "@ueye/core": [ "src/libs/core/index" ],
+         "@ueye/core": [ "libs/core/index" ],
 
          /* This maps the alias '@ueye/infra' to the file
-            path 'src/libs/infra/index'.
+            path 'libs/infra/index'.
          */
 
-         "@ueye/infra": [ "src/libs/infra/index" ]
+         "@ueye/infra": [ "libs/infra/index" ]
 
       },
 
@@ -188,6 +188,11 @@
       /* Includes all files in the "source" directory for compilation. */
 
       "src",
+
+      /* Includes all files in the "libs" directory for compilation. */
+
+      "libs",
+      
       
       /* Includes all files in the "tests" directory for compilation. */
 

@@ -8,7 +8,7 @@
   "scripts": {
     "clean:coverage": "rimraf coverage",
     "clean:report": "rimraf report",
-    "linter": "eslint --config=config/eslint.config.yml src",
+    "linter": "eslint --config=config/eslint.config.yml src libs",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
     "tdd:core": "jest --runInBand --watchAll --config=tests/setup/core.config.ts",
     "tdd:infra": "jest --runInBand --watchAll --config=tests/setup/infra.config.ts",
