@@ -1,4 +1,11 @@
 
+// Program codes
+
+const SUCCESSFUL = 0;
+const HINT = 1;
+const UNABLE_TO_FIND = 4;
+const FATAL = 5;
+
 /**
     * Representation of the different codes returned by the program.
 */
@@ -11,7 +18,7 @@ export enum ReturnCode {
         * The program has run successfully.
     */
 
-    OK = 0,
+    OK = SUCCESSFUL,
 
     /**
         * Idea.
@@ -19,7 +26,7 @@ export enum ReturnCode {
         * The program gives an idea of what might be needed.
     */
 
-    IDEA = 1,
+    IDEA = HINT,
 
      /**
         * Not Found.
@@ -27,7 +34,7 @@ export enum ReturnCode {
         * The program was unable to find the resource.
     */
 
-    NOT_FOUND = 4,
+    NOT_FOUND = UNABLE_TO_FIND,
 
     /**
         * Internal.
@@ -35,7 +42,7 @@ export enum ReturnCode {
         * The program encountered an unexpected condition that prevented it from meeting demand.
     */
 
-    INTERNAL = 5,
+    INTERNAL = FATAL
 
 }
 
