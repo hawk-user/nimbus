@@ -4,23 +4,23 @@
         src="./assets/images/ueye.symbol.64x64.png"
         alt="Gherkineye symbol"
     />
-    <h1>Ueye™</h1>
+    <h1>Ueye</h1>
 </div>
 
-<p align="center">
+<div align="center">
     <a href="https://github.com/hawk-user/ueye/actions/workflows/code.quality.yml">
-        <img src="https://github.com/hawk-user/ueye/actions/workflows/code.quality.yml/badge.svg" alt="Code quality" style="margin: 10px;">
+        <img src="https://github.com/hawk-user/ueye/actions/workflows/code.quality.yml/badge.svg" alt="Code quality">
     </a>
     <a href="https://github.com/hawk-user/ueye/actions/workflows/test.yml">
-        <img src="https://github.com/hawk-user/ueye/actions/workflows/test.yml/badge.svg" alt="Test" style="margin: 10px;">
+        <img src="https://github.com/hawk-user/ueye/actions/workflows/test.yml/badge.svg" alt="Test">
     </a>
     <a href="https://github.com/hawk-user/ueye/actions/workflows/nightly.report.yml">
-        <img src="https://github.com/hawk-user/ueye/actions/workflows/nightly.report.yml/badge.svg" alt="Nightly report" style="margin: 10px;">
+        <img src="https://github.com/hawk-user/ueye/actions/workflows/nightly.report.yml/badge.svg" alt="Nightly report">
     </a>
     <a href="https://codecov.io/github/hawk-user/ueye">
-        <img src="https://codecov.io/github/hawk-user/ueye/graph/badge.svg?token=C0D9EOXYEZ" alt="Codecov" style="margin: 10px;">
+        <img src="https://codecov.io/github/hawk-user/ueye/graph/badge.svg?token=C0D9EOXYEZ" alt="Codecov">
     </a>
-</p>
+</div>
 
 
 
