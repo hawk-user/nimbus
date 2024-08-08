@@ -1,1 +1,1 @@
-// Hey there! I'm the entry point. 🪄
+import './infra/terminal';
