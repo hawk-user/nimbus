@@ -7,6 +7,14 @@
     <h1>Ueye™</h1>
 </div>
 
+<p align="center">
+  <a href="https://codecov.io/github/hawk-user/ueye">
+    <img src="https://codecov.io/github/hawk-user/ueye/graph/badge.svg?token=C0D9EOXYEZ" alt="Codecov">
+  </a>
+</p>
+
+
+
 ## Table of Contents
 
 - [What's the purpose?](#purpose)
