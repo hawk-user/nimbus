@@ -71,7 +71,7 @@ export abstract class Program {
         data?: T
     ): void {
         const msg = 'The program ran smoothly and successfully.';
-        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
+        return this.output(stdout, ReturnCode.OK, msg, data);
     }
     
     /**
@@ -85,7 +85,7 @@ export abstract class Program {
         data?: T
     ): void {
         const msg = 'The program only partially understood what was being asked of it.';
-        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
+        return this.output(stdout, ReturnCode.IDEA, msg, data);
     }
 
     /**
@@ -99,7 +99,7 @@ export abstract class Program {
         data?: T
     ): void {
         const msg = 'The program was unable to find the requested resource.';
-        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
+        return this.output(stdout, ReturnCode.NOT_FOUND, msg, data);
     }
 
     /**

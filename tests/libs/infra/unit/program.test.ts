@@ -84,7 +84,7 @@ describe('Program specifications', () => {
         program.callOk(mockStdout);
 
         expect(mockStdout.display).toHaveBeenCalledWith(
-            ReturnCode.INTERNAL,
+            ReturnCode.OK,
             'The program ran smoothly and successfully.',
             undefined
         );
@@ -94,7 +94,7 @@ describe('Program specifications', () => {
         program.callIdea(mockStdout);
 
         expect(mockStdout.display).toHaveBeenCalledWith(
-            ReturnCode.INTERNAL,
+            ReturnCode.IDEA,
             'The program only partially understood what was being asked of it.',
             undefined
         );
@@ -104,7 +104,7 @@ describe('Program specifications', () => {
         program.callNotFound(mockStdout);
 
         expect(mockStdout.display).toHaveBeenCalledWith(
-            ReturnCode.INTERNAL,
+            ReturnCode.NOT_FOUND,
             'The program was unable to find the requested resource.',
             undefined
         );
