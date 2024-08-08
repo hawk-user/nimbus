@@ -3,20 +3,15 @@ import { ReturnCode, StandardCodes } from './return.code';
 import { StandardOutput, StandardInput } from './interfaces';
 
 /**
-    * Abstract base class for a program.
-    * 
-    * Provides methods to execute the program, handle output, and manage errors.
+    * Abstract class representing a program.
 */
 
 export abstract class Program {
 
     /**
-        * Abstract method to be implemented by subclasses.
-        * 
-        * Executes the core logic of the program.
-        * 
-        * @param stdin - The standard input for the program.
-        * @param stdout - The standard output for the program.
+        * Executes the program logic.
+        * @param stdin - The standard input object.
+        * @param stdout - The standard output object.
         * @returns A promise that resolves when execution is complete.
     */
 
@@ -26,13 +21,9 @@ export abstract class Program {
     ): Promise<void>;
 
     /**
-        * Executes the program and handles errors.
-        * 
-        * Calls the `executeImpl` method and catches any uncontrolled
-        * errors that occur during execution.
-        * 
-        * @param stdin - The standard input for the program.
-        * @param stdout - The standard output for the program.
+        * Executes the program and handles any errors that occur.
+        * @param stdin - The standard input object.
+        * @param stdout - The standard output object.
         * @returns A promise that resolves when execution is complete.
     */
 
@@ -53,38 +44,76 @@ export abstract class Program {
     }
 
     /**
-        * Outputs data to the standard output with a specified return code.
-        * 
-        * Sets the return code on the `stdout` and displays the `data`.
-        * 
-        * @param stdout - The standard output for the program.
-        * @param stdcode - The return code to set.
+        * Outputs a message to the standard output with a given status code and data.
+        * @param stdout - The standard output object.
+        * @param stdcode - The status code to display.
+        * @param msg - The message to display.
         * @param data - The data to display.
     */
 
-    public static output<T>(
+    private output<T>(
         stdout: StandardOutput,
         stdcode: StandardCodes,
+        msg: string,
         data: T
     ): void {
-        stdout.setCode(stdcode).display(data);
+        stdout.display(stdcode, msg, data);
     }
 
     /**
-        * Handles internal errors by outputting an error message or data.
-        * 
-        * Outputs an internal error message with the `INTERNAL` return code.
-        * 
-        * @param stdout - The standard output for the program.
-        * @param data - Optional data to display. If not provided, a default message is shown.
-     */
+        * Outputs a success message indicating the program ran smoothly.
+        * @param stdout - The standard output object.
+        * @param data - Optional data to include in the output.
+    */
 
-    public internal<T>(
+    protected ok<T>(
+        stdout: StandardOutput,
+        data?: T
+    ): void {
+        const msg = 'The program ran smoothly and successfully.';
+        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
+    }
+    
+    /**
+        * Outputs a message indicating partial understanding of the request.
+        * @param stdout - The standard output object.
+        * @param data - Optional data to include in the output.
+    */
+
+    protected idea<T>(
+        stdout: StandardOutput,
+        data?: T
+    ): void {
+        const msg = 'The program only partially understood what was being asked of it.';
+        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
+    }
+
+    /**
+        * Outputs a message indicating that the requested resource could not be found.
+        * @param stdout - The standard output object.
+        * @param data - Optional data to include in the output.
+    */
+
+    protected notFound<T>(
+        stdout: StandardOutput,
+        data?: T
+    ): void {
+        const msg = 'The program was unable to find the requested resource.';
+        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
+    }
+
+    /**
+        * Outputs a message indicating an unexpected condition occurred.
+        * @param stdout - The standard output object.
+        * @param data - Optional data to include in the output.
+    */
+
+    protected internal<T>(
         stdout: StandardOutput,
         data?: T
     ): void {
         const msg = 'The program encountered an unexpected condition.';
-        return Program.output(stdout, ReturnCode.INTERNAL, data ?? msg);
+        return this.output(stdout, ReturnCode.INTERNAL, msg, data);
     }
 
 }
