@@ -142,7 +142,7 @@ export abstract class StandardStream {
         cause?: T
     ): void {
         const msg = 'The program understood the intended action but was unable to proceed due to missing information or ressources.';
-        return this.outputError(stderr, ReturnCode.NOT_FOUND, msg, cause);
+        return this.outputError(stderr, ReturnCode.UNABLE_TO_FIND, msg, cause);
     }
 
 }
