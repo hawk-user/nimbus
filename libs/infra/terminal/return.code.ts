@@ -4,7 +4,7 @@
 
 const SUCCESSFUL = 0;
 const HINT = 1;
-const UNABLE_TO_FIND = 4;
+const NOT_FOUND = 4;
 const FATAL = 5;
 
 /**
@@ -30,12 +30,12 @@ export enum ReturnCode {
     IDEA = HINT,
 
      /**
-        * Not Found.
+        * Unable to find.
         * 
         * The program was unable to find the resource.
     */
 
-    NOT_FOUND = UNABLE_TO_FIND,
+     UNABLE_TO_FIND = NOT_FOUND,
 
     /**
         * Internal.
