@@ -10,7 +10,7 @@ export interface StandardOutput {
     /**
         * Displays the provided data.
         * 
-        * @param stdcode - The standard code to set. Should be one of the values from StandardCodes.
+        * @param stdcode - The standard code to set.
         * 
         * @param msg - The message to display.
         * 
