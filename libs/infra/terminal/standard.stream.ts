@@ -67,10 +67,26 @@ export abstract class StandardStream {
 
     protected internal<T>(
         stderr: StandardError,
-        data?: T
+        error?: T
     ): void {
         const msg = 'The program encountered an unexpected condition.';
-        return this.outputError(stderr, ReturnCode.INTERNAL, msg, data);
+        return this.outputError(stderr, ReturnCode.INTERNAL, msg, error);
+    }
+
+    protected idea<T>(
+        stderr: StandardError,
+        hint?: T
+    ): void {
+        const msg = 'The program understood part of the request but was unable to fully process it.';
+        return this.outputError(stderr, ReturnCode.INTERNAL, msg, hint);
+    }
+
+    protected notFound<T>(
+        stderr: StandardError,
+        cause?: T
+    ): void {
+        const msg = 'The program was unable to find the requested resource.';
+        return this.outputError(stderr, ReturnCode.INTERNAL, msg, cause);
     }
 
 }
