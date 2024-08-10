@@ -52,3 +52,9 @@ export enum ReturnCode {
 */
 
 export type StandardCodes = typeof ReturnCode[keyof typeof ReturnCode];
+
+/**
+    * Represents the possible values of the error codes returned by the program.
+*/
+
+export type StandardErrorCodes = Exclude<StandardCodes, ReturnCode.OK>;
