@@ -42,9 +42,9 @@ export abstract class StandardStream {
         stderr: StandardError,
         errcode: StandardErrorCodes,
         msg: string,
-        data: T
+        error: T
     ): void {
-        stderr.displayError(errcode, msg, data);
+        stderr.displayError(errcode, msg, error);
     }
 
     private output<T>(
