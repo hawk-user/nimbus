@@ -1,5 +1,6 @@
 
-// Program codes
+// Use of constants to avoid the ESlint no-magic-number
+// error and maintain enumeration consistency
 
 const SUCCESSFUL = 0;
 const HINT = 1;
