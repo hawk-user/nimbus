@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/hawk-user/gherkineye.git"
+    "url": "https://github.com/hawk-user/ueye.git"
   },
   "scripts": {
     "clean:coverage": "rimraf coverage",
