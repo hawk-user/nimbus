@@ -37,6 +37,12 @@
 
          "@ueye/core": [ "libs/core/index" ],
 
+         /* This maps the alias '@ueye/ddd' to the file
+            path 'libs/ddd/index'.
+         */
+
+         "@ueye/ddd": [ "libs/ddd/index" ],
+
          /* This maps the alias '@ueye/infra' to the file
             path 'libs/infra/index'.
          */
