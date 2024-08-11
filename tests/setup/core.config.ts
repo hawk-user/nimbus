@@ -16,7 +16,6 @@ const coreConfig: Config = {
     /* 
         * Specifies the root directories where test files are located
         * for the core module.
-        * This path is relative and points to the core library's directory.
     */
 
     roots: [ '../tests/libs/core/unit' ],

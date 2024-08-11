@@ -23,7 +23,7 @@ const infraConfig: Config = {
 
     /* 
         * Configuration for the display name used in the test environment.
-        * This helps in identifying the core module in outputs or logs
+        * This helps in identifying the infra module in outputs or logs
         * with specific styling.
     */
 
