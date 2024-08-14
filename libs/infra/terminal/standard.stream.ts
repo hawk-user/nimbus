@@ -1,8 +1,8 @@
 
 import { 
     ReturnCode,
-    // StandardCodes,
-    StandardErrorCodes
+    StandardErrorCodes,
+    StandardSuccessCodes
 } from './return.code';
 
 import { 
@@ -77,18 +77,24 @@ export abstract class StandardStream {
         stderr.displayError(errcode, msg, error);
     }
 
-    // [wip] 👀 Chained pipelines!?
-    // Under consideration...
+    /**
+        * Outputs success and additional data.
+        * 
+        * @param stdout - The standard output stream used to output data.
+        * @param successcode - The success code to be displayed.
+        * @param msg - The success message to be displayed.
+        * @param data - Additional data to be displayed.
+    */
 
-    // private output<T>(
-    //     stdout: StandardOutput,
-    //     stdcode: StandardCodes,
-    //     msg: string,
-    //     data: T
-    // ): void {
-    //     stdout.display(stdcode, msg, data);
-    // }
 
+    private output<T>(
+        stdout: StandardOutput,
+        successcode: StandardSuccessCodes,
+        msg: string,
+        data: T
+    ): void {
+        stdout.display(successcode, msg, data);
+    }
 
     // protected ok<T>(
     //     stdout: StandardOutput,
