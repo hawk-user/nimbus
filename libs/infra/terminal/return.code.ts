@@ -58,3 +58,9 @@ export type StandardCodes = typeof ReturnCode[keyof typeof ReturnCode];
 */
 
 export type StandardErrorCodes = Exclude<StandardCodes, ReturnCode.OK>;
+
+/**
+    * Represents the possible values of the success codes returned by the program.
+*/
+
+export type StandardSuccessCodes = Extract<StandardCodes, ReturnCode.OK>;
