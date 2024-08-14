@@ -96,13 +96,20 @@ export abstract class StandardStream {
         stdout.display(successcode, msg, data);
     }
 
-    // protected ok<T>(
-    //     stdout: StandardOutput,
-    //     data?: T
-    // ): void {
-    //     const msg = 'The program ran smoothly and successfully.';
-    //     return this.output(stdout, ReturnCode.OK, msg, data);
-    // }
+    /**
+        * Outputs a success message indicating that the program ran successfully.
+        * 
+        * @param stdout - The standard output stream used to output the success and optional data.
+        * @param data - Optional additional data to be included in the output.
+    */
+
+    protected ok<T>(
+        stdout: StandardOutput,
+        data?: T
+    ): void {
+        const msg = 'The program ran smoothly and successfully.';
+        return this.output(stdout, ReturnCode.OK, msg, data);
+    }
 
     /**
         * Outputs a message indicating an unexpected condition occurred.
