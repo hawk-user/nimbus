@@ -36,13 +36,20 @@ export class ConsoleLogger implements Logger {
     }
 
     /**
-        * Creates an instance of `ConsoleLogger`.
-        *
-        * @returns A new instance of the `ConsoleLogger` class.
+        * The singleton instance of the `ConsoleLogger` class.
+    */
+
+    private static instance: ConsoleLogger;
+
+    /**
+        * Creates or retrieves the singleton instance of the `ConsoleLogger` class.
+        * 
+        * @returns  The singleton instance of the `ConsoleLogger` class.
     */
 
     public static create(): ConsoleLogger {
-        return new ConsoleLogger();
+        if(!this.instance) this.instance = new ConsoleLogger();
+        return this.instance;
     }
 
 }
