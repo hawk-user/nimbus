@@ -1,7 +1,7 @@
 
 import { Negative } from '@ueye/core';
 
-describe('Negative', () => {
+describe('Negative specifications', () => {
 
     it('should create an instance with the provided value', () => {
         const value = 'test value';
