@@ -63,5 +63,19 @@ describe('ConsoleLogger specifications', () => {
 
         expect(console.error).toHaveBeenCalledWith(sticker, message, error);
     });
+
+    it('should create only one instance of ConsoleLogger', () => {
+        const instance1 = ConsoleLogger.create();
+        const instance2 = ConsoleLogger.create();
+        
+        expect(instance1).toBe(instance2);
+    });
+
+    it('should return the same instance on subsequent calls', () => {
+        const firstInstance = ConsoleLogger.create();
+        const secondInstance = ConsoleLogger.create();
+        
+        expect(firstInstance).toBe(secondInstance);
+    });
     
 });
