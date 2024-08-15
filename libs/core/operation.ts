@@ -58,7 +58,7 @@ export class Operation<L, R> {
     */
 
     public positiveOutcome(): R {
-        const message = 'Unable to get a positive outcome for a failure operation. Use `negativeOutcome` instead.';
+        const message = 'Unable to get a positive outcome for a failure operation. Use \'negativeOutcome\' instead.';
 
         return this.outcome.isWentWell()
             ? this.outcome.getValue() 
@@ -73,7 +73,7 @@ export class Operation<L, R> {
     */
 
     public negativeOutcome(): L {
-        const message = 'Unable to get a negative outcome for a successful operation. Use `positiveOutcome` instead.';
+        const message = 'Unable to get a negative outcome for a successful operation. Use \'positiveOutcome\' instead.';
 
         return this.outcome.isGoneWrong() 
             ? this.outcome.getValue() 
