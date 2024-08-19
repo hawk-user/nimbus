@@ -15,68 +15,66 @@ export class OutputFormatter {
     /**
         * Formats the output message by combining the sticker, message, and optional additional info.
         * 
+        * @template X - The type of additional information.
+        * 
         * @param sticker - The sticker representing the type of message (e.g., 'ok', 'internal').
-        * @param msg - The main message to be displayed.
-        * @param additionalInformation - Optional additional information, such as data or error details.
+        * @param info - Additional information, such as data or error details.
         * @returns The formatted output string.
     */
 
-    private static formatOutput(
+    private static formatOutput<X>(
         sticker: string,
-        msg: string,
-        additionalInformation?: Error | string
+        info: Error | string | X,
     ): string {
-        return additionalInformation 
-            ? `${ sticker } ${ msg } \n  ${ additionalInformation }`
-            : `${ sticker } ${ msg }`;
+        return info instanceof Error 
+            ? `${ sticker } ${ info.stack }\n`
+            : `${ sticker } ${ info }\n`;
     }
 
     /**
         * Formats a success message.
         * 
-        * @param msg - The main success message.
-        * @param data - Optional data to be included in the output.
+        * @template T - The type of data.
+        * 
+        * @param data - Data to be included in the output.
         * @returns The formatted success message with the 'ok' sticker.
     */
 
-    public static ok<T>(msg: string, data?: T): string {
-        return this.formatOutput(okSticker, msg, data?.toString());
+    public static ok<T>(data: string | T): string {
+        return this.formatOutput<T>(okSticker, data);
     }
 
     /**
         * Formats an internal error message.
         * 
-        * @param msg - The main error message.
-        * @param error - Optional error object, with stack trace or message to be included in the output.
+        * @param error - Error object, with stack trace or message to be included in the output.
         * @returns The formatted internal error message with the 'internal' sticker.
     */
 
-    public static internal(msg: string, error?: Error): string {
-        return this.formatOutput(internalSticker, msg, error);
+    public static internal(error: Error | string): string {
+        return this.formatOutput(internalSticker, error);
     }
 
     /**
         * Formats an idea message.
         * 
-        * @param msg - The main idea message.
-        * @param hint - Optional hint or suggestion to be included in the output.
+        * @param hint - Hint or suggestion to be included in the output.
         * @returns The formatted idea message with the 'idea' sticker.
     */
 
-    public static idea(msg: string, hint?: string): string {
-        return this.formatOutput(ideaSticker, msg, hint);
+    public static idea(hint: string): string {
+        return this.formatOutput(ideaSticker, hint);
     }
 
     /**
         * Formats an 'untofi' message, indicating missing information or resources.
         * 
-        * @param msg - The main message indicating the issue.
-        * @param error - Optional error object, with stack trace or message to be included in the output.
+        * @param error - Error object, with stack trace or message to be included in the output.
         * @returns The formatted 'untofi' message with the corresponding sticker.
     */
 
-    public static unableToFind(msg: string, error?: Error): string {
-        return this.formatOutput(unableToFindSticker, msg, error);
+    public static unableToFind(error: Error | string): string {
+        return this.formatOutput(unableToFindSticker, error);
     }
 
 }
