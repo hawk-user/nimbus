@@ -1,15 +1,11 @@
 
 import { 
-    ReturnCode,
-    StandardErrorCodes,
-    StandardSuccessCodes
-} from './return.code';
-
-import { 
     StandardInput,
     StandardError,
     StandardOutput
 } from './interfaces.stream';
+
+import { OutputFormatter } from './output.formatter';
 
 /**
     * Abstract class that defines standard streams,
@@ -52,48 +48,12 @@ export abstract class StandardStream {
             await this.executeImpl(stdin, stdout, stderr);
         } catch (error: unknown) {
             if (error instanceof Error) {
-                this.internal(stderr, error.message)
+                this.internal(stderr, error);
             } else {
-                this.internal<undefined>(stderr);
+                this.internal(stderr);
             }
             
         }
-    }
-
-    /**
-        * Outputs error messages or diagnostics.
-        * @param stderr - The standard error stream used to output error messages or diagnostics.
-        * @param errcode - The error code to be displayed.
-        * @param msg - The error message to be displayed.
-        * @param error - Additional error information or diagnostics to be displayed.
-    */
-
-    private outputError<T>(
-        _stderr: StandardError,
-        _errcode: StandardErrorCodes,
-        _msg: string,
-        _error: T
-    ): void {
-        // Choose to leave the formatting skill here or not?
-    }
-
-    /**
-        * Outputs success and additional data.
-        * 
-        * @param stdout - The standard output stream used to output data.
-        * @param successcode - The success code to be displayed.
-        * @param msg - The success message to be displayed.
-        * @param data - Additional data to be displayed.
-    */
-
-
-    private output<T>(
-        _stdout: StandardOutput,
-        _successcode: StandardSuccessCodes,
-        _msg: string,
-        _data: T
-    ): void {
-        // Choose to leave the formatting skill here or not?
     }
 
     /**
@@ -108,7 +68,8 @@ export abstract class StandardStream {
         data?: T
     ): void {
         const msg = 'The program ran smoothly and successfully.';
-        return this.output(stdout, ReturnCode.OK, msg, data);
+        stdout.write(OutputFormatter.ok(msg, data));
+        // exit with =>  ReturnCode.OK
     }
 
     /**
@@ -118,12 +79,13 @@ export abstract class StandardStream {
         * @param error - Error to display.
     */
 
-    protected internal<T>(
+    protected internal(
         stderr: StandardError,
-        error?: T
+        error?: Error
     ): void {
         const msg = 'The program encountered an unexpected condition.';
-        return this.outputError(stderr, ReturnCode.INTERNAL, msg, error);
+        stderr.write(OutputFormatter.internal(msg, error));
+        // exit with =>  ReturnCode.INTERNAL
     }
 
     /**
@@ -134,12 +96,13 @@ export abstract class StandardStream {
         * @param hint - Hint to display.
     */
 
-    protected idea<T>(
+    protected idea(
         stderr: StandardError,
-        hint?: T
+        hint: string
     ): void {
         const msg = 'The program understood the intended action but was unable to fully complete it.';
-        return this.outputError(stderr, ReturnCode.IDEA, msg, hint);
+        stderr.write(OutputFormatter.idea(msg, hint));
+        // exit with =>  ReturnCode.IDEA
     }
 
     /**
@@ -150,12 +113,13 @@ export abstract class StandardStream {
         * @param cause - Cause to display.
     */
 
-    protected unableToFind<T>(
+    protected unableToFind(
         stderr: StandardError,
-        cause?: T
+        cause: Error
     ): void {
         const msg = 'The program understood the intended action but was unable to proceed due to missing information or ressources.';
-        return this.outputError(stderr, ReturnCode.UNABLE_TO_FIND, msg, cause);
+        stderr.write(OutputFormatter.unableToFind(msg, cause));
+        // exit with =>  ReturnCode.UNABLE_TO_FIND
     }
 
 }
