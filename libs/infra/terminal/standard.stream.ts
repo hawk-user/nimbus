@@ -5,6 +5,11 @@ import {
     StandardOutput
 } from './interfaces.stream';
 
+import { 
+    StandardCodes,
+    ReturnCode
+} from './constants';
+
 import { OutputFormatter } from './output.formatter';
 
 /**
@@ -57,7 +62,21 @@ export abstract class StandardStream {
     }
 
     /**
+        * Exits the current process with the specified standard code.
+        * 
+        * @param stdcode - The standard exit code used to terminate the process. 
+        * 
+        * @returns void
+    */
+
+    private exit(stdcode: StandardCodes): void {
+        process.exit(stdcode);
+    }
+
+    /**
         * Outputs a success message indicating that the program ran successfully.
+        * 
+        * @template T - The type of data.
         * 
         * @param stdout - The standard output stream used to output the success and optional data.
         * @param data - Optional additional data to be included in the output.
@@ -68,8 +87,10 @@ export abstract class StandardStream {
         data?: T
     ): void {
         const msg = 'The program ran smoothly and successfully.';
-        stdout.write(OutputFormatter.ok(msg, data));
-        // exit with =>  ReturnCode.OK
+        stdout.write(
+            OutputFormatter.ok(data ? data : msg),
+            () => this.exit(ReturnCode.OK)
+        );
     }
 
     /**
@@ -84,8 +105,10 @@ export abstract class StandardStream {
         error?: Error
     ): void {
         const msg = 'The program encountered an unexpected condition.';
-        stderr.write(OutputFormatter.internal(msg, error));
-        // exit with =>  ReturnCode.INTERNAL
+        stderr.write(
+            OutputFormatter.internal(error ? error : msg),
+            () => this.exit(ReturnCode.INTERNAL)
+        );
     }
 
     /**
@@ -101,8 +124,10 @@ export abstract class StandardStream {
         hint: string
     ): void {
         const msg = 'The program understood the intended action but was unable to fully complete it.';
-        stderr.write(OutputFormatter.idea(msg, hint));
-        // exit with =>  ReturnCode.IDEA
+        stderr.write(
+            OutputFormatter.idea(hint ? hint : msg),
+            () => this.exit(ReturnCode.IDEA)
+        );
     }
 
     /**
@@ -118,8 +143,10 @@ export abstract class StandardStream {
         cause: Error
     ): void {
         const msg = 'The program understood the intended action but was unable to proceed due to missing information or ressources.';
-        stderr.write(OutputFormatter.unableToFind(msg, cause));
-        // exit with =>  ReturnCode.UNABLE_TO_FIND
+        stderr.write(
+            OutputFormatter.unableToFind(cause ? cause : msg),
+            () => this.exit(ReturnCode.UNABLE_TO_FIND)
+        );
     }
 
 }
