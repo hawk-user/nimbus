@@ -6,10 +6,10 @@ import {
 } from './return.code';
 
 import { 
-    StandardOutput,
     StandardInput,
-    StandardError
-} from './interfaces';
+    StandardError,
+    StandardOutput
+} from './interfaces.stream';
 
 /**
     * Abstract class that defines standard streams,
@@ -69,12 +69,12 @@ export abstract class StandardStream {
     */
 
     private outputError<T>(
-        stderr: StandardError,
-        errcode: StandardErrorCodes,
-        msg: string,
-        error: T
+        _stderr: StandardError,
+        _errcode: StandardErrorCodes,
+        _msg: string,
+        _error: T
     ): void {
-        stderr.displayError(errcode, msg, error);
+        // Choose to leave the formatting skill here or not?
     }
 
     /**
@@ -88,12 +88,12 @@ export abstract class StandardStream {
 
 
     private output<T>(
-        stdout: StandardOutput,
-        successcode: StandardSuccessCodes,
-        msg: string,
-        data: T
+        _stdout: StandardOutput,
+        _successcode: StandardSuccessCodes,
+        _msg: string,
+        _data: T
     ): void {
-        stdout.display(successcode, msg, data);
+        // Choose to leave the formatting skill here or not?
     }
 
     /**
