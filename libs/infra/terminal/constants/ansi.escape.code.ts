@@ -5,7 +5,7 @@
     * @readonly
 */
 
-export enum ANSI_ESCAPE_CODE {
+export enum AnsiEscapeCodes {
 
     /**
         * Resets all formatting to default.
