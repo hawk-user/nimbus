@@ -5,7 +5,7 @@ import { AnsiEscapeCodes } from './ansi.escape.codes';
     * Enum representing formatted output stickers for terminal messages.
 */
 
-export enum OuputStickers {
+export enum OutputStickers {
 
     /** Represents an informational sticker, styled with a cyan background. */
 
@@ -32,3 +32,9 @@ export enum OuputStickers {
     CRITICAL = `${ AnsiEscapeCodes.BG_MAGENTA } critical ${ AnsiEscapeCodes.RESET }`
 
 }
+
+/**
+    * Type representing the formatted output stickers.
+*/
+
+export type FormattedOuputStickers = typeof OutputStickers[keyof typeof OutputStickers];
