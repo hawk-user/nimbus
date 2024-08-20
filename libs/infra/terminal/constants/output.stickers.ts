@@ -1,34 +1,34 @@
 
-import { ANSI_ESCAPE_CODE } from './ansi.escape.code';
+import { AnsiEscapeCodes } from './ansi.escape.codes';
 
 /**
-    * Sticker used for formatting successful operation messages.
-    * 
-    * Displays a cyan background with the label 'ok'.
+    * Enum representing formatted output stickers for terminal messages.
 */
 
-export const okSticker = `${ ANSI_ESCAPE_CODE.BG_CYAN } ok ${ ANSI_ESCAPE_CODE.RESET }`;
+export enum OuputStickers {
 
-/**
-    * Sticker used for formatting internal error messages.
-    * 
-    * Displays a magenta background with the label 'internal'.
-*/
+    /** Represents an informational sticker, styled with a cyan background. */
 
-export const internalSticker = `${ ANSI_ESCAPE_CODE.BG_MAGENTA } internal ${ ANSI_ESCAPE_CODE.RESET }`;
+    INFO = `${ AnsiEscapeCodes.BG_CYAN } info ${ AnsiEscapeCodes.RESET }`,
 
-/**
-    * Sticker used for formatting idea or suggestion messages.
-    * 
-    * Displays a yellow background with the label 'idea'.
-*/
+    /** Represents a warning sticker, styled with a yellow background. */
 
-export const ideaSticker = `${ ANSI_ESCAPE_CODE.BG_YELLOW } idea ${ ANSI_ESCAPE_CODE.RESET }`;
+    WARNING = `${ AnsiEscapeCodes.BG_YELLOW } warn ${ AnsiEscapeCodes.RESET }`,
 
-/**
-    * Sticker used for formatting messages indicating missing information or resources.
-    * 
-    * Displays a orange background with the label 'untofi' (unable to find).
-*/
+    /** Represents an error sticker, styled with a red background. */
 
-export const unableToFindSticker = `${ ANSI_ESCAPE_CODE.BG_ORANGE } untofi ${ ANSI_ESCAPE_CODE.RESET }`;
+    ERROR = `${ AnsiEscapeCodes.BG_RED } error ${ AnsiEscapeCodes.RESET }`,
+
+    /** Represents a success sticker, styled with a green background. */
+
+    SUCCESS = `${ AnsiEscapeCodes.BG_GREEN } success ${ AnsiEscapeCodes.RESET }`,
+
+    /** Represents a debug sticker, styled with a grey background. */
+
+    DEBUG = `${ AnsiEscapeCodes.BG_GREY } debug ${ AnsiEscapeCodes.RESET }`,
+
+    /** Represents a critical sticker, styled with a magenta background. */
+
+    CRITICAL = `${ AnsiEscapeCodes.BG_MAGENTA } critical ${ AnsiEscapeCodes.RESET }`
+
+}
