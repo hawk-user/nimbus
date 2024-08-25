@@ -184,12 +184,6 @@ export enum ExitCodes {
 }
 
 /**
-    * Type representing any standard exit code.
-*/
-
-export type StandardExitCodes = typeof ExitCodes[keyof typeof ExitCodes];
-
-/**
     * Type representing successful exit codes.
 */
 
@@ -244,3 +238,15 @@ export type CriticalExitCodes = ExitCodes.UNSPECIFIED_ERROR
 */
 
 export type CustomExitCodes = ExitCodes.BLACKHOLE_REACHED;
+
+/**
+    * Type representing any standard exit code.
+*/
+
+export type StandardExitCodes = SuccessExitCodes
+| InformationalExitCodes
+| WarningExitCodes
+| ErrorExitCodes
+| DebugExitCodes
+| CriticalExitCodes
+| CustomExitCodes;
