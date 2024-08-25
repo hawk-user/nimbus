@@ -1,40 +1,32 @@
 
-import { AnsiEscapeCodes } from './ansi.escape.codes';
-
 /**
     * Enum representing formatted output stickers for terminal messages.
 */
 
 export enum OutputStickers {
 
-    /** Represents an informational sticker, styled with a cyan background. */
+    /** Represents an informational sticker */
 
-    INFO = `${ AnsiEscapeCodes.BG_CYAN } info ${ AnsiEscapeCodes.RESET }`,
+    INFO = '[info]: ',
 
-    /** Represents a warning sticker, styled with a yellow background. */
+    /** Represents a warning sticker. */
 
-    WARNING = `${ AnsiEscapeCodes.BG_YELLOW } warn ${ AnsiEscapeCodes.RESET }`,
+    WARNING = '[warn]: ',
 
-    /** Represents an error sticker, styled with a red background. */
+    /** Represents an error sticker. */
 
-    ERROR = `${ AnsiEscapeCodes.BG_RED } error ${ AnsiEscapeCodes.RESET }`,
+    ERROR = '[error]: ',
 
-    /** Represents a success sticker, styled with a green background. */
+    /** Represents a success sticker. */
 
-    SUCCESS = `${ AnsiEscapeCodes.BG_GREEN } success ${ AnsiEscapeCodes.RESET }`,
+    SUCCESS = '[success]: ',
 
-    /** Represents a debug sticker, styled with a grey background. */
+    /** Represents a debug sticker. */
 
-    DEBUG = `${ AnsiEscapeCodes.BG_GREY } debug ${ AnsiEscapeCodes.RESET }`,
+    DEBUG = '[debug]: ',
 
-    /** Represents a critical sticker, styled with a magenta background. */
+    /** Represents a critical sticker. */
 
-    CRITICAL = `${ AnsiEscapeCodes.BG_MAGENTA } critical ${ AnsiEscapeCodes.RESET }`
+    CRITICAL = '[critical]: '
 
 }
-
-/**
-    * Type representing the formatted output stickers.
-*/
-
-export type FormattedOuputStickers = typeof OutputStickers[keyof typeof OutputStickers];
