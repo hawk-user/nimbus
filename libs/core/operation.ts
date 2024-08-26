@@ -1,7 +1,6 @@
 
 import { GoneWrong } from './gone.wrong';
 import { WentWell } from './went.well';
-import { FIRST_INDEX } from './constants';
 
 /**
     * Represents the result of an operation that can either succeed or fail.
@@ -120,7 +119,8 @@ export class Operation<L, R> {
     public static merge<K, I>(
         operations: (Operation<K, never> | Operation<never, I>)[]
     ): Operation<K, never> | Operation<never, I> | Operation<string, never> {
-        
+
+        const FIRST_INDEX = 0;
         const firstOperation = operations[FIRST_INDEX];
         if (!firstOperation) {
             return Operation.failure('Unable to merge an empty operation table.');
