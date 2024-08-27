@@ -1,1 +1,1 @@
-export * from './output.stickers';
+export * from './exit.codes'
