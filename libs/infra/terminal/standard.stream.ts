@@ -3,14 +3,11 @@ import {
     StandardInput,
     StandardError,
     StandardOutput
-} from './interfaces.stream';
+} from './stream.contracts';
 
-import { 
-    StandardCodes,
-    ReturnCode
-} from './constants';
-
-import { OutputFormatter } from './output.formatter';
+import { StreamIdentifier } from './stream.identifiers';
+import { CriticalError, CommonError } from './formatters';
+import { ExitCodes, StandardExitCodes } from './exit.codes';
 
 /**
     * Abstract class that defines standard streams,
@@ -53,9 +50,9 @@ export abstract class StandardStream {
             await this.executeImpl(stdin, stdout, stderr);
         } catch (error: unknown) {
             if (error instanceof Error) {
-                this.internal(stderr, error);
+                this.CloseWithUnspecifiedError(stderr, error);
             } else {
-                this.internal(stderr);
+                this.CloseWithUnspecifiedError(stderr);
             }
             
         }
@@ -69,83 +66,60 @@ export abstract class StandardStream {
         * @returns void
     */
 
-    private exit(stdcode: StandardCodes): void {
+    private exit(
+        stream: StandardOutput | StandardError,
+        stdcode: StandardExitCodes
+    ): void {
+        if (stdcode < ExitCodes.MIN || stdcode >  ExitCodes.MAX ) {
+            const limitReached = `Invalid exit code: ${stdcode}. Exit code must be between 0 and 255.`;
+            const err = new Error(limitReached);
+            stream.identifier === StreamIdentifier.OUTPUT
+                ? this.closeWithInternalError(stream.fallback, err)
+                : this.closeWithInternalError(stream, err);
+        
+        }
         process.exit(stdcode);
     }
 
-    /**
-        * Outputs a success message indicating that the program ran successfully.
-        * 
-        * @template T - The type of data.
-        * 
-        * @param stdout - The standard output stream used to output the success and optional data.
-        * @param data - Optional additional data to be included in the output.
+   /**
+        * Closes the stream and writes an internal error message to it.
+        *
+        * @param stderr - The standard error stream to which the error
+        * message will be written.
+        * @param error - Optional error object to include in the message.
+        * If not provided, a default internal error message is used.
     */
 
-    protected ok<T>(
-        stdout: StandardOutput,
-        data?: T
-    ): void {
-        const msg = 'The program ran smoothly and successfully.';
-        stdout.write(
-            OutputFormatter.ok(data ? data : msg),
-            () => this.exit(ReturnCode.OK)
-        );
-    }
-
-    /**
-        * Outputs a message indicating an unexpected condition occurred.
-        * 
-        * @param stderr - The standard error stream used to output error messages or diagnostics.
-        * @param error - Error to display.
-    */
-
-    protected internal(
+    protected closeWithInternalError(
         stderr: StandardError,
         error?: Error
     ): void {
-        const msg = 'The program encountered an unexpected condition.';
+        const msg = 'An internal error occurred. Please check the logs for more details.';
+        const output = CommonError.internalError(error ? error : new Error(msg));
         stderr.write(
-            OutputFormatter.internal(error ? error : msg),
-            () => this.exit(ReturnCode.INTERNAL)
+            output.error,
+            () => this.exit(stderr, output.code)
         );
     }
 
     /**
-        * Outputs a message indicating that it has not been possible
-        * to fully complete the intended action.
-        * 
-        * @param stderr - The standard error stream used to output error messages or diagnostics.
-        * @param hint - Hint to display.
+        * Closes the stream and writes an unspecified error message to it.
+        *
+        * @param stderr - The standard error stream to which the error
+        * message will be written.
+        * @param error - Optional error object to include in the message.
+        * If not provided, a default unspecified error message is used.
     */
 
-    protected idea(
+    protected CloseWithUnspecifiedError(
         stderr: StandardError,
-        hint: string
+        error?: Error
     ): void {
-        const msg = 'The program understood the intended action but was unable to fully complete it.';
+        const msg = 'An unspecified error occurred. Please try again later.';
+        const output = CriticalError.unspecifiedError(error ? error : new Error(msg));
         stderr.write(
-            OutputFormatter.idea(hint ? hint : msg),
-            () => this.exit(ReturnCode.IDEA)
-        );
-    }
-
-    /**
-        * Outputs a message indicating that it has not been possible
-        * to fully complete the intended action due to missing information or ressources.
-        * 
-        * @param stderr - The standard error stream used to output error messages or diagnostics.
-        * @param cause - Cause to display.
-    */
-
-    protected unableToFind(
-        stderr: StandardError,
-        cause: Error
-    ): void {
-        const msg = 'The program understood the intended action but was unable to proceed due to missing information or ressources.';
-        stderr.write(
-            OutputFormatter.unableToFind(cause ? cause : msg),
-            () => this.exit(ReturnCode.UNABLE_TO_FIND)
+            output.error,
+            () => this.exit(stderr, output.code)
         );
     }
 
