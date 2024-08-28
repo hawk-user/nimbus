@@ -1,45 +1,53 @@
 
+import { StreamIdentifier } from './stream.identifiers';
+
 /**
-    * A type combining the properties of `NodeJS.Process['stdout']`
-    * with a fallback stream property `fallback`.
-    * 
-    * @purpose
-    *   Provides a mechanism to define a primary output stream 
-    *   with an alternative stream to be used as a fallback.
+    * Interface representing an output stream that can write data.
 */
 
-export type FallbackStream = NodeJS.Process['stdout'] & {
+export interface OutputStream {
 
     /**
-        * The fallback stream, typically used when the primary 
-        * output stream is unavailable or fails.
-        * 
-        * @caution
-        *   **✋ Read this:** The `fallback` stream should be reserved 
-        *   for use only if the primary `stdout` stream is not accessible 
-        *   or encounters an error.
+        * Writes data to the stream.
+        *
+        * @param buffer - The data to be written.
+        * @param callback - Optional callback to handle errors.
+        * @returns Returns `true` if the write operation was successful, otherwise `false`.
     */
 
-    fallback: NodeJS.Process['stderr'];
+    write(buffer: Uint8Array | string, callback?: (error?: Error) => void): boolean;
 
-};
-
-
-/**
-    * Type representing the standard output stream (`stdout`) 
-    * with an fallback mechanism in case of errors.
-*/
-
-export type StandardOutput = NodeJS.Process['stdout'] & FallbackStream;
+}
 
 /**
-    * Type representing a standard error ouput mechanism.
+    * Interface representing an input stream.
 */
 
-export type StandardError = NodeJS.Process['stderr'];
+export interface IntputStream {}
 
 /**
-    * Type representing a standard input mechanism.
+    * Type representing a standard error stream.
 */
 
-export type StandardInput = NodeJS.Process['stdin'];
+export type StandardError = OutputStream
+    & { identifier: StreamIdentifier.ERROR };
+
+/**
+    * Type representing a standard output stream.
+    * 
+    * **Caution:** The `fallback` property should be used only
+    * if the error stream is not accessible and no other solution
+    * is available. Misuse of this property can lead to unintended
+    * behavior or error handling issues.
+*/
+
+export type StandardOutput = OutputStream
+    & { identifier: StreamIdentifier.OUTPUT }
+    & { fallback: StandardError };
+
+/**
+    * Type representing a standard input stream.
+*/
+
+export type StandardInput = IntputStream
+    & { identifier: StreamIdentifier.INPUT };
