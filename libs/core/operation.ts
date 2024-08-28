@@ -120,8 +120,7 @@ export class Operation<L, R> {
         operations: (Operation<K, never> | Operation<never, I>)[]
     ): Operation<K, never> | Operation<never, I> | Operation<string, never> {
 
-        const FIRST_INDEX = 0;
-        const firstOperation = operations[FIRST_INDEX];
+        const [ firstOperation ] = operations;
         if (!firstOperation) {
             return Operation.failure('Unable to merge an empty operation table.');
         }
