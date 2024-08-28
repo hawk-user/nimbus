@@ -43,11 +43,11 @@
 
          "@ueye/ddd": [ "libs/ddd/index" ],
 
-         /* This maps the alias '@ueye/infra' to the file
-            path 'libs/infra/index'.
+         /* This maps the alias '@ueye/infra/terminal' to the file
+            path 'libs/infra/terminal/index'.
          */
 
-         "@ueye/infra": [ "libs/infra/index" ]
+         "@ueye/infra/terminal": [ "libs/infra/terminal/index" ]
 
       },
 
