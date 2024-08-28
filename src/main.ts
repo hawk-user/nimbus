@@ -1,1 +1,1 @@
-import './infra/terminal';
+import './infra/terminal/program';
