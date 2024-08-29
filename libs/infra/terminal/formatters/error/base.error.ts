@@ -41,7 +41,7 @@ export abstract class BaseError {
     ): ErrorOutput<R> {
         return typeof data === 'string'
             ? { error: `${data}\n`, code }
-            : { error: `${data.stack}\n`, code };
+            : { error: `${data.stack ? data.stack : 'No stack property'}\n`, code };
     }
 
 }
