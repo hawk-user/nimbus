@@ -6,7 +6,7 @@ import {
 } from './stream.contracts';
 
 import { StreamIdentifier } from './stream.identifiers';
-import { CriticalError, CommonError } from './formatters';
+import { CriticalError, CommonError, BaseOutput } from './formatters';
 import { ExitCodes, StandardExitCodes } from './exit.codes';
 
 /**
@@ -79,6 +79,26 @@ export abstract class StandardStream {
         
         }
         process.exit(stdcode);
+    }
+
+    /**
+        * Closes the output stream with a 'Done!' message or provided data
+        * and exits with the DONE exit code.
+        *
+        * @param stdout - The output stream to write to.
+        * @param data - Optional data to format and write. If not provided, defaults to 'Done!'.
+    */
+
+    protected closeWithDone<R>(
+        stdout: StandardOutput,
+        data?: R
+    ): void {
+        const msg = 'Done!';
+        const output = BaseOutput.done(data ? data : msg);
+        stdout.write(
+            output.content,
+            () => this.exit(stdout, output.code)
+        );
     }
 
    /**
