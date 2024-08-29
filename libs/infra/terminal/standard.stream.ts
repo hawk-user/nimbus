@@ -74,13 +74,13 @@ export abstract class StandardStream {
             const limitReached = `Invalid exit code: ${stdcode}. Exit code must be between 0 and 255.`;
             const err = new Error(limitReached);
 
-            if(stream.identifier === StreamIdentifier.OUTPUT) {
+            if (stream.identifier === StreamIdentifier.OUTPUT) {
                 this.closeWithInternalError(stream.fallback, err)
             } else {
                 this.closeWithInternalError(stream, err);
             }
         }
-        
+
         process.exit(stdcode);
     }
 
