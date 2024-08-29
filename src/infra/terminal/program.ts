@@ -11,12 +11,11 @@ class SayHello extends StandardStream {
 
   protected async executeImpl(
       _stdin: StandardInput,
-      _stdout: StandardOutput,
+      stdout: StandardOutput,
       stderr: StandardError
   ): Promise<void> {
     try {
-      const returnsDefaultError = true
-      if (returnsDefaultError) throw Error();
+        this.closeWithDone(stdout);
       
     } catch (error) {
         this.closeWithInternalError(stderr);
