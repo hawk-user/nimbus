@@ -13,7 +13,7 @@ export class CriticalError extends BaseError {
         * Formats an unspecified critical error into
         * a standardized object.
         *
-        * @param The error object to be formatted.
+        * @param error The error object to be formatted.
         * @returns The formatted error output with the unspecified critical error code.
     */
 
