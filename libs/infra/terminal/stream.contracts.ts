@@ -11,7 +11,7 @@ export interface OutputStream {
         * Writes data to the stream.
         *
         * @param buffer - The data to be written.
-        * @param callback - Optional callback to handle errors.
+        * @param callback - Optional callback parameter will be executed when the data is finally written out.
         * @returns Returns `true` if the write operation was successful, otherwise `false`.
     */
 
