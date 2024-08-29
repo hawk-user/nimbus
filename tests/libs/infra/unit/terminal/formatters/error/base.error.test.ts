@@ -1,7 +1,7 @@
 
-import { BaseError as ImportedBasedError } from '@ueye/infra/terminal';
+import { BaseError as ImportedBaseError } from '@ueye/infra/terminal';
 
-class BaseError extends ImportedBasedError {
+class BaseError extends ImportedBaseError {
 
     public static testFormat(
         data: Error | string,
@@ -9,7 +9,7 @@ class BaseError extends ImportedBasedError {
     ) {
         return this.format(data, code);
     }
-    
+
 }
 
 describe('BaseError specifications', () => {
