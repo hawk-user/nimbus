@@ -18,6 +18,7 @@
 ## Table of Contents
 
 - [What's the purpose?](#purpose)
+- [What's covered?](#code-coverage)
 - [How can I help?](#contributing)
 - [Any questions?](#contact)
 - [What am I allowed to do?](#license)
@@ -25,6 +26,28 @@
 ## Purpose
 
 ...
+
+## Code Coverage
+
+#### Overall Coverage
+
+*This graph shows the overall coverage of the code base, providing a visual representation of which parts of the code are well tested and which need more testing.*
+
+![Overall Coverage](https://codecov.io/gh/hawk-user/ueye/graphs/sunburst.svg?token=C0D9EOXYEZ)
+
+#### File Coverage
+
+*This graph breaks down the coverage by file, allowing to identify the files with the most and least coverage.*
+
+![File Coverage](https://codecov.io/gh/hawk-user/ueye/graphs/tree.svg?token=C0D9EOXYEZ)
+
+#### Line Coverage
+
+*This graph provides a detailed view of the line-by-line coverage of the code base, showing which lines of code are executed during testing.*
+
+![Line Coverage](https://codecov.io/gh/hawk-user/ueye/graphs/icicle.svg?token=C0D9EOXYEZ)
+
+*Even the best umbrellas won't protect you from a tsunami!* 🤭
 
 ## Contributing
 
