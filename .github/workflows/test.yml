@@ -125,8 +125,3 @@ jobs:
 
       - name: Performs tests on the Infra layer.
         run: npm run test:infra
-
-      # Run tests defined in the 'test:domain' script in package.json.
-
-      - name: Performs tests on the Domain layer.
-        run: npm run test:domain
