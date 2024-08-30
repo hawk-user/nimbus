@@ -24,7 +24,15 @@ export interface OutputStream {
 */
 
 export interface IntputStream {
+
+    /**
+        * Avoid the following 'ESLint' error by adding an optional key.
+        * 
+        * **Caution:**Do not use! Pending future implementation.
+    */
+
     non?: 'nullish'
+
 }
 
 /**
