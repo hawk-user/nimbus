@@ -15,10 +15,15 @@ class SayHello extends StandardStream {
       stderr: StandardError
   ): Promise<void> {
     try {
-        this.closeWithDone(stdout);
-      
+        stdout.write('Hello everyone!\n');
+        this.closeWithDone(stdout, `Done in ${process.uptime()}s`);
+        
     } catch (error) {
-        this.closeWithInternalError(stderr);
+        if (error instanceof Error) {
+            this.CloseWithUnspecifiedError(stderr, error);
+        } else {
+            this.CloseWithUnspecifiedError(stderr);
+        }
     }
     
   }
