@@ -23,7 +23,9 @@ export interface OutputStream {
     * Interface representing an input stream.
 */
 
-export interface IntputStream {}
+export interface IntputStream {
+    non?: 'nullish'
+}
 
 /**
     * Type representing a standard error stream.
