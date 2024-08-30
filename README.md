@@ -2,9 +2,9 @@
 <div align="center">
     <img 
         src="./assets/images/ueye.symbol.64x64.png"
-        alt="Gherkineye symbol"
+        alt="ueye symbol"
     />
-    <h1>Ueye</h1>
+    <h1>ueye</h1>
 </div>
 
 <div align="center">
@@ -60,4 +60,4 @@ If you have any questions, suggestions, or issues, feel free to contact us:
 
 ## License
 
-Ueye is [MIT licensed](./LICENSE).
+ueye is [MIT licensed](./LICENSE).
