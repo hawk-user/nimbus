@@ -52,4 +52,4 @@ We promise to keep your reports as secret as your favorite secret recipe. We’r
 
 By joining the Ueye community, you’re agreeing to these fun (and essential) guidelines. Thanks for being awesome and for helping us keep Ueye a fantastic place for everyone!
 
-Let’s make testing fun and friendly—together!s
+Let’s make testing fun and friendly—together!
