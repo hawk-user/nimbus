@@ -61,3 +61,23 @@ export type StandardOutput = OutputStream
 
 export type StandardInput = IntputStream
     & { identifier: StreamIdentifier.INPUT };
+
+/**
+    * Represents input and output streams.
+*/
+
+export interface IOStream  {
+
+    /**
+        * The standard input stream.
+    */
+
+    stdin: StandardInput,
+
+    /**
+        * The standard output stream.
+    */
+
+    stdout: StandardOutput
+
+}
