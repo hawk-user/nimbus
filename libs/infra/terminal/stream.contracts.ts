@@ -20,18 +20,33 @@ export interface OutputStream {
 }
 
 /**
-    * Interface representing an input stream.
+    * Type representing a stream event type.
 */
 
-export interface IntputStream {
+export type StreamEvent = 'data';
+
+
+/**
+    * Type representing a listener function for stream events.
+*/
+
+export type StreamEventListener = (data: Buffer) => void;
+
+/**
+    * Interface representing an input stream.
+    * @template Y - The type of value returned when registering an event listener.
+*/
+
+export interface InputStream<Y = unknown> {
 
     /**
-        * Avoid the following 'ESLint' error by adding an optional key.
-        * 
-        * **Caution:**Do not use! Pending future implementation.
+        * Registers an event listener for a specific event type.
+        * @param event - The event type to listen for.
+        * @param listener - The function to call when the event is emitted.
+        * @returns A value of type `Y` representing the result of registering the listener.
     */
 
-    non?: 'nullish'
+    on(event: string | StreamEvent, listener: StreamEventListener): Y;
 
 }
 
@@ -59,7 +74,7 @@ export type StandardOutput = OutputStream
     * Type representing a standard input stream.
 */
 
-export type StandardInput = IntputStream
+export type StandardInput = InputStream
     & { identifier: StreamIdentifier.INPUT };
 
 /**
