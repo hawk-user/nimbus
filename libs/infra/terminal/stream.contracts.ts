@@ -27,10 +27,11 @@ export type StreamEvent = 'data';
 
 
 /**
-    * Type representing a listener function for stream events.
+    * A type representing a listener function for stream events.
+    * @template K - The type of the arguments passed to the listener function.
 */
 
-export type StreamEventListener = (data: Buffer) => void;
+export type StreamEventListener<K> = (...args: K[]) => void;
 
 /**
     * Interface representing an input stream.
@@ -46,7 +47,7 @@ export interface InputStream<Y = unknown> {
         * @returns A value of type `Y` representing the result of registering the listener.
     */
 
-    on(event: string | StreamEvent, listener: StreamEventListener): Y;
+    on<L>(event: StreamEvent, listener: StreamEventListener<L>): Y;
 
 }
 
