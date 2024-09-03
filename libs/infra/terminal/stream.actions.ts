@@ -23,14 +23,6 @@ export interface StreamActionResolvers {
 }
 
 /**
-    * Type representing a stream action function.
-    * @template D - The type of the data passed to the action.
-    * @template R - The type of the result returned by the action.
-*/
-
-export type StreamAction<D, R> = (data: D, action: StreamActionResolvers) => R;
-
-/**
     * A class containing static methods for stream actions.
 */
 
