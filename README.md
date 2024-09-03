@@ -47,7 +47,7 @@
 
 ![Line Coverage](https://codecov.io/gh/hawk-user/ueye/graphs/icicle.svg?token=C0D9EOXYEZ)
 
-*Even the best umbrellas won't protect you from a tsunami!* 🤭
+<p><b>Please note:</b> Even the best umbrellas won't protect you from a tsunami! 🤭</p>
 
 ## Contributing
 
