@@ -2,12 +2,14 @@
 import { 
     StandardInput,
     StandardError,
-    StandardOutput
+    StandardOutput,
+    IOStream
 } from './stream.contracts';
 
 import { StreamIdentifier } from './stream.identifiers';
 import { CriticalError, CommonError, BaseOutput } from './formatters';
 import { ExitCodes, StandardExitCodes } from './exit.codes';
+import { StreamActions } from './stream.actions';
 
 /**
     * Abstract class that defines standard streams,
@@ -144,6 +146,26 @@ export abstract class StandardStream {
             output.error,
             () => this.exit(stderr, output.code)
         );
+    }
+
+    /**
+        * Prompts for input.
+        * @param iostream - The input/output stream to use for prompting.
+        * @param prompt - The prompt message to display.
+        * @returns A promise that resolves with the user's input as a clean string.
+    */
+    
+    protected promptForImput(
+        iostream: IOStream<void>,
+        prompt: string
+    ): Promise<string>{
+        return new Promise<string>((onSuccess, onError) => {
+            iostream.stdout.write(prompt);
+            iostream.stdin.on<Buffer>(
+                'data',
+                (data) => StreamActions.toCleanString(data, { onSuccess, onError })
+            );
+        });
     }
 
 }
