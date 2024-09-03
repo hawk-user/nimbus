@@ -5,17 +5,23 @@ import {
     StandardOutput,
     StandardStream,
     StreamIdentifier 
-} from '@ueye/infra/terminal'
+} from '@ueye/infra/terminal';
 
 class SayHello extends StandardStream {
 
   protected async executeImpl(
-      _stdin: StandardInput,
+      stdin: StandardInput,
       stdout: StandardOutput,
       stderr: StandardError
   ): Promise<void> {
     try {
-        stdout.write('Hello everyone!\n');
+
+        const name = await this.promptForImput(
+            { stdin, stdout },
+            'What\'s your name? '
+        );
+        
+        stdout.write(`Hello ${name}!\n`);
         this.closeWithDone(stdout, `Done in ${process.uptime()}s`);
         
     } catch (error) {
@@ -30,8 +36,9 @@ class SayHello extends StandardStream {
 
 }
 
-const stdin: StandardInput = { 
-    identifier: StreamIdentifier.INPUT
+const stdin: StandardInput = {
+    identifier: StreamIdentifier.INPUT,
+    on: process.stdin.on.bind(process.stdin)
 }
 
 const stderr: StandardError = { 
