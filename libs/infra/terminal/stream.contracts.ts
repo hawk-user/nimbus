@@ -125,3 +125,27 @@ export enum StreamIdentifier {
 */
 
 export type UniqueStreamIdentifier = typeof StreamIdentifier[keyof typeof StreamIdentifier];
+
+
+/**
+    * Interface representing the action resolvers for stream actions.
+*/
+
+export interface StreamActionResolvers {
+
+    /**
+        * Called when the action completes successfully.
+        * @param value - The value to resolve with.
+    */
+
+    onSuccess: (value: string) => void;
+
+    /**
+        * Called when the action encounters an error.
+        * @template H - The type of the reason for the error.
+        * @param reason - The reason for the error.
+    */
+
+    onError: <H>(reason?: H) => void;
+
+}
