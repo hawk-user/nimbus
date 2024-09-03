@@ -11,7 +11,8 @@ export interface OutputStream {
         * Writes data to the stream.
         *
         * @param buffer - The data to be written.
-        * @param callback - Optional callback parameter will be executed when the data is finally written out.
+        * @param callback - Optional callback parameter will be executed when the
+        * data is finally written out.
         * @returns Returns `true` if the write operation was successful, otherwise `false`.
     */
 
@@ -73,22 +74,26 @@ export type StandardOutput = OutputStream
 
 /**
     * Type representing a standard input stream.
+    * @template O - The type of value returned when registering
+    * an event listener.
 */
 
-export type StandardInput = InputStream
+export type StandardInput<O = unknown> = InputStream<O>
     & { identifier: StreamIdentifier.INPUT };
 
 /**
     * Represents input and output streams.
+    * @template A - The type of value returned when registering
+    * an event listener for the input stream.
 */
 
-export interface IOStream  {
+export interface IOStream<A>  {
 
     /**
         * The standard input stream.
     */
 
-    stdin: StandardInput,
+    stdin: StandardInput<A>,
 
     /**
         * The standard output stream.
