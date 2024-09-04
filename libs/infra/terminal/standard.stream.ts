@@ -3,13 +3,20 @@ import {
     StandardInput,
     StandardError,
     StandardOutput,
-    IOStream
+    StreamIdentifier
 } from './stream.contracts';
 
-import { StreamIdentifier } from './stream.identifiers';
-import { CriticalError, CommonError, BaseOutput } from './formatters';
-import { ExitCodes, StandardExitCodes } from './exit.codes';
-import { StreamActions } from './stream.actions';
+import { 
+    CommonError,
+    BaseOutput 
+} from './formatters';
+
+import { 
+    CommonErrorExitCodes,
+    ExitCodes,
+    StandardExitCodes,
+    SuccessExitCodes
+} from './exit.codes';
 
 /**
     * Abstract class that defines standard streams,
@@ -52,9 +59,9 @@ export abstract class StandardStream {
             await this.executeImpl(stdin, stdout, stderr);
         } catch (error: unknown) {
             if (error instanceof Error) {
-                this.CloseWithUnspecifiedError(stderr, error);
+                this.ExitWithUnspecifiedError(stderr, error);
             } else {
-                this.CloseWithUnspecifiedError(stderr);
+                this.ExitWithUnspecifiedError(stderr);
             }
             
         }
@@ -77,9 +84,9 @@ export abstract class StandardStream {
             const err = new Error(limitReached);
 
             if (stream.identifier === StreamIdentifier.OUTPUT) {
-                this.closeWithInternalError(stream.fallback, err)
+                this.ExitWithInternalError(stream.fallback, err)
             } else {
-                this.closeWithInternalError(stream, err);
+                this.ExitWithInternalError(stream, err);
             }
         }
 
@@ -94,16 +101,13 @@ export abstract class StandardStream {
         * @param data - Optional data to format and write. If not provided, defaults to 'Done!'.
     */
 
-    protected closeWithDone<R>(
+    protected ExitWithDone<R>(
         stdout: StandardOutput,
         data?: R
     ): void {
         const msg = 'Done!';
         const output = BaseOutput.done(data ? data : msg);
-        stdout.write(
-            output.content,
-            () => this.exit(stdout, output.code)
-        );
+        this.promptWithExit(stdout, output.content, output.code);
     }
 
    /**
@@ -115,16 +119,13 @@ export abstract class StandardStream {
         * If not provided, a default internal error message is used.
     */
 
-    protected closeWithInternalError(
+    protected ExitWithInternalError(
         stderr: StandardError,
         error?: Error
     ): void {
         const msg = 'An internal error occurred. Please check the logs for more details.';
         const output = CommonError.internalError(error ? error : new Error(msg));
-        stderr.write(
-            output.error,
-            () => this.exit(stderr, output.code)
-        );
+        this.prompErrorWithExit(stderr, output.error, output.code);
     }
 
     /**
@@ -136,36 +137,59 @@ export abstract class StandardStream {
         * If not provided, a default unspecified error message is used.
     */
 
-    protected CloseWithUnspecifiedError(
+    protected ExitWithUnspecifiedError(
         stderr: StandardError,
         error?: Error
     ): void {
         const msg = 'An unspecified error occurred. Please try again later.';
-        const output = CriticalError.unspecifiedError(error ? error : new Error(msg));
-        stderr.write(
-            output.error,
-            () => this.exit(stderr, output.code)
-        );
+        const output = CommonError.unspecifiedError(error ? error : new Error(msg));
+        this.prompErrorWithExit(stderr, output.error, output.code);
     }
 
     /**
-        * Prompts for input.
-        * @param iostream - The input/output stream to use for prompting.
-        * @param prompt - The prompt message to display.
-        * @returns A promise that resolves with the user's input as a clean string.
+        * Displays a prompt message to the user via the standard output.
+        *
+        * @param stdout - The standard output stream where the message will be written.
+        * @param msg - The prompt message to display to the user.
     */
-    
-    protected promptForImput(
-        iostream: IOStream<void>,
-        prompt: string
-    ): Promise<string>{
-        return new Promise<string>((onSuccess, onError) => {
-            iostream.stdout.write(prompt);
-            iostream.stdin.on<Buffer>(
-                'data',
-                (data) => StreamActions.toCleanString(data, { onSuccess, onError })
-            );
-        });
+
+    protected prompt(
+        stdout: StandardOutput,
+        msg: string
+    ) {
+        stdout.write(msg);
+    }
+
+    /**
+        * Displays a prompt message to the user via the standard output and exits with a success code.
+        *
+        * @param stdout - The standard output stream where the message will be written.
+        * @param msg - The prompt message to display to the user.
+        * @param code - The exit code that will be used when exiting.
+    */
+
+    protected promptWithExit(
+        stdout: StandardOutput,
+        msg: string,
+        code: SuccessExitCodes
+    ) {
+        stdout.write(msg, () => this.exit(stdout, code));
+    }
+
+    /**
+        * Displays an error message to the user via the standard error output and exits with an error code.
+        *
+        * @param stderr - The standard error stream where the error message will be written.
+        * @param errmsg - The error message to display to the user.
+        * @param code - The error exit code that will be used when exiting.
+    */
+
+    protected prompErrorWithExit(
+        stderr: StandardError,
+        errmsg: string,
+        code: CommonErrorExitCodes
+    ) {
+        stderr.write(errmsg, () => this.exit(stderr, code));
     }
 
 }
