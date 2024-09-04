@@ -134,24 +134,27 @@ export type UniqueStreamIdentifier = typeof StreamIdentifier[keyof typeof Stream
 
 
 /**
-    * Interface representing the action resolver for stream actions.
+    * Interface for resolving user input with success and error handlers.
 */
 
-export interface StreamActionResolver {
+export interface InputResolver {
+
 
     /**
-        * Called when the action completes successfully.
-        * @param value - The value to resolve with.
+        * Handler to be called when the input is successfully received.
+        *
+        * @param value - The user input that was successfully received.
     */
 
     onSuccess: (value: string) => void;
 
     /**
-        * Called when the action encounters an error.
-        * @template H - The type of the reason for the error.
-        * @param reason - The reason for the error.
+        * Handler to be called when there is an error processing the input.
+        *
+        * @param reason - Optional reason or error that explains why the input processing failed.
+        * @template H - Type of the reason or error.
     */
 
-    onError: <H>(reason?: H) => void;
+    onError: <H>(reason?: H extends Error ? Error : H) => void;
 
 }
