@@ -1,6 +1,6 @@
 
 /**
-    * Interface representing an output stream that can write data.
+    * Interface representing an output stream.
 */
 
 export interface OutputStream {
@@ -19,34 +19,40 @@ export interface OutputStream {
 }
 
 /**
-    * Type representing a stream event type.
+    * Type representing a function that handles stream events.
+    * @template K - Type of the event arguments, which can be either Buffer or string.
+    * @param args - Event arguments of type K.
 */
 
-export type StreamEvent = 'data';
-
+export type StreamEventListener<K extends Buffer | string> = (...args: K[]) => void;
 
 /**
-    * A type representing a listener function for stream events.
-    * @template K - The type of the arguments passed to the listener function.
+    * Defines methods for handling stream events.
 */
 
-export type StreamEventListener<K> = (...args: K[]) => void;
+export interface StreamEvents {
+
+    /**
+        * Registers a listener for data events.
+        * @template L - Type of the data that the listener will handle, which can be either Buffer or string.
+        * @param listener - A function to call when data events occur.
+    */
+
+    onData<L extends Buffer | string>(listener: StreamEventListener<L>): void;
+
+}
 
 /**
     * Interface representing an input stream.
-    * @template Y - The type of value returned when registering an event listener.
 */
 
-export interface InputStream<Y = unknown> {
+export interface InputStream {
 
     /**
-        * Registers an event listener for a specific event type.
-        * @param event - The event type to listen for.
-        * @param listener - The function to call when the event is emitted.
-        * @returns A value of type `Y` representing the result of registering the listener.
+        * Provides access to the event handling methods for this stream.
     */
 
-    on<L>(event: StreamEvent, listener: StreamEventListener<L>): Y;
+    events: StreamEvents;
 
 }
 
@@ -76,7 +82,7 @@ export type StandardOutput = OutputStream
     * an event listener.
 */
 
-export type StandardInput<O = unknown> = InputStream<O>
+export type StandardInput = InputStream
     & { identifier: StreamIdentifier.INPUT };
 
 /**
@@ -85,13 +91,13 @@ export type StandardInput<O = unknown> = InputStream<O>
     * an event listener for the input stream.
 */
 
-export interface IOStream<A>  {
+export interface IOStream {
 
     /**
         * The standard input stream.
     */
 
-    stdin: StandardInput<A>,
+    stdin: StandardInput,
 
     /**
         * The standard output stream.
@@ -128,10 +134,10 @@ export type UniqueStreamIdentifier = typeof StreamIdentifier[keyof typeof Stream
 
 
 /**
-    * Interface representing the action resolvers for stream actions.
+    * Interface representing the action resolver for stream actions.
 */
 
-export interface StreamActionResolvers {
+export interface StreamActionResolver {
 
     /**
         * Called when the action completes successfully.
