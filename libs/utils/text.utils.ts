@@ -16,4 +16,15 @@ export class TextUtils {
         return text === '';
     }
 
+    /**
+        * Removes leading and trailing whitespace from a string.
+        *
+        * @param text - The string to strip whitespace from.
+        * @returns The string with leading and trailing whitespace removed.
+    */
+
+    public static stripWhitespace(text: string): string {
+        return text.trim();
+    }
+
 }
