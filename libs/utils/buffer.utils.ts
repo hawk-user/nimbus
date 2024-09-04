@@ -1,4 +1,6 @@
 
+import { TextUtils } from './text.utils';
+
 /**
     * Utility class for operations related to Buffers.
 */
@@ -39,7 +41,7 @@ export class BufferUtils {
     */
 
     public static toUTF8StringTrimmed(data: Buffer): string {
-        return this.toUTF8String(data).trim();
+        return TextUtils.stripWhitespace(this.toUTF8String(data));
     }
     
 }
