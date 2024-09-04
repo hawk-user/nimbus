@@ -1,5 +1,6 @@
 
 import { SuccessExitCodes, ExitCodes } from '../exit.codes';
+import { ObjectUtils } from '@ueye/utils';
 
 
 /**
@@ -30,17 +31,6 @@ export interface Output {
 export class BaseOutput {
 
     /**
-        * Converts an object to a JSON string.
-        *
-        * @param data - The object to convert.
-        * @returns The JSON string representation of the object.
-    */
-
-    private static toString(data: object): string {
-        return JSON.stringify(data);
-    }
-
-    /**
         * Formats data into a structured output.
         *
         * @param data - The data to format. Can be of any type.
@@ -53,7 +43,7 @@ export class BaseOutput {
         code: SuccessExitCodes
     ): Output {
         return typeof data === 'object' && data
-        ? { content: `${this.toString(data)}\n`, code }
+        ? { content: `${ObjectUtils.toString(data)}\n`, code }
         : { content: `${data}\n`, code }
     }
 
