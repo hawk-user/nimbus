@@ -30,7 +30,7 @@ const utilsConfig: Config = {
 
         /* The name to display, which helps identify the utils module. */
 
-        name: 'Utils', 
+        name: 'utils', 
 
         /* 
             * The color used for the display name, making it stand out

@@ -30,7 +30,7 @@ const coreConfig: Config = {
 
         /* The name to display, which helps identify the core module. */
 
-        name: 'Core', 
+        name: 'core', 
 
         /* 
             * The color used for the display name, making it stand out

@@ -31,7 +31,7 @@ const infraConfig: Config = {
 
         /* The name to display, which helps identify the infra module. */
 
-        name: 'Infra', 
+        name: 'infra', 
 
         /* 
             * The color used for the display name, making it stand out
