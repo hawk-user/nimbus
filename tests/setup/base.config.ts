@@ -36,12 +36,19 @@ export const baseConfig: Config = {
 
         '@ueye/core': '<rootDir>/core/index',
 
-         /* 
+        /* 
             * Maps the module name '@ueye/infra/terminal' to a specific file path.
             * This allows to import '@ueye/infra/terminal' in tests.
         */
 
-         '@ueye/infra/terminal': '<rootDir>/infra/terminal/index'
+        '@ueye/infra/terminal': '<rootDir>/infra/terminal/index',
+
+        /* 
+            * Maps the module name '@ueye/utils' to a specific file path.
+            * This allows to import '@ueye/utils' in tests.
+        */
+
+        '@ueye/utils': '<rootDir>/utils/index'
 
     },
 
