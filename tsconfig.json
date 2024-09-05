@@ -3,6 +3,12 @@
 
       // -> Language and Environment
 
+      /* Specifies the library files to be included in the compilation.
+         "es2022" includes the latest ECMAScript features available as of 2022.
+      */
+
+      "lib": [ "es2022" ],
+
       /* Enables support for experimental decorators,
          a feature for applying metadata to classes and properties.
       */
