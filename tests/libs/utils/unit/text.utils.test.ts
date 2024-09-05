@@ -3,6 +3,29 @@ import { TextUtils } from '@ueye/utils';
 
 describe('TextUtils specifications', () => {
 
+    describe('areIdentical', () => {
+        it('should return true for identical strings', () => {
+            expect(TextUtils.areIdentical('identical', 'identical')).toBe(true);
+        });
+    
+        it('should return false for different strings', () => {
+            expect(TextUtils.areIdentical('identical', 'different')).toBe(false);
+        });
+    
+        it('should return false for strings with different cases', () => {
+            expect(TextUtils.areIdentical('lower', 'Lower')).toBe(false);
+        });
+    
+        it('should return false for empty string compared to non-empty string', () => {
+            expect(TextUtils.areIdentical('', 'nonempty')).toBe(false);
+        });
+    
+        it('should return true for two empty strings', () => {
+            expect(TextUtils.areIdentical('', '')).toBe(true);
+        });
+
+    });
+
     describe('isEmpty', () => {
         
         it('should return true when text is an empty string', () => {
