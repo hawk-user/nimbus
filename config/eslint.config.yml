@@ -1,4 +1,3 @@
-
 # Indicates that this is the root configuration file for ESLint, 
 # and that ESLint should not look for further configuration files in parent directories.
 
@@ -86,6 +85,10 @@ rules:
   
   radix: error
 
+  # Disallows the use of the `as` operator for type assertions.
+
+  "@typescript-eslint/consistent-type-assertions": [ "error", { "assertionStyle": "never" } ]
+
 # Specifies the base configurations to extend.
 
 extends:
@@ -116,3 +119,7 @@ parserOptions:
   # Sets the source type to `module`, allowing the use of ES modules.
 
   sourceType: module
+
+  # Specifies the path to the tsconfig.json file for the TypeScript project.
+
+  project: './tsconfig.json'
