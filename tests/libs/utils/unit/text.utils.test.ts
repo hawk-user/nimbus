@@ -26,6 +26,33 @@ describe('TextUtils specifications', () => {
 
     });
 
+    describe('generateUniqueId', () => {
+
+        it('should generate a unique identifier', () => {
+            const id1 = TextUtils.generateUniqueId();
+            const id2 = TextUtils.generateUniqueId();
+            
+            expect(id1).toBeDefined();
+            expect(id2).toBeDefined();
+            expect(id1).not.toBe(id2);
+        });
+
+        it('should generate an identifier as a string with length between 13 and 20 characters', () => {
+            const id = (TextUtils as any).generateUniqueId();
+
+            expect(typeof id).toBe('string');
+            expect(id.length).toBeGreaterThanOrEqual(13);
+            expect(id.length).toBeLessThanOrEqual(20);
+        });
+
+        it('should generate different identifiers in quick succession', () => {
+            const id1 = TextUtils.generateUniqueId();
+            const id2 = TextUtils.generateUniqueId();
+
+            expect(id1).not.toBe(id2);
+        });
+    });
+
     describe('isEmpty', () => {
         
         it('should return true when text is an empty string', () => {
