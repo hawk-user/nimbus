@@ -1,8 +1,8 @@
-# Ueye Code of Conduct
+# Code of Conduct
 
 ## Introduction
 
-Welcome to Ueye, where our goal is to make testing not only efficient but also enjoyable! This Code of Conduct is here to ensure we all have a great time while keeping things friendly and respectful. Think of it as the rules for a really awesome party where everyone’s invited!
+Welcome to ueye, where our goal is to make testing not only efficient but also enjoyable! This Code of Conduct is here to ensure we all have a great time while keeping things friendly and respectful. Think of it as the rules for a really awesome party where everyone’s invited!
 
 ## Our Standards
 
@@ -50,6 +50,6 @@ We promise to keep your reports as secret as your favorite secret recipe. We’r
 
 ## Acknowledgment
 
-By joining the Ueye community, you’re agreeing to these fun (and essential) guidelines. Thanks for being awesome and for helping us keep Ueye a fantastic place for everyone!
+By joining the ueye community, you’re agreeing to these fun (and essential) guidelines. Thanks for being awesome and for helping us keep ueye a fantastic place for everyone!
 
 Let’s make testing fun and friendly—together!
