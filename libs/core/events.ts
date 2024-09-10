@@ -4,11 +4,12 @@ import { UniqueIdentifier } from './unique.identifier';
 import { TimePoint } from './time.point';
 
 /**
-    * Represents an event with a unique identifier
-    * and a timestamp.
+    * Represents an event.
+    * 
+    * @template H - The type of the data associated with the event.
 */
 
-export interface Event {
+export interface Event<H = unknown> {
 
     /**
         * The unique identifier associated with the event,
@@ -22,6 +23,18 @@ export interface Event {
     */
 
     timePoint: TimePoint;
+
+    /**
+        * Type of Event.
+    */
+
+    type: string;
+
+    /**
+        * The data associated with the event.
+    */
+
+    data: H
 
 }
 
