@@ -38,7 +38,7 @@ export abstract class Identifier {
         * @returns The identifier value.
     */
 
-    protected toValue(): string {
+    public toValue(): string {
         return this.value;
     }
 
