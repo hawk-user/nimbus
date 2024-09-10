@@ -51,13 +51,13 @@ describe('ArrayUtils', () => {
         it('should handle edge cases where index is out of bounds', () => {
             const array = [1, 2, 3, 4, 5];
             ArrayUtils.removeAtIndex(array, 10);
-            expect(array).toEqual([1, 2, 3, 4, 5]); // No change
+            expect(array).toEqual([1, 2, 3, 4, 5]);
         });
 
         it('should handle empty array', () => {
             const array: number[] = [];
             ArrayUtils.removeAtIndex(array, 0);
-            expect(array).toEqual([]); // No change
+            expect(array).toEqual([]);
         });
 
     });
