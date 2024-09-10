@@ -1,3 +1,4 @@
+export * from './base.event';
 export * from './events';
 export * from './gone.wrong';
 export * from './identifier';
