@@ -10,16 +10,17 @@ import {
 class TestEvent implements Event {
     uniqueIdentifier: UniqueIdentifier;
     timePoint: TimePoint;
+    type = 'TestEvent';
+    data: unknown;
 
     constructor(id: string, timestamp?: number) {
         this.uniqueIdentifier = UniqueIdentifier.create(id);
         this.timePoint = TimePoint.create(timestamp);
+        this.data = {};
     }
-    
 }
 
 class TestAggregator implements Aggregator {
-
     private uniqueIdentifier: UniqueIdentifier;
     private events: Event[] = [];
 
@@ -45,8 +46,7 @@ class TestAggregator implements Aggregator {
     }
 }
 
-describe('Events', () => {
-
+describe('Events specifications', () => {
     let event: TestEvent;
     let aggregator: TestAggregator;
 
@@ -78,8 +78,9 @@ describe('Events', () => {
     test('should dispatch events for an aggregate', () => {
         const handler = jest.fn();
         aggregator.addEvent(event);
+
         Events.registerEvent('TestEvent', handler);
-        Events.markAggregateForDispatch(aggregator);
+        expect(aggregator.getEvents()).toContain(event);
 
         Events.dispatchEventForAggregate(event);
         expect(handler).toHaveBeenCalledWith(event);
