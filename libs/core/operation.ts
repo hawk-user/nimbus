@@ -18,6 +18,12 @@ export class Operation<L, R> {
     public isSuccess: boolean;
 
     /**
+        * Indicates whether the operation was fail or not.
+    */
+
+    public isFailure: boolean;
+
+    /**
         * The outcome of the operation, which could either be a failure or success.
     */
 
@@ -35,6 +41,7 @@ export class Operation<L, R> {
         outcome: GoneWrong<L> | WentWell<R>
     ) {
         this.isSuccess = isSuccess;
+        this.isFailure = !isSuccess;
         this.outcome = outcome;
         Object.freeze(this);
     }
@@ -121,12 +128,14 @@ export class Operation<L, R> {
     ): Operation<K, never> | Operation<never, I> | Operation<string, never> {
 
         const [ firstOperation ] = operations;
-        if (!firstOperation) {
+        const isOperationTableEmpty = !firstOperation;
+
+        if (isOperationTableEmpty) {
             return Operation.failure('Unable to merge an empty operation table.');
         }
 
         for (const operation of operations) {
-            if (!operation.isSuccess) return operation;
+            if (operation.isFailure) return operation;
         }
 
         return Operation.successful(firstOperation.positiveOutcome())
