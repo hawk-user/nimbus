@@ -1,7 +1,7 @@
 
 import { ArrayUtils } from '@ueye/utils';
 
-describe('ArrayUtils', () => {
+describe('ArrayUtils specifications', () => {
 
     describe('findByPredicate', () => {
 
