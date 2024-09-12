@@ -8,6 +8,7 @@
   "scripts": {
     "clean:coverage": "rimraf coverage",
     "clean:report": "rimraf report",
+    "depcruise": "depcruise -c config/.dependency-cruiser.jsonc src libs",
     "linter": "eslint --config=config/eslint.config.yml src libs",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
     "test:core": "jest --runInBand --config=tests/setup/core.config.ts",
