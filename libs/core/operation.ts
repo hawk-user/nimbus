@@ -1,6 +1,5 @@
 
-import { GoneWrong } from './gone.wrong';
-import { WentWell } from './went.well';
+import { GoneWrong, WentWell, Outcome } from './outcome';
 
 /**
     * Represents the result of an operation that can either succeed or fail.
@@ -27,7 +26,7 @@ export class Operation<L, R> {
         * The outcome of the operation, which could either be a failure or success.
     */
 
-    private outcome: GoneWrong<L> | WentWell<R>;
+    private outcome: Outcome<L,R>;
 
     /**
         * Creates an instance of `Operation` with the given success flag and outcome.
@@ -38,7 +37,7 @@ export class Operation<L, R> {
 
     public constructor(
         isSuccess: boolean,
-        outcome: GoneWrong<L> | WentWell<R>
+        outcome: Outcome<L,R>
     ) {
         this.isSuccess = isSuccess;
         this.isFailure = !isSuccess;
