@@ -39,21 +39,21 @@ export class GoneWrong<T> {
     /**
         * Determines if the instance represents a failure.
         * 
-        * @template N - The type of the value that would be held by a `GoneWrong` instance.
         * @returns Always returns `true` indicating this instance represents a failure.
     */
 
-    public isGoneWrong<N>(): this is GoneWrong<N> {
+    public isGoneWrong(): this is GoneWrong<T> {
         return true;
     }
 
     /**
         * Determines if the instance represents a successful outcome.
         * 
+        * @template N - The type of the value that would be held by a `WentWell` instance.
         * @returns Always returns `false` indicating this instance does not represent a successful outcome.
     */
 
-    public isWentWell(): this is WentWell<T> {
+    public isWentWell<N>(): this is WentWell<N> {
         return false;
     }
 
