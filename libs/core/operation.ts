@@ -1,8 +1,11 @@
 
 import { GoneWrong, WentWell, Outcome } from './outcome';
+import { TypeGuard } from './type.guard';
+
 
 /**
-    * Represents the result of an operation that can either succeed or fail.
+    * Represents the result of an operation that can
+    * either succeed or fail.
     * 
     * @template L - The type of the value representing a failure.
     * @template R - The type of the value representing a success.
@@ -17,22 +20,27 @@ export class Operation<L, R> {
     public isSuccess: boolean;
 
     /**
-        * Indicates whether the operation was fail or not.
+        * Indicates whether the operation was a failure or not.
     */
 
     public isFailure: boolean;
 
     /**
-        * The outcome of the operation, which could either be a failure or success.
+        * The outcome of the operation, which could either be
+        * a failure or success.
     */
 
     private outcome: Outcome<L,R>;
 
     /**
-        * Creates an instance of `Operation` with the given success flag and outcome.
+        * Creates an instance of `Operation` with the given success
+        * flag and outcome.
         * 
-        * @param isSuccess - A flag indicating whether the operation was successful.
-        * @param outcome - The result of the operation, either a failure or success.
+        * @param isSuccess - A flag indicating whether the
+        * operation was successful.
+        * 
+        * @param outcome - The result of the operation, either
+        * a failure or success.
     */
 
     public constructor(
@@ -46,16 +54,6 @@ export class Operation<L, R> {
     }
 
     /**
-        * Raises an error with the specified message.
-        * @param message - The error message to be thrown.
-        * @throws Throws an error with the given message.
-    */
-
-    private raiseError(message: string): never {
-        throw new Error(message);
-    }
-
-    /**
         * Retrieves the positive outcome of the operation if successful.
         * 
         * @returns The value of the successful outcome.
@@ -63,11 +61,12 @@ export class Operation<L, R> {
     */
 
     public positiveOutcome(): R {
-        const message = 'Unable to get a positive outcome for a failure operation. Use \'negativeOutcome\' instead.';
-
-        return this.outcome.isWentWell()
-            ? this.outcome.getValue() 
-            : this.raiseError(message);
+        const errmsg = 'Unable to get a positive outcome for a failure operation. Use \'negativeOutcome\' instead.';
+        return TypeGuard.safeCast<R>(
+            this.outcome.getValue(),
+            () => this.outcome.isWentWell(),
+            errmsg
+        );
     }
 
     /**
@@ -78,11 +77,12 @@ export class Operation<L, R> {
     */
 
     public negativeOutcome(): L {
-        const message = 'Unable to get a negative outcome for a successful operation. Use \'positiveOutcome\' instead.';
-
-        return this.outcome.isGoneWrong() 
-            ? this.outcome.getValue() 
-            : this.raiseError(message);
+        const errmsg = 'Unable to get a negative outcome for a successful operation. Use \'positiveOutcome\' instead.';
+        return TypeGuard.safeCast<L>(
+            this.outcome.getValue(),
+            () => this.outcome.isGoneWrong(),
+            errmsg
+        );
     }
 
     /**
@@ -137,7 +137,7 @@ export class Operation<L, R> {
             if (operation.isFailure) return operation;
         }
 
-        return Operation.successful(firstOperation.positiveOutcome())
+        return Operation.successful(firstOperation.positiveOutcome());
     }
-
+    
 }
