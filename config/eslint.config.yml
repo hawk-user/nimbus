@@ -123,3 +123,18 @@ parserOptions:
   # Specifies the path to the tsconfig.json file for the TypeScript project.
 
   project: './tsconfig.json'
+
+overrides:
+
+  - files:
+
+    # Specify the file where assertions are allowed
+
+      - 'libs/core/type.guard.ts'
+
+    rules:
+
+      # Disable the rule for this specific file
+
+      '@typescript-eslint/consistent-type-assertions': 'off'
+
