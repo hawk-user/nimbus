@@ -120,3 +120,8 @@ jobs:
 
       - name: Run a static code analysis.
         run: npm run linter
+
+      # Run tests defined in the 'depcruise' script in package.json.
+
+      - name: Run a static code analysis.
+        run: npm run depcruise
