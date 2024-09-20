@@ -1,6 +1,6 @@
 
+import { TextHelpers } from '../helpers';
 import { Identifier } from './identifier';
-import { TextUtils } from '@ueye/utils';
 
 /**
     * Represents a unique identifier.
@@ -26,7 +26,7 @@ export class UniqueIdentifier extends Identifier {
     */
 
     private constructor(id?: string) {
-        super(id ? id : TextUtils.generateUniqueId());
+        super(id ? id : TextHelpers.generateUniqueId());
     }
 
     /**

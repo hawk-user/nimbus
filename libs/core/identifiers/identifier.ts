@@ -1,5 +1,5 @@
 
-import { TextUtils } from '@ueye/utils';
+import { TextHelpers } from '../helpers';
 
 /**
     * Abstract class representing an Identifier.
@@ -51,7 +51,7 @@ export abstract class Identifier {
 
     public isEqualTo(id: Identifier): boolean {
         const isSameClass = id instanceof this.constructor;
-        const haveSameValue = TextUtils.areIdentical(this.value, id.toValue());
+        const haveSameValue = TextHelpers.areIdentical(this.value, id.toValue());
         return isSameClass && haveSameValue;
     }
 

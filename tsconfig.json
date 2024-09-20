@@ -47,13 +47,7 @@
             path 'libs/infra/terminal/index'.
          */
 
-         "@ueye/infra/terminal": [ "libs/infra/terminal/index" ],
-
-         /* This maps the alias '@ueye/utils' to the file
-            path 'libs/utils/index'.
-         */
-
-         "@ueye/utils": [ "libs/utils/index" ]
+         "@ueye/infra/terminal": [ "libs/infra/terminal/index" ]
 
       },
 

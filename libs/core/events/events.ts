@@ -1,6 +1,7 @@
 
-import { ObjectUtils, ArrayUtils } from '@ueye/utils';
-import { UniqueIdentifier, TimePoint } from '@ueye/core';
+import { UniqueIdentifier } from '../identifiers';
+import { TimePoint } from '../time';
+import { ObjectHelpers, ArrayHelpers } from '../helpers';
 
 /**
     * Represents an event.
@@ -118,7 +119,7 @@ export class Events {
     */
 
     private static isRegistered<E extends string>(name: E): boolean {
-        return ObjectUtils.hasDirectProperty(this.map, name);
+        return ObjectHelpers.hasDirectProperty(this.map, name);
     }
 
     /**
@@ -143,7 +144,7 @@ export class Events {
     private static findAggregateByIdentifier(
         identifier: UniqueIdentifier
     ): Aggregator | undefined {
-        return ArrayUtils.findByPredicate(
+        return ArrayHelpers.findByPredicate(
             this.aggregates,
             aggregate => aggregate.getUniqueIdentifier().isEqualTo(identifier)
         )
@@ -209,7 +210,7 @@ export class Events {
     private static removeMarkedAggregate(
         aggregate: Aggregator
     ): void {
-        ArrayUtils.removeByPredicate(
+        ArrayHelpers.removeByPredicate(
             this.aggregates, 
             aggr => aggr.isEqualTo(aggregate)
         );
@@ -226,7 +227,7 @@ export class Events {
         handler: EventHandler
     ): void {
         if (this.isNotRegistered(name)) this.map[name] = [];
-        ArrayUtils.safePush(this.map[name], handler)
+        ArrayHelpers.safePush(this.map[name], handler)
     }
 
     /**

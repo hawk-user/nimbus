@@ -15,10 +15,8 @@
     "test:coverage": "jest --runInBand --config=tests/setup/coverage.config.ts",
     "test:infra": "jest --runInBand --config=tests/setup/infra.config.ts",
     "test:report": "jest --runInBand --ci --config=tests/setup/report.config.ts",
-    "test:utils": "jest --runInBand --config=tests/setup/utils.config.ts",
     "watch:core": "jest --runInBand --watchAll --config=tests/setup/core.config.ts",
-    "watch:infra": "jest --runInBand --watchAll --config=tests/setup/infra.config.ts",
-    "watch:utils": "jest --runInBand --watchAll --config=tests/setup/utils.config.ts"
+    "watch:infra": "jest --runInBand --watchAll --config=tests/setup/infra.config.ts"
   },
   "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
   "license": "MIT",

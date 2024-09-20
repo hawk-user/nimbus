@@ -1,27 +1,28 @@
 
-import { TextUtils } from '@ueye/utils';
+import { TextHelpers } from '@ueye/core';
 
-describe('TextUtils specifications', () => {
+describe('TextHelpers specifications', () => {
 
     describe('areIdentical', () => {
+        
         it('should return true for identical strings', () => {
-            expect(TextUtils.areIdentical('identical', 'identical')).toBe(true);
+            expect(TextHelpers.areIdentical('identical', 'identical')).toBe(true);
         });
     
         it('should return false for different strings', () => {
-            expect(TextUtils.areIdentical('identical', 'different')).toBe(false);
+            expect(TextHelpers.areIdentical('identical', 'different')).toBe(false);
         });
     
         it('should return false for strings with different cases', () => {
-            expect(TextUtils.areIdentical('lower', 'Lower')).toBe(false);
+            expect(TextHelpers.areIdentical('lower', 'Lower')).toBe(false);
         });
     
         it('should return false for empty string compared to non-empty string', () => {
-            expect(TextUtils.areIdentical('', 'nonempty')).toBe(false);
+            expect(TextHelpers.areIdentical('', 'nonempty')).toBe(false);
         });
     
         it('should return true for two empty strings', () => {
-            expect(TextUtils.areIdentical('', '')).toBe(true);
+            expect(TextHelpers.areIdentical('', '')).toBe(true);
         });
 
     });
@@ -29,8 +30,8 @@ describe('TextUtils specifications', () => {
     describe('generateUniqueId', () => {
 
         it('should generate a unique identifier', () => {
-            const id1 = TextUtils.generateUniqueId();
-            const id2 = TextUtils.generateUniqueId();
+            const id1 = TextHelpers.generateUniqueId();
+            const id2 = TextHelpers.generateUniqueId();
             
             expect(id1).toBeDefined();
             expect(id2).toBeDefined();
@@ -38,7 +39,7 @@ describe('TextUtils specifications', () => {
         });
 
         it('should generate an identifier as a string with length between 13 and 20 characters', () => {
-            const id = (TextUtils as any).generateUniqueId();
+            const id = (TextHelpers as any).generateUniqueId();
 
             expect(typeof id).toBe('string');
             expect(id.length).toBeGreaterThanOrEqual(13);
@@ -46,8 +47,8 @@ describe('TextUtils specifications', () => {
         });
 
         it('should generate different identifiers in quick succession', () => {
-            const id1 = TextUtils.generateUniqueId();
-            const id2 = TextUtils.generateUniqueId();
+            const id1 = TextHelpers.generateUniqueId();
+            const id2 = TextHelpers.generateUniqueId();
 
             expect(id1).not.toBe(id2);
         });
@@ -56,15 +57,15 @@ describe('TextUtils specifications', () => {
     describe('isEmpty', () => {
         
         it('should return true when text is an empty string', () => {
-            expect(TextUtils.isEmpty('')).toBe(true);
+            expect(TextHelpers.isEmpty('')).toBe(true);
         });
 
         it('should return false when text is not an empty string', () => {
-            expect(TextUtils.isEmpty('Oupsi')).toBe(false);
+            expect(TextHelpers.isEmpty('Oupsi')).toBe(false);
         });
 
         it('should return false when text is a string with spaces', () => {
-            expect(TextUtils.isEmpty('   ')).toBe(false);
+            expect(TextHelpers.isEmpty('   ')).toBe(false);
         });
 
     });
@@ -73,27 +74,27 @@ describe('TextUtils specifications', () => {
 
         it('should remove leading and trailing whitespace from a string', () => {
             const text = '  Hello World  ';
-            expect(TextUtils.stripWhitespace(text)).toBe('Hello World');
+            expect(TextHelpers.stripWhitespace(text)).toBe('Hello World');
         });
 
         it('should return the same string if there is no leading or trailing whitespace', () => {
             const text = 'HelloWorld';
-            expect(TextUtils.stripWhitespace(text)).toBe('HelloWorld');
+            expect(TextHelpers.stripWhitespace(text)).toBe('HelloWorld');
         });
 
         it('should return an empty string if the input is only whitespace', () => {
             const text = '   ';
-            expect(TextUtils.stripWhitespace(text)).toBe('');
+            expect(TextHelpers.stripWhitespace(text)).toBe('');
         });
 
         it('should handle strings with only leading whitespace', () => {
             const text = '   Hello';
-            expect(TextUtils.stripWhitespace(text)).toBe('Hello');
+            expect(TextHelpers.stripWhitespace(text)).toBe('Hello');
         });
 
         it('should handle strings with only trailing whitespace', () => {
             const text = 'Hello   ';
-            expect(TextUtils.stripWhitespace(text)).toBe('Hello');
+            expect(TextHelpers.stripWhitespace(text)).toBe('Hello');
         });
     });
 

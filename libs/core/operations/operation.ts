@@ -1,10 +1,6 @@
 
-import {
-    GoneWrong,
-    WentWell,
-    Outcome,
-    TypeGuard
-} from '@ueye/core';
+import { GoneWrong, WentWell, Outcome } from './outcome';
+import { TypeGuard } from '../type';
 
 /**
     * Represents the result of an operation that can

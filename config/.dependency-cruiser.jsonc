@@ -13,27 +13,6 @@
       "severity": "error"
     },
 
-    /* [Rule]: Utils should not depend on Core */
-
-    {
-      "name": "no-dependencies-from-utils-to-core",
-      "comment": "Utils should not depend on Core.",
-      "from": { "path": "^libs/utils/" },
-      "to": { "path": "^libs/core/" },
-      "severity": "error"
-    },
-
-    /* [Rule]: Utils should not depend on Infra */
-
-    {
-      "name": "no-dependencies-from-utils-to-infra",
-      "comment": "Utils should not depend on Infra.",
-      "from": { "path": "^libs/utils/" },
-      "to": { "path": "^libs/infra/" },
-      "severity": "error"
-    },
-
-
     // -->  Module Type Restrictions
 
     /* [Rule]: Libraries should not use Node.js specific modules or APIs */

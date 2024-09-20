@@ -1,6 +1,8 @@
 
+import { UniqueIdentifier } from '../identifiers';
+import { TimePoint } from '../time';
 import { Event } from './events';
-import { UniqueIdentifier, TimePoint } from '@ueye/core';
+
 
 /**
     * Represents a generic event.
