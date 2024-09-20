@@ -2,7 +2,6 @@
 import { GoneWrong, WentWell, Outcome } from './outcome';
 import { TypeGuard } from './type.guard';
 
-
 /**
     * Represents the result of an operation that can
     * either succeed or fail.
@@ -14,41 +13,20 @@ import { TypeGuard } from './type.guard';
 export class Operation<L, R> {
 
     /**
-        * Indicates whether the operation was successful or not.
-    */
-
-    public isSuccess: boolean;
-
-    /**
-        * Indicates whether the operation was a failure or not.
-    */
-
-    public isFailure: boolean;
-
-    /**
         * The outcome of the operation, which could either be
         * a failure or success.
     */
 
-    private outcome: Outcome<L,R>;
+    private outcome: Outcome<L, R>;
 
     /**
-        * Creates an instance of `Operation` with the given success
-        * flag and outcome.
-        * 
-        * @param isSuccess - A flag indicating whether the
-        * operation was successful.
+        * Creates an instance of `Operation` with the given outcome.
         * 
         * @param outcome - The result of the operation, either
         * a failure or success.
     */
 
-    public constructor(
-        isSuccess: boolean,
-        outcome: Outcome<L,R>
-    ) {
-        this.isSuccess = isSuccess;
-        this.isFailure = !isSuccess;
+    public constructor(outcome: Outcome<L, R>) {
         this.outcome = outcome;
         Object.freeze(this);
     }
@@ -61,11 +39,10 @@ export class Operation<L, R> {
     */
 
     public positiveOutcome(): R {
-        const errmsg = 'Unable to get a positive outcome for a failure operation. Use \'negativeOutcome\' instead.';
         return TypeGuard.safeCast<R>(
             this.outcome.getValue(),
-            () => this.outcome.isWentWell(),
-            errmsg
+            this.outcome.isWentWell,
+            OPERATION_ERROR.NEGATIVE_OUTCOME
         );
     }
 
@@ -77,11 +54,10 @@ export class Operation<L, R> {
     */
 
     public negativeOutcome(): L {
-        const errmsg = 'Unable to get a negative outcome for a successful operation. Use \'positiveOutcome\' instead.';
         return TypeGuard.safeCast<L>(
             this.outcome.getValue(),
-            () => this.outcome.isGoneWrong(),
-            errmsg
+            this.outcome.isGoneWrong,
+            OPERATION_ERROR.POSITIVE_OUTCOME
         );
     }
 
@@ -94,7 +70,7 @@ export class Operation<L, R> {
     */
 
     public static successful<T>(success: T): Operation<never, T> {
-        return new Operation<never, T>(true, WentWell.create(success));
+        return new Operation<never, T>(WentWell.create(success));
     }
 
     /**
@@ -106,7 +82,7 @@ export class Operation<L, R> {
     */
 
     public static failure<Q>(fail: Q): Operation<Q, never> {
-        return new Operation<Q, never>(false, GoneWrong.create(fail));
+        return new Operation<Q, never>(GoneWrong.create(fail));
     }
 
     /**
@@ -116,7 +92,6 @@ export class Operation<L, R> {
         * @template K - The type of the failure value for the merged operation.
         * @template I - The type of the success value for the merged operation.
         * @param operations - The list of operations to be merged.
-        * 
         * @returns An `Operation<K, never>` if the operations contain any failure,
         * otherwise an `Operation<never, I>` with the result of the first successful operation.
         * If the input array is empty, returns a `Operation<string, never>` indicating failure.
@@ -134,10 +109,44 @@ export class Operation<L, R> {
         }
 
         for (const operation of operations) {
-            if (operation.isFailure) return operation;
+            if (operation.outcome.isGoneWrong()) {
+                return TypeGuard.safeCast<Operation<K, never>>(
+                    operation,
+                    () => operation.outcome.isGoneWrong(),
+                    OPERATION_ERROR.MERGE_FAILURE
+                );
+            }
         }
 
         return Operation.successful(firstOperation.positiveOutcome());
     }
-    
+}
+
+/**
+    * Enum for operation error messages.
+*/
+
+enum OPERATION_ERROR {
+
+    /**
+        * Error message indicating that a negative outcome cannot be obtained for a successful operation.
+        * Suggests using 'positiveOutcome' instead.
+    */
+
+    POSITIVE_OUTCOME = 'Unable to get a negative outcome for a successful operation. Use \'positiveOutcome\' instead.',
+
+    /**
+        * Error message indicating that a positive result cannot be obtained for a failed operation.
+        * Suggests using 'negativeOutcome' instead.
+    */
+
+    NEGATIVE_OUTCOME = 'Unable to get a positive outcome for a failure operation. Use \'negativeOutcome\' instead.',
+
+    /**
+        * Error message indicating that an operation failed during merging operations.
+        * Suggests checking the failed operation.
+    */
+
+    MERGE_FAILURE = 'One or more operations failed during merge. Use `negativeOutcome` to retrieve the failure details.'
+
 }
