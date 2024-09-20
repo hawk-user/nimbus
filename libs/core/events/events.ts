@@ -1,7 +1,6 @@
 
 import { ObjectUtils, ArrayUtils } from '@ueye/utils';
-import { UniqueIdentifier } from './unique.identifier';
-import { TimePoint } from './time.point';
+import { UniqueIdentifier, TimePoint } from '@ueye/core';
 
 /**
     * Represents an event.
