@@ -138,3 +138,57 @@ overrides:
 
       '@typescript-eslint/consistent-type-assertions': 'off'
 
+  - files:
+
+       # Target all Typescript files in the libs directory and its subdirectories
+
+      - "libs/**/*.ts"
+      
+    env:
+
+      # Disable Node.js environment globals for these files
+
+      node: false
+
+    rules:
+
+      no-restricted-globals:
+
+        # Set the severity of the rule to 'error'
+
+        - error
+
+        # Restrict the global variable `process`
+
+        - name: process
+          message: "Avoid using Node.js global variable `process` in the libs directory."
+
+         # Restrict the global variable `__dirname`
+
+        - name: __dirname
+          message: "Avoid using Node.js global variable `__dirname` in the libs directory."
+
+        # Restrict the global variable `global`
+
+        - name: global
+          message: "Avoid using Node.js global variable `global` in the libs directory."
+
+        # Restrict the global variable `Buffer`
+
+        - name: Buffer
+          message: "Avoid using Node.js global variable `Buffer` in the libs directory."
+
+        # Restrict the global variable `filename`
+
+        - name: filename
+          message: "Avoid using Node.js global variable `filename` in the libs directory."
+
+        # Restrict the function `setImmediate`
+
+        - name: setImmediate
+          message: "Avoid using Node.js global function `setImmediate` in the libs directory."
+
+        # Restrict the function `clearImmediate`
+
+        - name: clearImmediate
+          message: "Avoid using Node.js global function `clearImmediate` in the libs directory."
