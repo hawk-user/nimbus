@@ -67,4 +67,15 @@ export class TextHelpers {
         return text.trim();
     }
 
+    /**
+        * Removes leading and trailing whitespace from a string and adds a trailing space.
+        *
+        * @param text - The string to process.
+        * @returns The processed string with no leading/trailing whitespace and an added trailing space.
+    */
+
+    public static trimAndAddTrailingSpace(text: string): string {
+        return `${this.stripWhitespace(text)} `;
+    }
+
 }

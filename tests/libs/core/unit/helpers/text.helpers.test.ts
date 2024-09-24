@@ -4,7 +4,7 @@ import { TextHelpers } from '@ueye/core';
 describe('TextHelpers specifications', () => {
 
     describe('areIdentical', () => {
-        
+
         it('should return true for identical strings', () => {
             expect(TextHelpers.areIdentical('identical', 'identical')).toBe(true);
         });
@@ -96,6 +96,25 @@ describe('TextHelpers specifications', () => {
             const text = 'Hello   ';
             expect(TextHelpers.stripWhitespace(text)).toBe('Hello');
         });
+    });
+
+    describe('trimAndAddTrailingSpace', () => {
+
+        it('should remove leading and trailing whitespace and add a trailing space', () => {
+            const result = TextHelpers.trimAndAddTrailingSpace('  hello you  ');
+            expect(result).toBe('hello you ');
+        });
+
+        it('should add a trailing space to an already trimmed string', () => {
+            const result = TextHelpers.trimAndAddTrailingSpace('yo');
+            expect(result).toBe('yo ');
+        });
+
+        it('should handle an empty string correctly', () => {
+            const result = TextHelpers.trimAndAddTrailingSpace('');
+            expect(result).toBe(' ');
+        });
+
     });
 
 });
