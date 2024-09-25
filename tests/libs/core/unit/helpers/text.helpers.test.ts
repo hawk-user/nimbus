@@ -70,6 +70,22 @@ describe('TextHelpers specifications', () => {
 
     });
 
+    describe('isNotEmpty', () => {
+        
+        it('should return true when text is not an empty string', () => {
+            expect(TextHelpers.isNotEmpty('notEmpty')).toBe(true);
+        });
+
+        it('should return false when text is an empty string', () => {
+            expect(TextHelpers.isNotEmpty('')).toBe(false);
+        });
+
+        it('should return true when text is a string with spaces', () => {
+            expect(TextHelpers.isNotEmpty('   ')).toBe(true);
+        });
+
+    });
+
     describe('stripWhitespace', () => {
 
         it('should remove leading and trailing whitespace from a string', () => {
