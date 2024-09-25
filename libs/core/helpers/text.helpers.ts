@@ -57,6 +57,17 @@ export class TextHelpers {
     }
 
     /**
+        * Checks if a given text string is not empty.
+        *
+        * @param text - The text to check.
+        * @returns  Returns true if the text is not empty, otherwise false.
+    */
+
+    public static isNotEmpty(text: string): boolean {
+        return !this.isEmpty(text);
+    }
+
+    /**
         * Removes leading and trailing whitespace from a string.
         *
         * @param text - The string to strip whitespace from.
