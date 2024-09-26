@@ -1,4 +1,6 @@
 
+import { TWO, NINE, THIRTY_SIX } from './number.helpers';
+
 /**
     * Utility class for text-related operations.
 */
@@ -34,14 +36,8 @@ export class TextHelpers {
     */
     
     public static generateUniqueId(): string {
-        const RADIX = 36;
-        const BEGIN_SUBSTRING = 2;
-        const END_SUBSTRING = 9;
-
-        const timestamp = Date.now().toString(RADIX);
-        const randomPart = Math.random().toString(RADIX)
-            .substring(BEGIN_SUBSTRING, END_SUBSTRING);
-
+        const timestamp = Date.now().toString(THIRTY_SIX);
+        const randomPart = Math.random().toString(THIRTY_SIX).substring(TWO, NINE);
         return timestamp + randomPart;
     }
 

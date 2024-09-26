@@ -1,4 +1,6 @@
 
+import { ONE, NEGATIVE_ONE } from './number.helpers';
+
 /**
     * A function type used for filtering array items.
     * @param item - The item to test.
@@ -7,18 +9,6 @@
 */
 
 export type Predicate<J> = (item: J) => boolean;
-
-/**
-    * Constant representing the index when an item is not found in the array.
-*/
-
-export const NOT_FOUND_INDEX = -1;
-
-/**
-    * Constant representing the number of items to be removed by default.
-*/
-
-const DEFAULT_REMOVE_COUNT = 1;
 
 /**
     * Utility class for common array operations.
@@ -33,7 +23,7 @@ export class ArrayHelpers {
     */
 
     private static isNotFound(index: number): boolean {
-        return index === NOT_FOUND_INDEX;
+        return index === NEGATIVE_ONE;
     }
 
     /**
@@ -72,7 +62,7 @@ export class ArrayHelpers {
     public static removeAtIndex<T>(
         array: T[], 
         index: number,
-        deleteCount: number = DEFAULT_REMOVE_COUNT
+        deleteCount: number = ONE
     ): void {
         array.splice(index, deleteCount);
     }
