@@ -1,6 +1,6 @@
 
 import { GoneWrong, WentWell, Outcome } from './outcome';
-import { TypeGuard } from '../type';
+import { TypeGuard } from '../guards';
 
 /**
     * Represents the result of an operation that can
