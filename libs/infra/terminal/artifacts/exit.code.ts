@@ -9,16 +9,10 @@ import * as exitCodes from '../constants/exit.codes'
 export type SuccessExitCodes = typeof exitCodes.DONE;
 
 /**
-    * Representing specified error exit codes.
-*/
-
-export type SpecifiedErrorExitCodes = typeof exitCodes.MAX_ATTEMPTS_REACHED;
-
-/**
     * Representing all possible error exit codes.
 */
 
-export type ErrorExitCodes = SpecifiedErrorExitCodes | typeof exitCodes.UNSPECIFIED_ERROR;
+export type ErrorExitCodes = typeof exitCodes.MISSING_DATA | typeof exitCodes.UNSPECIFIED_ERROR
 
 /**
     * Representing all program exit codes.
@@ -62,8 +56,12 @@ export class ExitCode {
     */
 
     public static create(code: number): ProgramExitCodes {
-        const limit = `Invalid exit code: ${code}. Exit code must be between ${this.MIN} and ${this.MAX}.`;
-        return TypeGuard.safeCast<ProgramExitCodes>(code, () => this.isValid(code), limit);
+        const invalidExitCode = `Invalid exit code: ${code}. Exit code must be between ${this.MIN} and ${this.MAX}.`;
+        return TypeGuard.safeCast<ProgramExitCodes>(
+            code, 
+            () => this.isValid(code), 
+            () => { throw new Error(invalidExitCode) }
+        );
     }
 
 }
