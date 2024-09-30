@@ -21,10 +21,11 @@ export class TypeGuard {
     public static safeCast<R>(
         value: unknown,
         itsTheRightTypeOf: (val: unknown) => boolean,
-        wrongTypeError: string
+        isWrongTypeOf: () => void
     ): R {
         if (itsTheRightTypeOf(value)) return value as R;
-        else throw new Error(wrongTypeError);
+        isWrongTypeOf();
+        throw new Error('Type assertion failed!');
     }
 
 }

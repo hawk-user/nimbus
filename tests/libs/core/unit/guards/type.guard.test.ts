@@ -1,65 +1,61 @@
 
 import { TypeGuard } from '@ueye/core';
 
-function isString(value: unknown): value is string {
-    return typeof value === 'string';
-}
-
-function isNumber(value: unknown): value is number {
-    return typeof value === 'number';
-}
-
 describe('TypeGuard specifications', () => {
     
-    test('should return the value if the condition is true', () => {
-        const value: unknown = 'Hello, World!';
-        const result = TypeGuard.safeCast<string>(
+    it('should return the value if it is of the correct type', () => {
+        const value = 42;
+        const result = TypeGuard.safeCast<number>(
             value,
-            () => isString(value),
-            'Value must be a string'
+            (val): val is number => typeof val === 'number',
+            () => "Value is of the wrong type"
         );
-        expect(result).toBe('Hello, World!');
+        expect(result).toBe(value);
     });
 
-    test('should throw an error if the condition is false', () => {
-        const value: unknown = 42;
-        expect(() => {
-            TypeGuard.safeCast<string>(
-                value,
-                () => isString(value),
-                'Value must be a string'
-            );
-        }).toThrow('Value must be a string');
-    });
+    it('should call isWrongTypeOf and throw an error if the value is of the incorrect type', () => {
+        const value = "42";
+        const isWrongTypeOf = jest.fn(() => { throw new Error('Custom error message') });
 
-    test('should handle different types correctly', () => {
-        const stringValue: unknown = 'Test';
-        const numberValue: unknown = 123;
-
-        const stringResult = TypeGuard.safeCast<string>(
-            stringValue,
-            () => isString(stringValue),
-            'Expected a string'
-        );
-        expect(stringResult).toBe('Test');
-
-        const numberResult = TypeGuard.safeCast<number>(
-            numberValue,
-            () => isNumber(numberValue),
-            'Expected a number'
-        );
-        expect(numberResult).toBe(123);
-    });
-
-    test('should throw error with different type guards', () => {
-        const value: unknown = 'Not a number';
         expect(() => {
             TypeGuard.safeCast<number>(
                 value,
-                () => isNumber(value),
-                'Expected a number'
+                (val): val is number => typeof val === 'number',
+                isWrongTypeOf
             );
-        }).toThrow('Expected a number');
+        }).toThrow("Custom error message");
+
+        expect(isWrongTypeOf).toHaveBeenCalled();
+    });
+
+    it('should throw the correct error message returned by isWrongTypeOf callback', () => {
+        const value = { foo: 'bar' };
+        const isWrongTypeOf = jest.fn(() => { throw new Error('This is not a number') });
+
+        expect(() => {
+            TypeGuard.safeCast<number>(
+                value,
+                (val): val is number => typeof val === 'number',
+                isWrongTypeOf
+            );
+        }).toThrow("This is not a number");
+
+        expect(isWrongTypeOf).toHaveBeenCalled();
+    });
+
+    it('should throw generic error message returned by isWrongTypeOf callback', () => {
+        const value = { foo: 'bar' };
+        const isWrongTypeOf = jest.fn(() => true);
+
+        expect(() => {
+            TypeGuard.safeCast<number>(
+                value,
+                (val): val is number => typeof val === 'number',
+                isWrongTypeOf
+            );
+        }).toThrow('Type assertion failed!');
+
+        expect(isWrongTypeOf).toHaveBeenCalled();
     });
 
 });
