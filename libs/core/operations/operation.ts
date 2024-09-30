@@ -31,6 +31,10 @@ export class Operation<L, R> {
         Object.freeze(this);
     }
 
+    private static rejectOperation(operationError: OPERATION_ERROR): void {
+        throw new Error(operationError)
+    }
+
     /**
         * Retrieves the positive outcome of the operation if successful.
         * 
@@ -42,7 +46,7 @@ export class Operation<L, R> {
         return TypeGuard.safeCast<R>(
             this.outcome.getValue(),
             this.outcome.isWentWell,
-            OPERATION_ERROR.NEGATIVE_OUTCOME
+            () => Operation.rejectOperation(OPERATION_ERROR.NEGATIVE_OUTCOME)
         );
     }
 
@@ -57,7 +61,7 @@ export class Operation<L, R> {
         return TypeGuard.safeCast<L>(
             this.outcome.getValue(),
             this.outcome.isGoneWrong,
-            OPERATION_ERROR.POSITIVE_OUTCOME
+            () => Operation.rejectOperation(OPERATION_ERROR.POSITIVE_OUTCOME)
         );
     }
 
@@ -109,13 +113,7 @@ export class Operation<L, R> {
         }
 
         for (const operation of operations) {
-            if (operation.outcome.isGoneWrong()) {
-                return TypeGuard.safeCast<Operation<K, never>>(
-                    operation,
-                    () => operation.outcome.isGoneWrong(),
-                    OPERATION_ERROR.MERGE_FAILURE
-                );
-            }
+            if (operation.outcome.isGoneWrong()) return operation
         }
 
         return Operation.successful(firstOperation.positiveOutcome());
@@ -144,9 +142,8 @@ enum OPERATION_ERROR {
 
     /**
         * Error message indicating that an operation failed during merging operations.
-        * Suggests checking the failed operation.
     */
 
-    MERGE_FAILURE = 'One or more operations failed during merge. Use `negativeOutcome` to retrieve the failure details.'
+    MERGE_FAILURE = 'One or more operations failed during merge.'
 
 }
