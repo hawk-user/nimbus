@@ -6,10 +6,10 @@
 export const DONE = 0;
 
 /** 
-    * Indicates that the maximum number of attempts has been reached.
+    * Indicates that an error has occurred due to missing data.
 */
 
-export const MAX_ATTEMPTS_REACHED = 254;
+export const MISSING_DATA = 254;
 
 /** 
     * Indicates an unspecified error occurred.
