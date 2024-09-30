@@ -22,12 +22,6 @@ export const ONE = 1;
 export const TWO = 2;
 
 /**
-    * Represents the value three.
-*/
-
-export const THREE = 3;
-
-/**
     * Represents the value nine.
 */
 
@@ -44,51 +38,3 @@ export const THIRTY_SIX = 36;
 */
 
 export const NEGATIVE_ONE = -1;
-
-/**
-    * Utility class for number-related operations.
-*/
-
-export class NumberHelpers {
-
-    /**
-        * Checks if a number is an integer.
-        * @param num - The number to check.
-        * @returns True if the number is an integer, false otherwise.
-    */
-
-    public static isInteger(num: number): boolean {
-        return Number.isInteger(num);
-    }
-
-    /**
-        * Checks if a number is positive.
-        * @param num - The number to check.
-        * @returns True if the number is positive, false otherwise.
-    */
-
-    public static isPositive(num: number): boolean {
-        return num > ZERO;
-    }
-
-    /**
-        * Checks if a number is a positive integer.
-        * @param num - The number to check.
-        * @returns True if the number is a positive integer, false otherwise.
-    */
-
-    public static isPositiveInteger(num: number): boolean {
-        return this.isInteger(num) && this.isPositive(num);
-    }
-
-    /**
-        * Checks if a number is not a positive integer.
-        * @param num - The number to check.
-        * @returns True if the number is not a positive integer, false otherwise.
-    */
-
-    public static isNotPositiveInteger(num: number): boolean {
-        return !this.isPositiveInteger(num);
-    }
-
-}
