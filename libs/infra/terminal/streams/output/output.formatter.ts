@@ -1,9 +1,9 @@
 
 import { ObjectHelpers } from '@ueye/core';
+import { ErrorExitCodes } from '../../artifacts';
 import { Prompt } from './interface.prompt';
 import { ProgramOutput } from './interface.program.ouput';
 import * as exitCodes from '../../constants/exit.codes';
-import { SpecifiedErrorExitCodes } from '../../artifacts';
 
 /**
     * Representing the output data.
@@ -79,9 +79,21 @@ export class OutputFormatter {
 
     public static formatSpecifiedError(
         error: Error,
-        exitCode: SpecifiedErrorExitCodes
+        exitCode: ErrorExitCodes
     ): ProgramOutput {
         return { prompt: this.formatError(error), exitCode };
+    }
+
+    /**
+        * Formats an error message for missing data.
+        *
+        * @param optionalError - An optional error object to use. If not provided, a default error is created.
+        * @returns The formatted error output.
+    */
+
+    public static formatMissingData(optionalError?: Error): ProgramOutput {
+        const error = optionalError ? optionalError : new Error('Required data not supplied.');
+        return this.formatSpecifiedError(error, exitCodes.MISSING_DATA);
     }
 
 }

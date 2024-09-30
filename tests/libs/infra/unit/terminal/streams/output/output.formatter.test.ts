@@ -97,10 +97,44 @@ describe('Output specifications', () => {
             const error = new Error('Test specified error');
             const expected = {
                 prompt: { message: `${error.stack}\n` },
-                exitCode: 254,
+                exitCode: 200,
             };
-            const result = OutputFormatter.formatSpecifiedError(error, 254);
+            const result = OutputFormatter.formatSpecifiedError(error, 200 as any);
             expect(result).toEqual(expected);
+        });
+
+    });
+
+    describe('formatMissingData', () => {
+
+        it('should return formatted error with default message when no error is provided', () => {
+            const defaultError = new Error('Required data not supplied.');
+            const expectedOutput = {
+                exitCode: 254,
+                prompt: {
+                    message: `Error: ${defaultError.message}\n    at Function.formatMissingData`
+                }
+            };
+    
+            const result = OutputFormatter.formatMissingData();
+
+            expect(result.exitCode).toEqual(expectedOutput.exitCode);
+            expect(result.prompt.message).toContain(expectedOutput.prompt.message);
+        });
+
+        it('should return formatted error with provided error message', () => {
+            const customError = new Error('Custom error message.');
+            const expectedOutput = {
+                exitCode: 254,
+                prompt: {
+                    message: `Error: ${customError.message}\n    at Object.<anonymous>`
+                }
+            };
+    
+            const result = OutputFormatter.formatMissingData(customError);
+    
+            expect(result.exitCode).toEqual(expectedOutput.exitCode);
+            expect(result.prompt.message).toContain(expectedOutput.prompt.message);
         });
 
     });
