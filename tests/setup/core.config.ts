@@ -18,7 +18,7 @@ const coreConfig: Config = {
         * for the core module.
     */
 
-    roots: [ '../tests/libs/core/unit' ],
+    roots: [ '../tests/libs/core/unit-test' ],
 
     /* 
         * Configuration for the display name used in the test environment.

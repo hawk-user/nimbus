@@ -19,7 +19,7 @@ const infraConfig: Config = {
         * This path is relative and points to the infra library's directory.
     */
 
-    roots: [ '../tests/libs/infra/unit' ],
+    roots: [ '../tests/libs/infra/unit-test' ],
 
     /* 
         * Configuration for the display name used in the test environment.

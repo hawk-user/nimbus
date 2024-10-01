@@ -18,7 +18,7 @@ const utilsConfig: Config = {
         * for the utils module.
     */
 
-    roots: [ '../tests/libs/utils/unit' ],
+    roots: [ '../tests/libs/utils/unit-test' ],
 
     /* 
         * Configuration for the display name used in the test environment.
