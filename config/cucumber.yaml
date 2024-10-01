@@ -1,0 +1,33 @@
+default:
+
+  # Stop the execution of scenarios as soon as a test fails.
+
+  failFast: true
+  
+  # Display backtrace for errors to help with debugging.
+
+  backtrace: true
+
+  # Require TypeScript and tsconfig-paths modules before running tests.
+
+  requireModule: [
+
+    # Register ts-node to compile TypeScript files.
+
+    ts-node/register,
+
+    # Register tsconfig-paths to resolve paths in tsconfig.
+
+    tsconfig-paths/register
+
+  ]
+
+  # Specify the location of the test files to be executed.
+
+  require: [
+
+    # Include all TypeScript files in the specified directory for acceptance tests.
+
+    tests/**/**acceptance-test/*.ts
+
+  ]
