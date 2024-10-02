@@ -1,4 +1,3 @@
-
 <div align="center">
     <img 
         src="./assets/images/ueye.symbol.64x64.png"
@@ -34,6 +33,7 @@
 *This graph shows the overall coverage of the code base, providing a visual representation of which parts of the code are well tested and which need more testing.*
 
 ![Overall Coverage](https://codecov.io/gh/hawk-user/ueye/graphs/sunburst.svg?token=C0D9EOXYEZ)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhawk-user%2Fueye.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhawk-user%2Fueye?ref=badge_shield)
 
 #### File Coverage
 
@@ -61,3 +61,5 @@ If you have any questions, suggestions, or issues, feel free to contact us:
 ## License
 
 ueye is [MIT licensed](./LICENSE).
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhawk-user%2Fueye.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhawk-user%2Fueye?ref=badge_large)
