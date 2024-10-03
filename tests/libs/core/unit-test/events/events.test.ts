@@ -1,54 +1,13 @@
 
-import { 
-    Events,
-    Event,
-    UniqueIdentifier,
-    TimePoint,
-    Aggregator 
-} from '@ueye/core';
-
-class TestEvent implements Event {
-    uniqueIdentifier: UniqueIdentifier;
-    timePoint: TimePoint;
-    type = 'TestEvent';
-    data: unknown;
-
-    constructor(id: string, timestamp?: number) {
-        this.uniqueIdentifier = UniqueIdentifier.create(id);
-        this.timePoint = TimePoint.create(timestamp);
-        this.data = {};
-    }
-}
-
-class TestAggregator implements Aggregator {
-    private uniqueIdentifier: UniqueIdentifier;
-    private events: Event[] = [];
-
-    constructor(id: UniqueIdentifier) {
-        this.uniqueIdentifier = id;
-    }
-
-    getUniqueIdentifier(): UniqueIdentifier {
-        return this.uniqueIdentifier;
-    }
-
-    getEvents(): Event[] {
-        return this.events;
-    }
-
-    addEvent(event: Event): void {
-        this.events.push(event);
-        Events.markAggregateForDispatch(this);
-    }
-
-    isEqualTo(other: Aggregator): boolean {
-        return this.uniqueIdentifier.isEqualTo(other.getUniqueIdentifier());
-    }
-}
+import { Events, UniqueIdentifier } from '@ueye/core';
+import { TestEvent, TestAggregator } from './helpers';
+import sinon from 'sinon';
+import assert from 'node:assert';
 
 describe('Events specifications', () => {
-    let event: TestEvent;
-    let aggregator: TestAggregator;
+
+    var event: TestEvent;
+    var aggregator: TestAggregator;
 
     beforeEach(() => {
         Events.clearEvents();
@@ -57,66 +16,67 @@ describe('Events specifications', () => {
         aggregator = new TestAggregator(UniqueIdentifier.create('1'));
     });
 
-    test('should register an event with a handler', () => {
-        const handler = jest.fn();
+    it('should register an event with a handler', () => {
+        const handler = sinon.fake();
         Events.registerEvent('TestEvent', handler);
-        expect(Events['map']['TestEvent']).toContain(handler);
+        assert.ok(Events['map']['TestEvent']?.includes(handler));
     });
 
-    test('should dispatch an event to its handlers', () => {
-        const handler = jest.fn();
+    it('should dispatch an event to its handlers', () => {
+        const handler = sinon.fake();
         Events.registerEvent('TestEvent', handler);
         Events['dispatchEvent'](event);
-        expect(handler).toHaveBeenCalledWith(event);
+        assert.ok(handler.calledWith(event));
     });
 
-    test('should mark aggregate for dispatch', () => {
+    it('should mark aggregate for dispatch', () => {
         Events.markAggregateForDispatch(aggregator);
-        expect(Events['aggregates']).toContain(aggregator);
+        assert.ok(Events['aggregates'].includes(aggregator));
     });
 
-    test('should dispatch events for an aggregate', () => {
-        const handler = jest.fn();
+    it('should dispatch events for an aggregate', () => {
+        const handler = sinon.fake();
         aggregator.addEvent(event);
 
         Events.registerEvent('TestEvent', handler);
-        expect(aggregator.getEvents()).toContain(event);
+        assert.ok(aggregator.getEvents().includes(event));
 
         Events.dispatchEventForAggregate(event);
-        expect(handler).toHaveBeenCalledWith(event);
-        expect(Events['aggregates']).not.toContain(aggregator);
+        assert.ok(handler.calledWith(event));
+        assert.ok(!Events['aggregates'].includes(aggregator))
     });
 
-    test('should not register the same event type multiple times', () => {
-        const handler1 = jest.fn();
-        const handler2 = jest.fn();
+    it('should not register the same event type multiple times', () => {
+        const handler1 = sinon.fake();
+        const handler2 = sinon.fake();
 
         Events.registerEvent('TestEvent', handler1);
         Events.registerEvent('TestEvent', handler2);
 
         const handlers = Events['map']['TestEvent'];
-        expect(handlers).toContain(handler1);
-        expect(handlers).toContain(handler2);
+        assert.strictEqual(handlers?.length, 2);
+        assert.ok(handlers?.includes(handler1));
+        assert.ok(handlers?.includes(handler2));
     });
 
-    test('should clear all events', () => {
-        const handler = jest.fn();
+    it('should clear all events', () => {
+        const handler = sinon.fake();
         Events.registerEvent('TestEvent', handler);
         Events.clearEvents();
-        expect(Events['map']['TestEvent']).toBeUndefined();
+        assert.ok(!Events['map']['TestEvent'])
     });
 
-    test('should clear all marked aggregates', () => {
+    it('should clear all marked aggregates', () => {
         Events.markAggregateForDispatch(aggregator);
         Events.clearAggregates();
-        expect(Events['aggregates']).not.toContain(aggregator);
+        assert.ok(!Events['aggregates'].includes(aggregator))
     });
 
-    test('should not add the same aggregate twice', () => {
+    it('should not add the same aggregate twice', () => {
         Events.markAggregateForDispatch(aggregator);
         Events.markAggregateForDispatch(aggregator);
         const aggregates = Events['aggregates'];
-        expect(aggregates.length).toBe(1);
+        assert.strictEqual(aggregates.length, 1);
     });
 
 });

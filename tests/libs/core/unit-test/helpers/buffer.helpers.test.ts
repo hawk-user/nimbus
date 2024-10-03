@@ -1,5 +1,6 @@
 
 import { BufferHelpers } from '@ueye/core';
+import assert from 'node:assert';
 
 describe('BufferHelpers specifications', () => {
 
@@ -7,7 +8,7 @@ describe('BufferHelpers specifications', () => {
 
         it('should convert a Buffer to a UTF-8 string', () => {
             const buffer = Buffer.from('Hello World', 'utf8');
-            expect(BufferHelpers.toUTF8String(buffer)).toBe('Hello World');
+            assert.strictEqual(BufferHelpers.toUTF8String(buffer), 'Hello World');
         });
 
     });
@@ -16,12 +17,12 @@ describe('BufferHelpers specifications', () => {
 
         it('should convert a Buffer to a trimmed UTF-8 string', () => {
             const buffer = Buffer.from('  Hello World  ', 'utf8');
-            expect(BufferHelpers.toUTF8StringTrimmed(buffer)).toBe('Hello World');
+            assert.strictEqual(BufferHelpers.toUTF8StringTrimmed(buffer), 'Hello World');
         });
 
         it('should return an empty string when the Buffer only contains whitespace', () => {
             const buffer = Buffer.from('   ', 'utf8');
-            expect(BufferHelpers.toUTF8StringTrimmed(buffer)).toBe('');
+            assert.strictEqual(BufferHelpers.toUTF8StringTrimmed(buffer), '');
         });
 
     });

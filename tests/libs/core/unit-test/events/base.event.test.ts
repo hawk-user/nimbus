@@ -1,38 +1,40 @@
 
 import { 
-    UniqueIdentifier,
-    TimePoint,
-    BaseEvent 
+    BaseEvent, 
+    TimePoint, 
+    UniqueIdentifier
 } from '@ueye/core';
+
+import assert from 'node:assert';
 
 describe('BaseEvent specification', () => {
 
-    test('should create an event with specified type and data', () => {
+    it('should create an event with specified type and data', () => {
         const eventType = 'TestEventType';
         const eventData = { key: 'value' };
-
         const event = BaseEvent.create(eventType, eventData);
 
-        expect(event).toBeDefined();
-        expect(event.type).toBe(eventType);
-        expect(event.data).toBe(eventData);
+        assert.ok(event);
+        assert.strictEqual(event.type, eventType);
+        assert.strictEqual(event.data, eventData);
 
-        expect(event.uniqueIdentifier).toBeDefined();
-        expect(event.uniqueIdentifier).toBeInstanceOf(UniqueIdentifier);
+        assert.ok(event.uniqueIdentifier);
+        assert.ok(event.uniqueIdentifier instanceof UniqueIdentifier);
 
-        expect(event.timePoint).toBeDefined();
-        expect(event.timePoint).toBeInstanceOf(TimePoint);
+        assert.ok(event.timePoint);
+        assert.ok(event.timePoint instanceof TimePoint);
+
     });
 
-    test('should have a unique identifier and timestamp upon creation', () => {
+    it('should have a unique identifier and timestamp upon creation', () => {
         const event = BaseEvent.create('TestEventType', { key: 'value' });
-
         const anotherEvent = BaseEvent.create('AnotherEventType', { key: 'anotherValue' });
-        expect(event.uniqueIdentifier).not.toEqual(anotherEvent.uniqueIdentifier);
-        expect(event.timePoint).toBeDefined();
+
+        assert.notStrictEqual(event.uniqueIdentifier, anotherEvent.uniqueIdentifier)
+        assert.ok(event.timePoint);
     });
 
-    test('should handle different types of data', () => {
+    it('should handle different types of data', () => {
         const stringData = 'string data';
         const numberData = 123;
         const objectData = { key: 'value' };
@@ -41,9 +43,9 @@ describe('BaseEvent specification', () => {
         const numberEvent = BaseEvent.create('NumberEventType', numberData);
         const objectEvent = BaseEvent.create('ObjectEventType', objectData);
 
-        expect(stringEvent.data).toBe(stringData);
-        expect(numberEvent.data).toBe(numberData);
-        expect(objectEvent.data).toEqual(objectData);
+        assert.strictEqual(stringEvent.data, stringData);
+        assert.strictEqual(numberEvent.data, numberData);
+        assert.strictEqual(objectEvent.data, objectData);
     });
 
 });

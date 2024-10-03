@@ -1,46 +1,36 @@
 
 import { UniqueIdentifier } from '@ueye/core';
+import assert from 'node:assert';
 
 describe('UniqueIdentifier specifications', () => {
 
     describe('create', () => {
 
         it('should create an instance with a provided identifier', () => {
-            const customId = 'customid';
-            const instance = UniqueIdentifier.create(customId);
-            expect(instance).toBeInstanceOf(UniqueIdentifier);
-
-            const anotherInstance = UniqueIdentifier.create(customId);
-            expect(instance.isEqualTo(anotherInstance)).toBe(true);
+            const instance = UniqueIdentifier.create('customid');
+            assert.ok(instance instanceof UniqueIdentifier);
         });
 
         it('should create an instance with a generated identifier if none provided', () => {
             const instance = UniqueIdentifier.create();
-            expect(instance).toBeInstanceOf(UniqueIdentifier);
-
-            const anotherInstance = UniqueIdentifier.create();
-            expect(instance.isEqualTo(anotherInstance)).toBe(false);
+            assert.ok(instance instanceof UniqueIdentifier);
         });
 
     });
 
-    describe('constructor', () => {
+    describe('isEqualTo', () => {
 
-        it('should initialize with a provided identifier', () => {
-            const customId = 'provided-id';
+        it('should return true for instances with the same identifier', () => {
+            const customId = 'customid';
             const instance = UniqueIdentifier.create(customId);
-            expect(instance).toBeInstanceOf(UniqueIdentifier);
-
             const anotherInstance = UniqueIdentifier.create(customId);
-            expect(instance.isEqualTo(anotherInstance)).toBe(true);
+            assert.ok(instance.isEqualTo(anotherInstance));
         });
 
-        it('should initialize with a generated identifier if none provided', () => {
+        it('should return false for instances with different identifiers', () => {
             const instance = UniqueIdentifier.create();
-            expect(instance).toBeInstanceOf(UniqueIdentifier);
-
             const anotherInstance = UniqueIdentifier.create();
-            expect(instance.isEqualTo(anotherInstance)).toBe(false);
+            assert.ok(!instance.isEqualTo(anotherInstance));
         });
 
     });
