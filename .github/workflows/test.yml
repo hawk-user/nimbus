@@ -86,4 +86,4 @@ jobs:
     # Run tests defined in the 'acceptance:test' script in package.json.
 
       - name: Performs acceptance tests.
-        run: acceptance:test
+        run: npm run acceptance:test
