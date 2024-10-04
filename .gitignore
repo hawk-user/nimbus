@@ -28,3 +28,6 @@ yarn-error.log
 
 # Ignore '.DS_Store', a file created by macOS Finder
 .DS_Store
+
+# Ignore NYC output directory containing raw coverage data.
+.nyc_output
