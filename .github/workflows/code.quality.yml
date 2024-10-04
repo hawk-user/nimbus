@@ -4,47 +4,14 @@
 
 name: Code quality
 
-# The 'on' field specifies the events that will trigger this workflow.
-# In this case, the workflow is triggered by two types of events:
-# - Push events to any branch.
-# - Completion of another workflow named 'Test'.
+# This GitHub Actions workflow is triggered on push
+# and pull request events to the "hogwarts" branch.
 
 on:
-
-  # The workflow is triggered by push events to any branch in
-  # the repository.
-
   push:
-
-    # The '*' wildcard means this workflow will be triggered on
-    # pushes to all branches.
-
-    branches: [ "*" ]
-
-  # The workflow is also triggered by the completion of another
-  # specified workflow.
-
-  workflow_run:
-
-    # Specifies the workflows that this workflow depends
-    # on for triggering.
-
-    workflows:
-
-      # This workflow will be triggered when the 'Test'
-      # workflow completes.
-
-      - Test
-
-    # Defines the type of workflow run events that will
-    # trigger this workflow.
-
-    types:
-
-      # The workflow will be triggered when the specified
-      # workflow has completed.
-
-      - completed
+    branches: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
 
 # GitHub Actions are defined by jobs, which specify
 # the tasks to be performed. Every job is executed
@@ -55,11 +22,6 @@ jobs:
   # Define a job named 'static-code-analysis'.
 
   static-code-analysis:
-
-    # The job will only run if the conclusion of the workflow
-    # that triggered this workflow was 'success'.
-
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     # Define the strategy for running this job, including
     # matrix configurations.

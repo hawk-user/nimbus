@@ -17,9 +17,9 @@ on:
   schedule:
 
     # This cron expression schedules the workflow to run
-    # daily at midnight (UTC)
+    # every weekday (Monday to Friday) at 7:00 am (UTC).
 
-    - cron: '0 0 * * *'
+    - cron: '0 7 * * 1-5'
 
 # GitHub Actions are defined by jobs, which specify
 # the tasks to be performed. Every job is executed
@@ -86,15 +86,20 @@ jobs:
       - name: Clean installation. 
         run: npm ci
 
+      # Make entire directory executable
+
+      - name: Make scripts executable.
+        run: chmod -R +x bin
+
       # Generate test report using the defined npm script
 
       - name: Generate test report.
-        run: npm run test:report
+        run: npm run report
 
       # Generate coverage report using the defined npm script
 
       - name: Generate coverage report.
-        run: npm run test:coverage
+        run: npm run coverage
 
       # Upload the generated test report as artifacts
 
