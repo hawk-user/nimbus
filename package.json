@@ -6,16 +6,18 @@
     "url": "https://github.com/hawk-user/ueye.git"
   },
   "scripts": {
+    "acceptance:test:infra": "cucumber-js --config=tests/setup/acceptance-test/infra.configat.yaml",
     "clean:coverage": "rimraf coverage",
     "clean:report": "rimraf report",
-    "cucumber": "cucumber-js --config=config/cucumber.yaml",
+    "coverage": "./bin/test/coverage.sh",
     "depcruise": "depcruise -c config/.dependency-cruiser.jsonc libs",
     "linter": "eslint --config=config/eslint.config.yml libs",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
-    "test:core": "mocha --config=tests/setup/.mocharc.core.yaml",
-    "test:infra": "mocha --config=tests/setup/.mocharc.infra.yaml",
-    "watch:core": "mocha --watch --config=tests/setup/.mocharc.core.yaml",
-    "watch:infra": "mocha --watch --config=tests/setup/.mocharc.infra.yaml"
+    "unit:test": "mocha --config=tests/setup/unit-test/configut.yaml",
+    "unit:test:core": "mocha --config=tests/setup/unit-test/core.configut.yaml",
+    "unit:test:infra": "mocha --config=tests/setup/unit-test/infra.configut.yaml",
+    "watch:unit:test:core": "mocha --watch -config=tests/setup/unit-test/core.configut.yaml",
+    "watch:unit:test:infra": "mocha --watch --config=tests/setup/unit-test/infra.configut.yaml"
   },
   "author": "Salem Djekoun<07narguiles.visieres@icloud.com>",
   "license": "MIT",
