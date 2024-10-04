@@ -1,0 +1,42 @@
+
+# Specifying the files to include for testing
+
+spec: [ './tests/libs/infra/unit-test/**/*.test.ts' ]
+
+# Use the BDD interface (describe, it)
+
+ui: 'bdd'
+
+# Enable color in the output
+
+color: true
+
+# Set the timeout for tests
+
+timeout: 5000
+
+# Recursive directory search for test files
+
+recursive: true
+
+# Reporter to use
+
+reporter: 'nyan'
+
+# Require additional modules before running tests
+
+require:
+  - 'ts-node/register'
+  - 'tsconfig-paths/register'
+
+# Enable file watch mode
+
+watch: false
+
+# Slow test threshold in milliseconds
+
+slow: 1000
+
+# Bail after the first test failure
+
+bail: false
