@@ -15,8 +15,8 @@ nyc merge './coverage/.tmp/acceptance-test' './coverage/.tmp/combined' > /dev/nu
 # Merge the unit test coverage data into the combined coverage directory
 nyc merge './coverage/.tmp/unit-test' './coverage/.tmp/combined' > /dev/null
 
-# Generate the final coverage report in LCOV format
-nyc report --reporter='json' --report-dir='./coverage' --temp-directory='./coverage/.tmp'
+# Generate the final coverage report in LCOV format and displayed result on the terminal
+nyc report --reporter='json' --reporter='text' --report-dir='./coverage' --temp-directory='./coverage/.tmp'
 
 # # Clean up temporary coverage data
 rimraf ./coverage/.tmp
