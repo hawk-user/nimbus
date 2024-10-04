@@ -7,7 +7,6 @@
   },
   "scripts": {
     "acceptance:test": "cucumber-js --config=tests/setup/acceptance-test/configat.yaml",
-    "acceptance:test:infra": "cucumber-js --config=tests/setup/acceptance-test/infra.configat.yaml",
     "clean:coverage": "rimraf coverage",
     "clean:report": "rimraf report",
     "coverage": "./bin/test/coverage.sh",
