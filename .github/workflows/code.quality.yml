@@ -80,7 +80,7 @@ jobs:
 
       # Run tests defined in the 'linter' script in package.json.
 
-      - name: Run a static code analysis.
+      - name: Run linter.
         run: npm run linter
 
       # Run tests defined in the 'depcruise' script in package.json.
