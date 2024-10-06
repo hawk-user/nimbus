@@ -26,7 +26,7 @@ default:
 
   require: [
 
-    # Include all TypeScript files in the specified directory for acceptance tests.
+    # Includes all acceptance test scenario files within the subdirectories of 'tests/libs'.
 
     tests/libs/**/acceptance-test/**/*.scenario.ts
 
