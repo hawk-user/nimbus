@@ -17,6 +17,10 @@ yarn-error.log
 # Ignore everything in the '.vscode' directory
 .vscode/*
 
+# Allow to track specific editor settings
+
+!.vscode/settings.json
+
 # Ignore the 'coverage' directory, often used for test coverage reports
 /coverage
 
