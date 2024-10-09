@@ -1,0 +1,20 @@
+{
+    // Enables procedural macros within the Rust Analyzer.
+    "rust-analyzer.procMacro.enable": true,
+
+    // Specifies diagnostics that should be disabled; an empty array indicates that all diagnostics are enabled.
+    "rust-analyzer.diagnostics.disabled": [],
+
+    // Automatically inserts imports during code completion.
+    "rust-analyzer.completion.autoimport.enable": true,
+
+    // Displays code lens, which provides inline hints and diagnostics for enhanced readability.
+    "editor.codeLens": true,
+
+    // Enables parameter hints to improve function usage clarity.
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+
+    // Specifies the path to the Cargo.toml file within project.
+    "rust-analyzer.linkedProjects": [ "./pipelet/Cargo.toml" ]
+
+}
