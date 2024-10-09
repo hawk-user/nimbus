@@ -1,21 +1,29 @@
 [package]
 
 # The authors of the package
-authors = [ 'Salem Djekoun <07narguiles.visieres@icloud.com>' ]
+authors = [ "Salem Djekoun <07narguiles.visieres@icloud.com>" ]
 
 # A brief description of what the package does
-description = 'Friendly neighborhood language model built with the power of Rust!'
+description = "Friendly neighborhood language model built with the power of Rust!"
 
 # The edition of Rust used for this package
-edition = '2021'
+edition = "2021"
 
 # The license under which the package is released
-license = 'MIT'
+license = "MIT"
 
 # The name of the package
-name = 'pipelet'
+name = "pipelet"
 
 # The current version of the package
-version = '0.1.0'
+version = "0.1.0"
+
+[lib]
+
+# Path to the library file
+path = "src/lib.rs"
 
 [dependencies]
+
+# A library providing a lightweight logging facade.
+log = "0.4.22"
