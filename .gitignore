@@ -36,5 +36,8 @@ yarn-error.log
 # Ignore NYC output directory containing raw coverage data.
 .nyc_output
 
-# Ignore the target directory to prevent tracking of build artifacts
-pipelet/target
+# Ignore Cargo build artifacts
+**/target
+
+# Ignore build-related files
+**/build
