@@ -47,7 +47,13 @@
             path 'libs/infra/terminal/index'.
          */
 
-         "@ueye/infra/terminal": [ "libs/infra/terminal/index" ]
+         "@ueye/infra/terminal": [ "libs/infra/terminal/index" ],
+
+         /* This maps the alias '@pipelet' to the file
+            path 'pipelet/build/index'.
+         */
+
+         "@pipelet": [ "pipelet/build/index" ]
 
       },
 
@@ -201,7 +207,7 @@
       
       /* Includes all files in the "tests" directory for compilation. */
 
-      "tests" 
+      "tests"
 
    ],
 
