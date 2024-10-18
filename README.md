@@ -4,7 +4,7 @@
         src="./assets/images/ueye.symbol.64x64.png"
         alt="ueye symbol"
     />
-    <h1>ueye</h1>
+    <h1>nimbus</h1>
 </div>
 
 <div align="center">
@@ -37,4 +37,4 @@ If you have any questions, suggestions, or issues, feel free to contact us:
 
 ## License
 
-ueye is [MIT licensed](./LICENSE).
+nimbus is [MIT licensed](./LICENSE).

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to ueye, where our goal is to make testing not only efficient but also enjoyable! This Code of Conduct is here to ensure we all have a great time while keeping things friendly and respectful. Think of it as the rules for a really awesome party where everyone’s invited!
+Welcome to nimbus, where our goal is to make testing not only efficient but also enjoyable! This Code of Conduct is here to ensure we all have a great time while keeping things friendly and respectful. Think of it as the rules for a really awesome party where everyone’s invited!
 
 ## Our Standards
 
