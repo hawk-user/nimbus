@@ -8,8 +8,8 @@
     {
       "name": "no-dependencies-from-core-to-infra",
       "comment": "Core should not depend on Infra.",
-      "from": { "path": "^libs/core/" },
-      "to": { "path": "^libs/infra/" },
+      "from": { "path": "^libs/@ueye/core/" },
+      "to": { "path": "^libs/@ueye/infra/" },
       "severity": "error"
     },
 
@@ -20,7 +20,7 @@
     {
       "name": "no-nodejs-usage",
       "comment": "Libraries should not use Node.js specific modules or APIs.",
-      "from": { "path": "^libs/" },
+      "from": { "path": "^libs/@ueye/" },
       "to": {
         "path": "^(:node|fs|path|os|http|https|stream|child_process|util|events|crypto|buffer|querystring|url|zlib|tls|dgram|dns|net|readline|repl|vm|assert|async_hooks|cluster|console|constants|domain|module|process|punycode|string_decoder|sys|timers|trace_events|tty|v8|worker_threads|wasi)$" // Destination path pattern for Node.js modules
       },
@@ -32,7 +32,7 @@
     {
       "name": "no-node-modules-in-libs",
       "comment": "Libraries should not import from node_modules.",
-      "from": { "path": "^libs/" },
+      "from": { "path": "^libs/@ueye/" },
       "to": { "path": "node_modules/" },
       "severity": "error"
     },
@@ -192,7 +192,7 @@
       "severity": "error",
       "comment": "This module depends on an npm package from the \"devDependencies\" section of your package.json. It looks like something that ships to production, though. To prevent problems with npm packages that aren't there on production, declare it (only!) in the \"dependencies\" section of your package.json. If this module is development only, add it to the from.pathNot rule of the not-to-dev-dep rule in the dependency-cruiser configuration.",
       "from": {
-        "path": "^(src)",
+        "path": "^(libs)",
         "pathNot": "[.](?:spec|test)[.](?:js|mjs|cjs|jsx|ts|mts|cts|tsx)$"
       },
       "to": {

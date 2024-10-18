@@ -28,6 +28,6 @@ default:
 
     # Include all TypeScript files in the specified directory for acceptance tests.
 
-    tests/libs/infra/acceptance-test/**/*.scenario.ts
+    tests/libs/@ueye/infra/acceptance-test/**/*.scenario.ts
 
   ]

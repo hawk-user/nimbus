@@ -11,7 +11,7 @@
     "clean:report": "rimraf report",
     "coverage": "./bin/test/coverage.sh",
     "depcruise": "depcruise -c config/.dependency-cruiser.jsonc libs",
-    "linter": "eslint --config=config/eslint.config.yml libs",
+    "linter": "eslint --config=config/eslint.config.yml libs/@ueye",
     "miracle": "echo '✨ Abracadabra! Your code is now magically awesome! ✨' && exit 0",
     "report": "./bin/test/report.sh",
     "unit:test": "mocha --config=tests/setup/unit-test/configut.yaml",

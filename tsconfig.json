@@ -41,19 +41,19 @@
             path 'libs/core/index'.
          */
 
-         "@ueye/core": [ "libs/core/index" ],
+         "@ueye/core": [ "libs/@ueye/core/index" ],
 
-         /* This maps the alias '@ueye/infra/terminal' to the file
+         /* This maps the alias 'libs/@ueye/infra/terminal/index' to the file
             path 'libs/infra/terminal/index'.
          */
 
-         "@ueye/infra/terminal": [ "libs/infra/terminal/index" ],
+         "@ueye/infra/terminal": [ "libs/@ueye/infra/terminal/index" ],
 
          /* This maps the alias '@pipelet' to the file
-            path 'pipelet/build/index'.
+            path 'libs/pipelet/build/index'.
          */
 
-         "@pipelet": [ "pipelet/build/index" ]
+         "@pipelet": [ "libs/@pipelet/build/index" ]
 
       },
 

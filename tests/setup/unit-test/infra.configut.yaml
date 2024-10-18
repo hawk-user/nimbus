@@ -1,7 +1,7 @@
 
 # Specifying the files to include for testing
 
-spec: [ './tests/libs/infra/unit-test/**/*.test.ts' ]
+spec: [ './tests/libs/@ueye/infra/unit-test/**/*.test.ts' ]
 
 # Use the BDD interface (describe, it)
 

@@ -2,8 +2,8 @@
 # Specifying the files to include for testing
 
 spec: [ 
-  './tests/libs/core/unit-test/**/*.ts',
-  './tests/libs/infra/unit-test/**/*.ts' 
+  './tests/libs/@ueye/core/unit-test/**/*.ts',
+  './tests/libs/@ueye/infra/unit-test/**/*.ts' 
 ]
 
 # Use the BDD interface (describe, it)

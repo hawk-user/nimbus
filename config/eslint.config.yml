@@ -130,7 +130,7 @@ overrides:
 
     # Specify the file where assertions are allowed
 
-      - 'libs/core/guards/type.guard.ts'
+      - 'libs/@ueye/core/guards/type.guard.ts'
 
     rules:
 
