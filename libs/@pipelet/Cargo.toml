@@ -3,6 +3,7 @@ authors = [ "Salem Djekoun <07narguiles.visieres@icloud.com>" ]
 description = "Friendly neighborhood language model built with the power of Rust!"
 edition = "2021"
 license = "MIT"
+repository = "https://github.com/hawk-user/nimbus"
 name = "pipelet"
 version = "0.1.0"
 
