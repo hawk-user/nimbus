@@ -28,7 +28,7 @@
 
 ## Contributing
 
-👀 We're not yet open for contributions. But you can get a head start by reading [this](https://github.com/hawk-user/gherkineye/blob/hogwarts/CODE_OF_CONDUCT.md). 
+👀 We're not yet open for contributions. But you can get a head start by reading [this](https://github.com/hawk-user/nimbus/blob/hogwarts/CODE_OF_CONDUCT.md). 
 
 ## Contact
 
