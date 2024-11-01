@@ -8,7 +8,7 @@
 </div>
 
 <div align="center">
-    <a href="https://codecov.io/github/hawk-user/ueye">
+    <a href="https://codecov.io/github/hawk-user/nimbus">
         <img src="https://codecov.io/github/hawk-user/nimbus/graph/badge.svg?token=C0D9EOXYEZ" alt="Codecov">
     </a>
 </div>
