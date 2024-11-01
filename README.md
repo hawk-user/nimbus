@@ -9,7 +9,7 @@
 
 <div align="center">
     <a href="https://codecov.io/github/hawk-user/ueye">
-        <img src="https://codecov.io/github/hawk-user/ueye/graph/badge.svg?token=C0D9EOXYEZ" alt="Codecov">
+        <img src="https://codecov.io/github/hawk-user/nimbus/graph/badge.svg?token=C0D9EOXYEZ" alt="Codecov">
     </a>
 </div>
 
