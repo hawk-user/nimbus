@@ -138,14 +138,4 @@ export abstract class ExecutionController {
         return this.readInput(context);
     }
 
-    /**
-        * Exits with a missing data error message.
-        * @param context - The execution context.
-        * @param error - Optional error to include in the message.
-    */
-
-    protected dataMissingErr(context: ExecutionContext, error?: Error): void {
-        this.promptAndExit(context, OutputFormatter.formatMissingData(error));
-    }
-
 }

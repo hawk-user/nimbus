@@ -96,22 +96,4 @@ describe('Output specifications', () => {
 
     });
 
-    describe('formatMissingData', () => {
-
-        it('should return formatted error with default message when no error is provided', () => {
-            const error = new Error('Required data not supplied.');
-            const output = OutputFormatter.formatMissingData();
-            assert.strictEqual(output.exitCode, 254);
-            assert.ok(output.prompt.message.includes(error.message));
-        });
-
-        it('should return formatted error with provided error message', () => {
-            const error = new Error('Custom error message.');
-            const output = OutputFormatter.formatMissingData(error);
-            assert.strictEqual(output.exitCode, 254);
-            assert.ok(output.prompt.message.includes(error.message));
-        });
-
-    });
-
 });

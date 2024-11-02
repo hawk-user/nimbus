@@ -84,16 +84,4 @@ export class OutputFormatter {
         return { prompt: this.formatError(error), exitCode };
     }
 
-    /**
-        * Formats an error message for missing data.
-        *
-        * @param optionalError - An optional error object to use. If not provided, a default error is created.
-        * @returns The formatted error output.
-    */
-
-    public static formatMissingData(optionalError?: Error): ProgramOutput {
-        const error = optionalError ? optionalError : new Error('Required data not supplied.');
-        return this.formatSpecifiedError(error, exitCodes.MISSING_DATA);
-    }
-
 }
