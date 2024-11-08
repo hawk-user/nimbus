@@ -15,6 +15,6 @@
     "rust-analyzer.inlayHints.parameterHints.enable": true,
 
     // Specifies the path to the Cargo.toml file within project.
-    "rust-analyzer.linkedProjects": [ "./pipelet/Cargo.toml" ]
+    "rust-analyzer.linkedProjects": [ "./libs/@pipelet/Cargo.toml" ]
 
 }
