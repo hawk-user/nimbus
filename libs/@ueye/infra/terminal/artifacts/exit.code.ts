@@ -12,7 +12,7 @@ export type SuccessExitCodes = typeof exitCodes.DONE;
     * Representing all possible error exit codes.
 */
 
-export type ErrorExitCodes = typeof exitCodes.MISSING_DATA | typeof exitCodes.UNSPECIFIED_ERROR
+export type ErrorExitCodes = typeof exitCodes.UNSPECIFIED_ERROR
 
 /**
     * Representing all program exit codes.
