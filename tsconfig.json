@@ -197,10 +197,6 @@
 
    "include": [ 
 
-      /* Includes all files in the "features" directory for compilation. */
-
-      "features",
-
       /* Includes all files in the "libs" directory for compilation. */
 
       "libs",
